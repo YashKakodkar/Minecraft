@@ -1,0 +1,6 @@
+/Users/ymac/Downloads/skinning 4/build/CMakeFiles/rebuild_cache.dir
+/Users/ymac/Downloads/skinning 4/build/CMakeFiles/edit_cache.dir
+/Users/ymac/Downloads/skinning 4/build/CMakeFiles/utgraphicsutil.dir
+/Users/ymac/Downloads/skinning 4/build/src/CMakeFiles/rebuild_cache.dir
+/Users/ymac/Downloads/skinning 4/build/src/CMakeFiles/edit_cache.dir
+/Users/ymac/Downloads/skinning 4/build/src/CMakeFiles/minecraft.dir
