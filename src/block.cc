@@ -15,6 +15,10 @@ Block::~Block()
 {
 }
 
+void Block::create_block(std::vector<glm::vec4>& block_vertices, std::vector<glm::uvec3>& block_faces)
+{
+}
+
 void Block::set_nesting_level(int level)
 {
     nesting_level_ = level;

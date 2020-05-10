@@ -10,9 +10,7 @@
 #include <queue>
 #include <stdexcept>
 
-void Block::create_block(std::vector<glm::vec4>& block_vertices, std::vector<glm::uvec3>& block_faces)
-{
-}
+
 
 void TerrainGenerator::create_terrain(std::vector<glm::vec4>& block_vertices, std::vector<glm::uvec3>& block_faces)
 {
