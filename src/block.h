@@ -10,9 +10,6 @@ public:
 
     ~Block();
     void create_block(std::vector<glm::vec4>& block_vertices, std::vector<glm::uvec3>& block_faces);
-    std::vector<glm::vec4>& block_vertices;
-    std::vector<glm::uvec3>& block_faces;
-    std::vector<glm::vec3>& block_position;
     void set_texture(int t) { texture = t; }
     int get_texture() { return texture; }
 

@@ -1,7 +1,6 @@
 #include <GL/glew.h>
 
 #include "config.h"
-#include "cube.h"
 #include "gui.h"
 #include "procedure_geometry.h"
 #include "render_pass.h"
