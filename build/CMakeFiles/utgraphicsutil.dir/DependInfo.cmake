@@ -4,8 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/Users/ymac/Downloads/skinning 4/lib/utgraphicsutil/debuggl.cc" "/Users/ymac/Downloads/skinning 4/build/CMakeFiles/utgraphicsutil.dir/lib/utgraphicsutil/debuggl.cc.o"
-  "/Users/ymac/Downloads/skinning 4/lib/utgraphicsutil/jpegio.cc" "/Users/ymac/Downloads/skinning 4/build/CMakeFiles/utgraphicsutil.dir/lib/utgraphicsutil/jpegio.cc.o"
+  "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/lib/utgraphicsutil/debuggl.cc" "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/build/CMakeFiles/utgraphicsutil.dir/lib/utgraphicsutil/debuggl.cc.o"
+  "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/lib/utgraphicsutil/jpegio.cc" "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/build/CMakeFiles/utgraphicsutil.dir/lib/utgraphicsutil/jpegio.cc.o"
   )
 set(CMAKE_CXX_COMPILER_ID "Clang")
 

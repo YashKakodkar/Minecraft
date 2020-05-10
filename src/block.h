@@ -1,14 +1,14 @@
-#ifndef CUBE_H
-#define CUBE_H
+#ifndef BLOCK_H
+#define BLOCK_H
 
 #include <glm/glm.hpp>
 #include <vector>
 
-class Cube {
+class Block {
 public:
-    Cube();
+    Block();
 
-    ~Cube();
+    ~Block();
 
     void set_nesting_level(int);
 
@@ -16,7 +16,7 @@ public:
 
     void set_clean();
 
-    void draw_cube(std::vector<glm::vec4>& obj_vertices, std::vector<glm::uvec3>& obj_faces,
+    void draw_block(std::vector<glm::vec4>& obj_vertices, std::vector<glm::uvec3>& obj_faces,
         float minx, float miny, float minz, float maxx, float maxy, float maxz, int arrayStart) const;
 
     void generate_geometry(std::vector<glm::vec4>& obj_vertices,

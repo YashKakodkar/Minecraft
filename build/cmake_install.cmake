@@ -1,4 +1,4 @@
-# Install script for directory: /Users/ymac/Downloads/skinning 4
+# Install script for directory: /Users/ymac/Documents/College/CS 378H/Final Project/Minecraft
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -34,7 +34,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/Users/ymac/Downloads/skinning 4/build/src/cmake_install.cmake")
+  include("/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/build/src/cmake_install.cmake")
 
 endif()
 
@@ -46,5 +46,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/Users/ymac/Downloads/skinning 4/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

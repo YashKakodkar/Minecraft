@@ -6,5 +6,5 @@ CXX_FLAGS = --std=c++14 -g -Wno-deprecated-declarations -Wno-overloaded-virtual 
 
 CXX_DEFINES = -DGLM_ENABLE_EXPERIMENTAL -DGLM_FORCE_RADIANS=1 -DGLM_FORCE_SIZE_FUNC=1
 
-CXX_INCLUDES = -I/opt/local/include -I"/Users/ymac/Downloads/skinning 4/lib" -I/usr/local/Cellar/glew/2.1.0_1/include -I"/Users/ymac/Downloads/skinning 4/lib/utgraphicsutil" -isystem /usr/local/include -isystem "/Users/ymac/Downloads/skinning 4/third-party/glm" 
+CXX_INCLUDES = -I/opt/local/include -I"/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/lib" -I/usr/local/Cellar/glew/2.1.0_1/include -I"/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/lib/utgraphicsutil" -isystem /usr/local/include -isystem "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/third-party/glm" 
 

@@ -43,10 +43,10 @@ RM = /usr/local/Cellar/cmake/3.16.4/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/Users/ymac/Downloads/skinning 4"
+CMAKE_SOURCE_DIR = "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/Users/ymac/Downloads/skinning 4/build"
+CMAKE_BINARY_DIR = "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/build"
 
 # Include any dependencies generated for this target.
 include CMakeFiles/utgraphicsutil.dir/depend.make
@@ -59,29 +59,29 @@ include CMakeFiles/utgraphicsutil.dir/flags.make
 
 CMakeFiles/utgraphicsutil.dir/lib/utgraphicsutil/debuggl.cc.o: CMakeFiles/utgraphicsutil.dir/flags.make
 CMakeFiles/utgraphicsutil.dir/lib/utgraphicsutil/debuggl.cc.o: ../lib/utgraphicsutil/debuggl.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/ymac/Downloads/skinning 4/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/utgraphicsutil.dir/lib/utgraphicsutil/debuggl.cc.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/utgraphicsutil.dir/lib/utgraphicsutil/debuggl.cc.o -c "/Users/ymac/Downloads/skinning 4/lib/utgraphicsutil/debuggl.cc"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/utgraphicsutil.dir/lib/utgraphicsutil/debuggl.cc.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/utgraphicsutil.dir/lib/utgraphicsutil/debuggl.cc.o -c "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/lib/utgraphicsutil/debuggl.cc"
 
 CMakeFiles/utgraphicsutil.dir/lib/utgraphicsutil/debuggl.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/utgraphicsutil.dir/lib/utgraphicsutil/debuggl.cc.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/ymac/Downloads/skinning 4/lib/utgraphicsutil/debuggl.cc" > CMakeFiles/utgraphicsutil.dir/lib/utgraphicsutil/debuggl.cc.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/lib/utgraphicsutil/debuggl.cc" > CMakeFiles/utgraphicsutil.dir/lib/utgraphicsutil/debuggl.cc.i
 
 CMakeFiles/utgraphicsutil.dir/lib/utgraphicsutil/debuggl.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/utgraphicsutil.dir/lib/utgraphicsutil/debuggl.cc.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/ymac/Downloads/skinning 4/lib/utgraphicsutil/debuggl.cc" -o CMakeFiles/utgraphicsutil.dir/lib/utgraphicsutil/debuggl.cc.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/lib/utgraphicsutil/debuggl.cc" -o CMakeFiles/utgraphicsutil.dir/lib/utgraphicsutil/debuggl.cc.s
 
 CMakeFiles/utgraphicsutil.dir/lib/utgraphicsutil/jpegio.cc.o: CMakeFiles/utgraphicsutil.dir/flags.make
 CMakeFiles/utgraphicsutil.dir/lib/utgraphicsutil/jpegio.cc.o: ../lib/utgraphicsutil/jpegio.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/ymac/Downloads/skinning 4/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/utgraphicsutil.dir/lib/utgraphicsutil/jpegio.cc.o"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/utgraphicsutil.dir/lib/utgraphicsutil/jpegio.cc.o -c "/Users/ymac/Downloads/skinning 4/lib/utgraphicsutil/jpegio.cc"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/utgraphicsutil.dir/lib/utgraphicsutil/jpegio.cc.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/utgraphicsutil.dir/lib/utgraphicsutil/jpegio.cc.o -c "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/lib/utgraphicsutil/jpegio.cc"
 
 CMakeFiles/utgraphicsutil.dir/lib/utgraphicsutil/jpegio.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/utgraphicsutil.dir/lib/utgraphicsutil/jpegio.cc.i"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/ymac/Downloads/skinning 4/lib/utgraphicsutil/jpegio.cc" > CMakeFiles/utgraphicsutil.dir/lib/utgraphicsutil/jpegio.cc.i
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/lib/utgraphicsutil/jpegio.cc" > CMakeFiles/utgraphicsutil.dir/lib/utgraphicsutil/jpegio.cc.i
 
 CMakeFiles/utgraphicsutil.dir/lib/utgraphicsutil/jpegio.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/utgraphicsutil.dir/lib/utgraphicsutil/jpegio.cc.s"
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/ymac/Downloads/skinning 4/lib/utgraphicsutil/jpegio.cc" -o CMakeFiles/utgraphicsutil.dir/lib/utgraphicsutil/jpegio.cc.s
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/lib/utgraphicsutil/jpegio.cc" -o CMakeFiles/utgraphicsutil.dir/lib/utgraphicsutil/jpegio.cc.s
 
 # Object files for target utgraphicsutil
 utgraphicsutil_OBJECTS = \
@@ -95,7 +95,7 @@ libutgraphicsutil.a: CMakeFiles/utgraphicsutil.dir/lib/utgraphicsutil/debuggl.cc
 libutgraphicsutil.a: CMakeFiles/utgraphicsutil.dir/lib/utgraphicsutil/jpegio.cc.o
 libutgraphicsutil.a: CMakeFiles/utgraphicsutil.dir/build.make
 libutgraphicsutil.a: CMakeFiles/utgraphicsutil.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/Users/ymac/Downloads/skinning 4/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX static library libutgraphicsutil.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX static library libutgraphicsutil.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/utgraphicsutil.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/utgraphicsutil.dir/link.txt --verbose=$(VERBOSE)
 
@@ -109,6 +109,6 @@ CMakeFiles/utgraphicsutil.dir/clean:
 .PHONY : CMakeFiles/utgraphicsutil.dir/clean
 
 CMakeFiles/utgraphicsutil.dir/depend:
-	cd "/Users/ymac/Downloads/skinning 4/build" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/Users/ymac/Downloads/skinning 4" "/Users/ymac/Downloads/skinning 4" "/Users/ymac/Downloads/skinning 4/build" "/Users/ymac/Downloads/skinning 4/build" "/Users/ymac/Downloads/skinning 4/build/CMakeFiles/utgraphicsutil.dir/DependInfo.cmake" --color=$(COLOR)
+	cd "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/build" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft" "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft" "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/build" "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/build" "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/build/CMakeFiles/utgraphicsutil.dir/DependInfo.cmake" --color=$(COLOR)
 .PHONY : CMakeFiles/utgraphicsutil.dir/depend
 

@@ -48,10 +48,10 @@ RM = /usr/local/Cellar/cmake/3.16.4/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/Users/ymac/Downloads/skinning 4"
+CMAKE_SOURCE_DIR = "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/Users/ymac/Downloads/skinning 4/build"
+CMAKE_BINARY_DIR = "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/build"
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,14 +80,14 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd "/Users/ymac/Downloads/skinning 4/build" && $(CMAKE_COMMAND) -E cmake_progress_start "/Users/ymac/Downloads/skinning 4/build/CMakeFiles" "/Users/ymac/Downloads/skinning 4/build/src/CMakeFiles/progress.marks"
-	cd "/Users/ymac/Downloads/skinning 4/build" && $(MAKE) -f CMakeFiles/Makefile2 src/all
-	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/ymac/Downloads/skinning 4/build/CMakeFiles" 0
+	cd "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/build" && $(CMAKE_COMMAND) -E cmake_progress_start "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/build/CMakeFiles" "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/build/src/CMakeFiles/progress.marks"
+	cd "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/build" && $(MAKE) -f CMakeFiles/Makefile2 src/all
+	$(CMAKE_COMMAND) -E cmake_progress_start "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/build/CMakeFiles" 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd "/Users/ymac/Downloads/skinning 4/build" && $(MAKE) -f CMakeFiles/Makefile2 src/clean
+	cd "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/build" && $(MAKE) -f CMakeFiles/Makefile2 src/clean
 .PHONY : clean
 
 # The main clean target
@@ -97,22 +97,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd "/Users/ymac/Downloads/skinning 4/build" && $(MAKE) -f CMakeFiles/Makefile2 src/preinstall
+	cd "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/build" && $(MAKE) -f CMakeFiles/Makefile2 src/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd "/Users/ymac/Downloads/skinning 4/build" && $(MAKE) -f CMakeFiles/Makefile2 src/preinstall
+	cd "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/build" && $(MAKE) -f CMakeFiles/Makefile2 src/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd "/Users/ymac/Downloads/skinning 4/build" && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/build" && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 src/CMakeFiles/minecraft.dir/rule:
-	cd "/Users/ymac/Downloads/skinning 4/build" && $(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/minecraft.dir/rule
+	cd "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/build" && $(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/minecraft.dir/rule
 .PHONY : src/CMakeFiles/minecraft.dir/rule
 
 # Convenience name for target.
@@ -122,7 +122,7 @@ minecraft: src/CMakeFiles/minecraft.dir/rule
 
 # fast build rule for target.
 minecraft/fast:
-	cd "/Users/ymac/Downloads/skinning 4/build" && $(MAKE) -f src/CMakeFiles/minecraft.dir/build.make src/CMakeFiles/minecraft.dir/build
+	cd "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/build" && $(MAKE) -f src/CMakeFiles/minecraft.dir/build.make src/CMakeFiles/minecraft.dir/build
 .PHONY : minecraft/fast
 
 cube.o: cube.cc.o
@@ -131,7 +131,7 @@ cube.o: cube.cc.o
 
 # target to build an object file
 cube.cc.o:
-	cd "/Users/ymac/Downloads/skinning 4/build" && $(MAKE) -f src/CMakeFiles/minecraft.dir/build.make src/CMakeFiles/minecraft.dir/cube.cc.o
+	cd "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/build" && $(MAKE) -f src/CMakeFiles/minecraft.dir/build.make src/CMakeFiles/minecraft.dir/cube.cc.o
 .PHONY : cube.cc.o
 
 cube.i: cube.cc.i
@@ -140,7 +140,7 @@ cube.i: cube.cc.i
 
 # target to preprocess a source file
 cube.cc.i:
-	cd "/Users/ymac/Downloads/skinning 4/build" && $(MAKE) -f src/CMakeFiles/minecraft.dir/build.make src/CMakeFiles/minecraft.dir/cube.cc.i
+	cd "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/build" && $(MAKE) -f src/CMakeFiles/minecraft.dir/build.make src/CMakeFiles/minecraft.dir/cube.cc.i
 .PHONY : cube.cc.i
 
 cube.s: cube.cc.s
@@ -149,7 +149,7 @@ cube.s: cube.cc.s
 
 # target to generate assembly for a file
 cube.cc.s:
-	cd "/Users/ymac/Downloads/skinning 4/build" && $(MAKE) -f src/CMakeFiles/minecraft.dir/build.make src/CMakeFiles/minecraft.dir/cube.cc.s
+	cd "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/build" && $(MAKE) -f src/CMakeFiles/minecraft.dir/build.make src/CMakeFiles/minecraft.dir/cube.cc.s
 .PHONY : cube.cc.s
 
 gui.o: gui.cc.o
@@ -158,7 +158,7 @@ gui.o: gui.cc.o
 
 # target to build an object file
 gui.cc.o:
-	cd "/Users/ymac/Downloads/skinning 4/build" && $(MAKE) -f src/CMakeFiles/minecraft.dir/build.make src/CMakeFiles/minecraft.dir/gui.cc.o
+	cd "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/build" && $(MAKE) -f src/CMakeFiles/minecraft.dir/build.make src/CMakeFiles/minecraft.dir/gui.cc.o
 .PHONY : gui.cc.o
 
 gui.i: gui.cc.i
@@ -167,7 +167,7 @@ gui.i: gui.cc.i
 
 # target to preprocess a source file
 gui.cc.i:
-	cd "/Users/ymac/Downloads/skinning 4/build" && $(MAKE) -f src/CMakeFiles/minecraft.dir/build.make src/CMakeFiles/minecraft.dir/gui.cc.i
+	cd "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/build" && $(MAKE) -f src/CMakeFiles/minecraft.dir/build.make src/CMakeFiles/minecraft.dir/gui.cc.i
 .PHONY : gui.cc.i
 
 gui.s: gui.cc.s
@@ -176,7 +176,7 @@ gui.s: gui.cc.s
 
 # target to generate assembly for a file
 gui.cc.s:
-	cd "/Users/ymac/Downloads/skinning 4/build" && $(MAKE) -f src/CMakeFiles/minecraft.dir/build.make src/CMakeFiles/minecraft.dir/gui.cc.s
+	cd "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/build" && $(MAKE) -f src/CMakeFiles/minecraft.dir/build.make src/CMakeFiles/minecraft.dir/gui.cc.s
 .PHONY : gui.cc.s
 
 main.o: main.cc.o
@@ -185,7 +185,7 @@ main.o: main.cc.o
 
 # target to build an object file
 main.cc.o:
-	cd "/Users/ymac/Downloads/skinning 4/build" && $(MAKE) -f src/CMakeFiles/minecraft.dir/build.make src/CMakeFiles/minecraft.dir/main.cc.o
+	cd "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/build" && $(MAKE) -f src/CMakeFiles/minecraft.dir/build.make src/CMakeFiles/minecraft.dir/main.cc.o
 .PHONY : main.cc.o
 
 main.i: main.cc.i
@@ -194,7 +194,7 @@ main.i: main.cc.i
 
 # target to preprocess a source file
 main.cc.i:
-	cd "/Users/ymac/Downloads/skinning 4/build" && $(MAKE) -f src/CMakeFiles/minecraft.dir/build.make src/CMakeFiles/minecraft.dir/main.cc.i
+	cd "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/build" && $(MAKE) -f src/CMakeFiles/minecraft.dir/build.make src/CMakeFiles/minecraft.dir/main.cc.i
 .PHONY : main.cc.i
 
 main.s: main.cc.s
@@ -203,7 +203,7 @@ main.s: main.cc.s
 
 # target to generate assembly for a file
 main.cc.s:
-	cd "/Users/ymac/Downloads/skinning 4/build" && $(MAKE) -f src/CMakeFiles/minecraft.dir/build.make src/CMakeFiles/minecraft.dir/main.cc.s
+	cd "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/build" && $(MAKE) -f src/CMakeFiles/minecraft.dir/build.make src/CMakeFiles/minecraft.dir/main.cc.s
 .PHONY : main.cc.s
 
 procedure_geometry.o: procedure_geometry.cc.o
@@ -212,7 +212,7 @@ procedure_geometry.o: procedure_geometry.cc.o
 
 # target to build an object file
 procedure_geometry.cc.o:
-	cd "/Users/ymac/Downloads/skinning 4/build" && $(MAKE) -f src/CMakeFiles/minecraft.dir/build.make src/CMakeFiles/minecraft.dir/procedure_geometry.cc.o
+	cd "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/build" && $(MAKE) -f src/CMakeFiles/minecraft.dir/build.make src/CMakeFiles/minecraft.dir/procedure_geometry.cc.o
 .PHONY : procedure_geometry.cc.o
 
 procedure_geometry.i: procedure_geometry.cc.i
@@ -221,7 +221,7 @@ procedure_geometry.i: procedure_geometry.cc.i
 
 # target to preprocess a source file
 procedure_geometry.cc.i:
-	cd "/Users/ymac/Downloads/skinning 4/build" && $(MAKE) -f src/CMakeFiles/minecraft.dir/build.make src/CMakeFiles/minecraft.dir/procedure_geometry.cc.i
+	cd "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/build" && $(MAKE) -f src/CMakeFiles/minecraft.dir/build.make src/CMakeFiles/minecraft.dir/procedure_geometry.cc.i
 .PHONY : procedure_geometry.cc.i
 
 procedure_geometry.s: procedure_geometry.cc.s
@@ -230,7 +230,7 @@ procedure_geometry.s: procedure_geometry.cc.s
 
 # target to generate assembly for a file
 procedure_geometry.cc.s:
-	cd "/Users/ymac/Downloads/skinning 4/build" && $(MAKE) -f src/CMakeFiles/minecraft.dir/build.make src/CMakeFiles/minecraft.dir/procedure_geometry.cc.s
+	cd "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/build" && $(MAKE) -f src/CMakeFiles/minecraft.dir/build.make src/CMakeFiles/minecraft.dir/procedure_geometry.cc.s
 .PHONY : procedure_geometry.cc.s
 
 render_pass.o: render_pass.cc.o
@@ -239,7 +239,7 @@ render_pass.o: render_pass.cc.o
 
 # target to build an object file
 render_pass.cc.o:
-	cd "/Users/ymac/Downloads/skinning 4/build" && $(MAKE) -f src/CMakeFiles/minecraft.dir/build.make src/CMakeFiles/minecraft.dir/render_pass.cc.o
+	cd "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/build" && $(MAKE) -f src/CMakeFiles/minecraft.dir/build.make src/CMakeFiles/minecraft.dir/render_pass.cc.o
 .PHONY : render_pass.cc.o
 
 render_pass.i: render_pass.cc.i
@@ -248,7 +248,7 @@ render_pass.i: render_pass.cc.i
 
 # target to preprocess a source file
 render_pass.cc.i:
-	cd "/Users/ymac/Downloads/skinning 4/build" && $(MAKE) -f src/CMakeFiles/minecraft.dir/build.make src/CMakeFiles/minecraft.dir/render_pass.cc.i
+	cd "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/build" && $(MAKE) -f src/CMakeFiles/minecraft.dir/build.make src/CMakeFiles/minecraft.dir/render_pass.cc.i
 .PHONY : render_pass.cc.i
 
 render_pass.s: render_pass.cc.s
@@ -257,7 +257,7 @@ render_pass.s: render_pass.cc.s
 
 # target to generate assembly for a file
 render_pass.cc.s:
-	cd "/Users/ymac/Downloads/skinning 4/build" && $(MAKE) -f src/CMakeFiles/minecraft.dir/build.make src/CMakeFiles/minecraft.dir/render_pass.cc.s
+	cd "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/build" && $(MAKE) -f src/CMakeFiles/minecraft.dir/build.make src/CMakeFiles/minecraft.dir/render_pass.cc.s
 .PHONY : render_pass.cc.s
 
 shader_uniform.o: shader_uniform.cc.o
@@ -266,7 +266,7 @@ shader_uniform.o: shader_uniform.cc.o
 
 # target to build an object file
 shader_uniform.cc.o:
-	cd "/Users/ymac/Downloads/skinning 4/build" && $(MAKE) -f src/CMakeFiles/minecraft.dir/build.make src/CMakeFiles/minecraft.dir/shader_uniform.cc.o
+	cd "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/build" && $(MAKE) -f src/CMakeFiles/minecraft.dir/build.make src/CMakeFiles/minecraft.dir/shader_uniform.cc.o
 .PHONY : shader_uniform.cc.o
 
 shader_uniform.i: shader_uniform.cc.i
@@ -275,7 +275,7 @@ shader_uniform.i: shader_uniform.cc.i
 
 # target to preprocess a source file
 shader_uniform.cc.i:
-	cd "/Users/ymac/Downloads/skinning 4/build" && $(MAKE) -f src/CMakeFiles/minecraft.dir/build.make src/CMakeFiles/minecraft.dir/shader_uniform.cc.i
+	cd "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/build" && $(MAKE) -f src/CMakeFiles/minecraft.dir/build.make src/CMakeFiles/minecraft.dir/shader_uniform.cc.i
 .PHONY : shader_uniform.cc.i
 
 shader_uniform.s: shader_uniform.cc.s
@@ -284,7 +284,7 @@ shader_uniform.s: shader_uniform.cc.s
 
 # target to generate assembly for a file
 shader_uniform.cc.s:
-	cd "/Users/ymac/Downloads/skinning 4/build" && $(MAKE) -f src/CMakeFiles/minecraft.dir/build.make src/CMakeFiles/minecraft.dir/shader_uniform.cc.s
+	cd "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/build" && $(MAKE) -f src/CMakeFiles/minecraft.dir/build.make src/CMakeFiles/minecraft.dir/shader_uniform.cc.s
 .PHONY : shader_uniform.cc.s
 
 # Help Target
@@ -325,6 +325,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd "/Users/ymac/Downloads/skinning 4/build" && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/build" && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

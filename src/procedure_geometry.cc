@@ -39,30 +39,20 @@ void create_cube(std::vector<glm::vec4>& cube_vertices, std::vector<glm::uvec3>&
 
 
     */
-    //    cube_vertices.push_back(glm::vec4(-0.5f, -0.5f, -0.5f, 1.0f));
-    //    cube_vertices.push_back(glm::vec4(0.5f, -0.5f, -0.5f, 1.0f));
-    //    cube_vertices.push_back(glm::vec4(0.0f, 0.5f, -0.5f, 1.0f));
-    //    cube_faces.push_back(glm::uvec3(0, 1, 2));
-    //    std::cout << minx << " " << miny << " " << minz << std::endl;
-    //    std::cout << maxx << " " << maxy << " " << maxz << std::endl;
+
     //front
     //bot left
-    //std::cout << minx << " | " << miny << " | " << " | " << minz << std::endl;
     cube_vertices.push_back(glm::vec4(minx, miny, maxz, 1.0f));
     cube_vertices.push_back(glm::vec4(maxx, miny, maxz, 1.0f));
     cube_vertices.push_back(glm::vec4(minx, maxy, maxz, 1.0f));
     cube_faces.push_back(glm::uvec3(arrayStart, arrayStart + 1, arrayStart + 2));
-    glm::dvec3 test = getNormal(glm::dvec3(minx, miny, maxz), glm::dvec3(maxx, miny, maxz),
-        glm::dvec3(minx, maxy, maxz));
-    //std::cout << test[0] << " | " << test[1] << " | " << test[2] << std::endl;
+
     //top right
     cube_vertices.push_back(glm::vec4(minx, maxy, maxz, 1.0f));
     cube_vertices.push_back(glm::vec4(maxx, miny, maxz, 1.0f));
     cube_vertices.push_back(glm::vec4(maxx, maxy, maxz, 1.0f));
     cube_faces.push_back(glm::uvec3(arrayStart + 3, arrayStart + 4, arrayStart + 5));
-    glm::dvec3 test2 = getNormal(glm::dvec3(minx, maxy, maxz), glm::dvec3(maxx, miny, maxz),
-        glm::dvec3(maxx, maxy, maxz));
-    //std::cout << test2[0] << " | " << test2[1] << " | " << test2[2] << std::endl;
+
     //back-------------------------------------------------------
     //botleft
 

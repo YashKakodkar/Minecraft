@@ -1,4 +1,4 @@
-# Install script for directory: /Users/ymac/Downloads/skinning 4/src
+# Install script for directory: /Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

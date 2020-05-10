@@ -1,4 +1,4 @@
-#include "cube.h"
+#include "block.h"
 #include <iostream>
 
 namespace {
@@ -6,33 +6,33 @@ const int kMinLevel = 0;
 const int kMaxLevel = 4;
 };
 
-Cube::Cube()
+Block::Block()
 {
     // Add additional initialization if you like
 }
 
-Cube::~Cube()
+Block::~Block()
 {
 }
 
-void Cube::set_nesting_level(int level)
+void Block::set_nesting_level(int level)
 {
     nesting_level_ = level;
     dirty_ = true;
 }
 
-bool Cube::is_dirty() const
+bool Block::is_dirty() const
 {
     return dirty_;
 }
 
-void Cube::set_clean()
+void Block::set_clean()
 {
     dirty_ = false;
 }
 
-// FIXME generate Cube sponge geometry
-void Cube::generate_geometry(std::vector<glm::vec4>& obj_vertices,
+// FIXME generate Block sponge geometry
+void Block::generate_geometry(std::vector<glm::vec4>& obj_vertices,
     std::vector<glm::uvec3>& obj_faces) const
 {
 
@@ -45,15 +45,15 @@ void Cube::generate_geometry(std::vector<glm::vec4>& obj_vertices,
     float maxy = .5;
     float maxz = 0.5;
     if (nesting_level_ != 0) {
-        //draw_cube(obj_vertices, obj_faces, 0, minx, miny, minz, maxx,maxy, maxz);
+        //draw_block(obj_vertices, obj_faces, 0, minx, miny, minz, maxx,maxy, maxz);
         // std::cout << length/3.0 << std::endl;
         recursive_box(obj_vertices, obj_faces, 1 / 3.0, minx, miny, minz, nesting_level_, 0);
     } else {
-        draw_cube(obj_vertices, obj_faces, minx, miny, minz, maxx, maxy, maxz, 0);
+        draw_block(obj_vertices, obj_faces, minx, miny, minz, maxx, maxy, maxz, 0);
     }
 }
 
-int Cube::recursive_box(std::vector<glm::vec4>& obj_vertices, std::vector<glm::uvec3>& obj_faces, float length,
+int Block::recursive_box(std::vector<glm::vec4>& obj_vertices, std::vector<glm::uvec3>& obj_faces, float length,
     float minx, float miny, float minz, int level, int arrayStart) const
 {
     for (int i = 0; i < 3; i++) {
@@ -75,7 +75,7 @@ int Cube::recursive_box(std::vector<glm::vec4>& obj_vertices, std::vector<glm::u
                             arrayStart);
                     } else {
                         //std::cout << "hi";
-                        draw_cube(obj_vertices, obj_faces, x, y, z, x + length, y + length, z + length, arrayStart);
+                        draw_block(obj_vertices, obj_faces, x, y, z, x + length, y + length, z + length, arrayStart);
                         arrayStart += 36;
                     }
                 }
@@ -93,14 +93,14 @@ int Cube::recursive_box(std::vector<glm::vec4>& obj_vertices, std::vector<glm::u
 //     return normal;
 // }
 
-void Cube::draw_cube(std::vector<glm::vec4>& obj_vertices, std::vector<glm::uvec3>& obj_faces,
+void Block::draw_block(std::vector<glm::vec4>& obj_vertices, std::vector<glm::uvec3>& obj_faces,
     float minx, float miny, float minz, float maxx, float maxy, float maxz, int arrayStart) const
 {
 
     /*
     TODO:
 
-    There are 6 faces per cube
+    There are 6 faces per block
     Each face can be drawn by 2 triangles each on opposite corners
 
     Draw both triangles per face.

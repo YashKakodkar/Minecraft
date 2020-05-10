@@ -151,8 +151,8 @@ src/CMakeFiles/minecraft.dir/cube.cc.o
  ../third-party/glm/glm/vec3.hpp
  ../third-party/glm/glm/vec4.hpp
  ../third-party/glm/glm/vector_relational.hpp
- /Users/ymac/Downloads/skinning 4/src/cube.cc
- /Users/ymac/Downloads/skinning 4/src/cube.h
+ /Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/cube.cc
+ /Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/cube.h
 src/CMakeFiles/minecraft.dir/gui.cc.o
  ../lib/utgraphicsutil/debuggl.h
  ../lib/utgraphicsutil/image.h
@@ -351,9 +351,9 @@ src/CMakeFiles/minecraft.dir/gui.cc.o
  ../third-party/glm/glm/vec3.hpp
  ../third-party/glm/glm/vec4.hpp
  ../third-party/glm/glm/vector_relational.hpp
- /Users/ymac/Downloads/skinning 4/src/config.h
- /Users/ymac/Downloads/skinning 4/src/gui.cc
- /Users/ymac/Downloads/skinning 4/src/gui.h
+ /Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/config.h
+ /Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/gui.cc
+ /Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/gui.h
  /usr/local/include/GLFW/glfw3.h
 src/CMakeFiles/minecraft.dir/main.cc.o
  ../lib/utgraphicsutil/debuggl.h
@@ -580,20 +580,20 @@ src/CMakeFiles/minecraft.dir/main.cc.o
  ../third-party/glm/glm/vec3.hpp
  ../third-party/glm/glm/vec4.hpp
  ../third-party/glm/glm/vector_relational.hpp
- /Users/ymac/Downloads/skinning 4/src/config.h
- /Users/ymac/Downloads/skinning 4/src/cube.h
- /Users/ymac/Downloads/skinning 4/src/gui.h
- /Users/ymac/Downloads/skinning 4/src/main.cc
- /Users/ymac/Downloads/skinning 4/src/procedure_geometry.h
- /Users/ymac/Downloads/skinning 4/src/render_pass.h
- /Users/ymac/Downloads/skinning 4/src/shader_uniform.h
- /Users/ymac/Downloads/skinning 4/src/shaders/blending.vert
- /Users/ymac/Downloads/skinning 4/src/shaders/cube.frag
- /Users/ymac/Downloads/skinning 4/src/shaders/cube.vert
- /Users/ymac/Downloads/skinning 4/src/shaders/default.frag
- /Users/ymac/Downloads/skinning 4/src/shaders/default.geom
- /Users/ymac/Downloads/skinning 4/src/shaders/default.vert
- /Users/ymac/Downloads/skinning 4/src/shaders/floor.frag
+ /Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/config.h
+ /Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/cube.h
+ /Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/gui.h
+ /Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/main.cc
+ /Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/procedure_geometry.h
+ /Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/render_pass.h
+ /Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/shader_uniform.h
+ /Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/shaders/blending.vert
+ /Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/shaders/cube.frag
+ /Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/shaders/cube.vert
+ /Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/shaders/default.frag
+ /Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/shaders/default.geom
+ /Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/shaders/default.vert
+ /Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/shaders/floor.frag
  /usr/local/include/GL/glew.h
  /usr/local/include/GLFW/glfw3.h
 src/CMakeFiles/minecraft.dir/procedure_geometry.cc.o
@@ -746,9 +746,9 @@ src/CMakeFiles/minecraft.dir/procedure_geometry.cc.o
  ../third-party/glm/glm/vec3.hpp
  ../third-party/glm/glm/vec4.hpp
  ../third-party/glm/glm/vector_relational.hpp
- /Users/ymac/Downloads/skinning 4/src/config.h
- /Users/ymac/Downloads/skinning 4/src/procedure_geometry.cc
- /Users/ymac/Downloads/skinning 4/src/procedure_geometry.h
+ /Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/config.h
+ /Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/procedure_geometry.cc
+ /Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/procedure_geometry.h
 src/CMakeFiles/minecraft.dir/render_pass.cc.o
  ../lib/utgraphicsutil/debuggl.h
  ../lib/utgraphicsutil/image.h
@@ -951,9 +951,9 @@ src/CMakeFiles/minecraft.dir/render_pass.cc.o
  ../third-party/glm/glm/vec3.hpp
  ../third-party/glm/glm/vec4.hpp
  ../third-party/glm/glm/vector_relational.hpp
- /Users/ymac/Downloads/skinning 4/src/render_pass.cc
- /Users/ymac/Downloads/skinning 4/src/render_pass.h
- /Users/ymac/Downloads/skinning 4/src/shader_uniform.h
+ /Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/render_pass.cc
+ /Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/render_pass.h
+ /Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/shader_uniform.h
  /usr/local/include/GL/glew.h
 src/CMakeFiles/minecraft.dir/shader_uniform.cc.o
  ../lib/utgraphicsutil/debuggl.h
@@ -1158,6 +1158,6 @@ src/CMakeFiles/minecraft.dir/shader_uniform.cc.o
  ../third-party/glm/glm/vec3.hpp
  ../third-party/glm/glm/vec4.hpp
  ../third-party/glm/glm/vector_relational.hpp
- /Users/ymac/Downloads/skinning 4/src/shader_uniform.cc
- /Users/ymac/Downloads/skinning 4/src/shader_uniform.h
+ /Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/shader_uniform.cc
+ /Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/shader_uniform.h
  /usr/local/include/GL/glew.h

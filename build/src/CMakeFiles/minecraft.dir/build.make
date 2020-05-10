@@ -43,10 +43,10 @@ RM = /usr/local/Cellar/cmake/3.16.4/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "/Users/ymac/Downloads/skinning 4"
+CMAKE_SOURCE_DIR = "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "/Users/ymac/Downloads/skinning 4/build"
+CMAKE_BINARY_DIR = "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/build"
 
 # Include any dependencies generated for this target.
 include src/CMakeFiles/minecraft.dir/depend.make
@@ -59,81 +59,81 @@ include src/CMakeFiles/minecraft.dir/flags.make
 
 src/CMakeFiles/minecraft.dir/cube.cc.o: src/CMakeFiles/minecraft.dir/flags.make
 src/CMakeFiles/minecraft.dir/cube.cc.o: ../src/cube.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/ymac/Downloads/skinning 4/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/CMakeFiles/minecraft.dir/cube.cc.o"
-	cd "/Users/ymac/Downloads/skinning 4/build/src" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/minecraft.dir/cube.cc.o -c "/Users/ymac/Downloads/skinning 4/src/cube.cc"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object src/CMakeFiles/minecraft.dir/cube.cc.o"
+	cd "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/build/src" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/minecraft.dir/cube.cc.o -c "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/cube.cc"
 
 src/CMakeFiles/minecraft.dir/cube.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/minecraft.dir/cube.cc.i"
-	cd "/Users/ymac/Downloads/skinning 4/build/src" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/ymac/Downloads/skinning 4/src/cube.cc" > CMakeFiles/minecraft.dir/cube.cc.i
+	cd "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/build/src" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/cube.cc" > CMakeFiles/minecraft.dir/cube.cc.i
 
 src/CMakeFiles/minecraft.dir/cube.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/minecraft.dir/cube.cc.s"
-	cd "/Users/ymac/Downloads/skinning 4/build/src" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/ymac/Downloads/skinning 4/src/cube.cc" -o CMakeFiles/minecraft.dir/cube.cc.s
+	cd "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/build/src" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/cube.cc" -o CMakeFiles/minecraft.dir/cube.cc.s
 
 src/CMakeFiles/minecraft.dir/gui.cc.o: src/CMakeFiles/minecraft.dir/flags.make
 src/CMakeFiles/minecraft.dir/gui.cc.o: ../src/gui.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/ymac/Downloads/skinning 4/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object src/CMakeFiles/minecraft.dir/gui.cc.o"
-	cd "/Users/ymac/Downloads/skinning 4/build/src" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/minecraft.dir/gui.cc.o -c "/Users/ymac/Downloads/skinning 4/src/gui.cc"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object src/CMakeFiles/minecraft.dir/gui.cc.o"
+	cd "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/build/src" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/minecraft.dir/gui.cc.o -c "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/gui.cc"
 
 src/CMakeFiles/minecraft.dir/gui.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/minecraft.dir/gui.cc.i"
-	cd "/Users/ymac/Downloads/skinning 4/build/src" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/ymac/Downloads/skinning 4/src/gui.cc" > CMakeFiles/minecraft.dir/gui.cc.i
+	cd "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/build/src" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/gui.cc" > CMakeFiles/minecraft.dir/gui.cc.i
 
 src/CMakeFiles/minecraft.dir/gui.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/minecraft.dir/gui.cc.s"
-	cd "/Users/ymac/Downloads/skinning 4/build/src" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/ymac/Downloads/skinning 4/src/gui.cc" -o CMakeFiles/minecraft.dir/gui.cc.s
+	cd "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/build/src" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/gui.cc" -o CMakeFiles/minecraft.dir/gui.cc.s
 
 src/CMakeFiles/minecraft.dir/main.cc.o: src/CMakeFiles/minecraft.dir/flags.make
 src/CMakeFiles/minecraft.dir/main.cc.o: ../src/main.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/ymac/Downloads/skinning 4/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object src/CMakeFiles/minecraft.dir/main.cc.o"
-	cd "/Users/ymac/Downloads/skinning 4/build/src" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/minecraft.dir/main.cc.o -c "/Users/ymac/Downloads/skinning 4/src/main.cc"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object src/CMakeFiles/minecraft.dir/main.cc.o"
+	cd "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/build/src" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/minecraft.dir/main.cc.o -c "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/main.cc"
 
 src/CMakeFiles/minecraft.dir/main.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/minecraft.dir/main.cc.i"
-	cd "/Users/ymac/Downloads/skinning 4/build/src" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/ymac/Downloads/skinning 4/src/main.cc" > CMakeFiles/minecraft.dir/main.cc.i
+	cd "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/build/src" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/main.cc" > CMakeFiles/minecraft.dir/main.cc.i
 
 src/CMakeFiles/minecraft.dir/main.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/minecraft.dir/main.cc.s"
-	cd "/Users/ymac/Downloads/skinning 4/build/src" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/ymac/Downloads/skinning 4/src/main.cc" -o CMakeFiles/minecraft.dir/main.cc.s
+	cd "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/build/src" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/main.cc" -o CMakeFiles/minecraft.dir/main.cc.s
 
 src/CMakeFiles/minecraft.dir/procedure_geometry.cc.o: src/CMakeFiles/minecraft.dir/flags.make
 src/CMakeFiles/minecraft.dir/procedure_geometry.cc.o: ../src/procedure_geometry.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/ymac/Downloads/skinning 4/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object src/CMakeFiles/minecraft.dir/procedure_geometry.cc.o"
-	cd "/Users/ymac/Downloads/skinning 4/build/src" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/minecraft.dir/procedure_geometry.cc.o -c "/Users/ymac/Downloads/skinning 4/src/procedure_geometry.cc"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object src/CMakeFiles/minecraft.dir/procedure_geometry.cc.o"
+	cd "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/build/src" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/minecraft.dir/procedure_geometry.cc.o -c "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/procedure_geometry.cc"
 
 src/CMakeFiles/minecraft.dir/procedure_geometry.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/minecraft.dir/procedure_geometry.cc.i"
-	cd "/Users/ymac/Downloads/skinning 4/build/src" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/ymac/Downloads/skinning 4/src/procedure_geometry.cc" > CMakeFiles/minecraft.dir/procedure_geometry.cc.i
+	cd "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/build/src" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/procedure_geometry.cc" > CMakeFiles/minecraft.dir/procedure_geometry.cc.i
 
 src/CMakeFiles/minecraft.dir/procedure_geometry.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/minecraft.dir/procedure_geometry.cc.s"
-	cd "/Users/ymac/Downloads/skinning 4/build/src" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/ymac/Downloads/skinning 4/src/procedure_geometry.cc" -o CMakeFiles/minecraft.dir/procedure_geometry.cc.s
+	cd "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/build/src" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/procedure_geometry.cc" -o CMakeFiles/minecraft.dir/procedure_geometry.cc.s
 
 src/CMakeFiles/minecraft.dir/render_pass.cc.o: src/CMakeFiles/minecraft.dir/flags.make
 src/CMakeFiles/minecraft.dir/render_pass.cc.o: ../src/render_pass.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/ymac/Downloads/skinning 4/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object src/CMakeFiles/minecraft.dir/render_pass.cc.o"
-	cd "/Users/ymac/Downloads/skinning 4/build/src" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/minecraft.dir/render_pass.cc.o -c "/Users/ymac/Downloads/skinning 4/src/render_pass.cc"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object src/CMakeFiles/minecraft.dir/render_pass.cc.o"
+	cd "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/build/src" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/minecraft.dir/render_pass.cc.o -c "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/render_pass.cc"
 
 src/CMakeFiles/minecraft.dir/render_pass.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/minecraft.dir/render_pass.cc.i"
-	cd "/Users/ymac/Downloads/skinning 4/build/src" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/ymac/Downloads/skinning 4/src/render_pass.cc" > CMakeFiles/minecraft.dir/render_pass.cc.i
+	cd "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/build/src" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/render_pass.cc" > CMakeFiles/minecraft.dir/render_pass.cc.i
 
 src/CMakeFiles/minecraft.dir/render_pass.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/minecraft.dir/render_pass.cc.s"
-	cd "/Users/ymac/Downloads/skinning 4/build/src" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/ymac/Downloads/skinning 4/src/render_pass.cc" -o CMakeFiles/minecraft.dir/render_pass.cc.s
+	cd "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/build/src" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/render_pass.cc" -o CMakeFiles/minecraft.dir/render_pass.cc.s
 
 src/CMakeFiles/minecraft.dir/shader_uniform.cc.o: src/CMakeFiles/minecraft.dir/flags.make
 src/CMakeFiles/minecraft.dir/shader_uniform.cc.o: ../src/shader_uniform.cc
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/ymac/Downloads/skinning 4/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object src/CMakeFiles/minecraft.dir/shader_uniform.cc.o"
-	cd "/Users/ymac/Downloads/skinning 4/build/src" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/minecraft.dir/shader_uniform.cc.o -c "/Users/ymac/Downloads/skinning 4/src/shader_uniform.cc"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir="/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object src/CMakeFiles/minecraft.dir/shader_uniform.cc.o"
+	cd "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/build/src" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/minecraft.dir/shader_uniform.cc.o -c "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/shader_uniform.cc"
 
 src/CMakeFiles/minecraft.dir/shader_uniform.cc.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/minecraft.dir/shader_uniform.cc.i"
-	cd "/Users/ymac/Downloads/skinning 4/build/src" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/ymac/Downloads/skinning 4/src/shader_uniform.cc" > CMakeFiles/minecraft.dir/shader_uniform.cc.i
+	cd "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/build/src" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/shader_uniform.cc" > CMakeFiles/minecraft.dir/shader_uniform.cc.i
 
 src/CMakeFiles/minecraft.dir/shader_uniform.cc.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/minecraft.dir/shader_uniform.cc.s"
-	cd "/Users/ymac/Downloads/skinning 4/build/src" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/ymac/Downloads/skinning 4/src/shader_uniform.cc" -o CMakeFiles/minecraft.dir/shader_uniform.cc.s
+	cd "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/build/src" && /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/shader_uniform.cc" -o CMakeFiles/minecraft.dir/shader_uniform.cc.s
 
 # Object files for target minecraft
 minecraft_OBJECTS = \
@@ -163,8 +163,8 @@ bin/minecraft: /usr/local/lib/libGLEW.dylib
 bin/minecraft: /usr/local/Cellar/glew/2.1.0_1/lib/libGlEW.a
 bin/minecraft: /usr/local/lib/libjpeg.dylib
 bin/minecraft: src/CMakeFiles/minecraft.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/Users/ymac/Downloads/skinning 4/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable ../bin/minecraft"
-	cd "/Users/ymac/Downloads/skinning 4/build/src" && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/minecraft.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir="/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/build/CMakeFiles" --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable ../bin/minecraft"
+	cd "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/build/src" && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/minecraft.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 src/CMakeFiles/minecraft.dir/build: bin/minecraft
@@ -172,10 +172,10 @@ src/CMakeFiles/minecraft.dir/build: bin/minecraft
 .PHONY : src/CMakeFiles/minecraft.dir/build
 
 src/CMakeFiles/minecraft.dir/clean:
-	cd "/Users/ymac/Downloads/skinning 4/build/src" && $(CMAKE_COMMAND) -P CMakeFiles/minecraft.dir/cmake_clean.cmake
+	cd "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/build/src" && $(CMAKE_COMMAND) -P CMakeFiles/minecraft.dir/cmake_clean.cmake
 .PHONY : src/CMakeFiles/minecraft.dir/clean
 
 src/CMakeFiles/minecraft.dir/depend:
-	cd "/Users/ymac/Downloads/skinning 4/build" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/Users/ymac/Downloads/skinning 4" "/Users/ymac/Downloads/skinning 4/src" "/Users/ymac/Downloads/skinning 4/build" "/Users/ymac/Downloads/skinning 4/build/src" "/Users/ymac/Downloads/skinning 4/build/src/CMakeFiles/minecraft.dir/DependInfo.cmake" --color=$(COLOR)
+	cd "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/build" && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft" "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src" "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/build" "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/build/src" "/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/build/src/CMakeFiles/minecraft.dir/DependInfo.cmake" --color=$(COLOR)
 .PHONY : src/CMakeFiles/minecraft.dir/depend
 

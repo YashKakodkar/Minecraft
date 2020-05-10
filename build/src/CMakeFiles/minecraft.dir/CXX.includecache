@@ -12,6 +12,12 @@
 vector
 -
 
+../lib/utgraphicsutil/jpegio.h
+string
+-
+image.h
+../lib/utgraphicsutil/image.h
+
 ../lib/utgraphicsutil/material.h
 image.h
 ../lib/utgraphicsutil/image.h
@@ -1086,6 +1092,22 @@ matrix_transform.inl
 quaternion.inl
 ../third-party/glm/glm/gtc/quaternion.inl
 
+../third-party/glm/glm/gtc/quaternion.inl
+../trigonometric.hpp
+../third-party/glm/glm/trigonometric.hpp
+../geometric.hpp
+../third-party/glm/glm/geometric.hpp
+../exponential.hpp
+../third-party/glm/glm/exponential.hpp
+epsilon.hpp
+../third-party/glm/glm/gtc/epsilon.hpp
+limits
+-
+quaternion_simd.inl
+../third-party/glm/glm/gtc/quaternion_simd.inl
+
+../third-party/glm/glm/gtc/quaternion_simd.inl
+
 ../third-party/glm/glm/gtc/type_precision.hpp
 ../gtc/quaternion.hpp
 ../third-party/glm/glm/gtc/quaternion.hpp
@@ -1558,15 +1580,43 @@ detail/setup.hpp
 detail/func_vector_relational.inl
 ../third-party/glm/glm/detail/func_vector_relational.inl
 
-/Users/ymac/Downloads/skinning 4/src/config.h
+/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/config.h
 
-/Users/ymac/Downloads/skinning 4/src/cube.h
+/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/cube.cc
+cube.h
+/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/cube.h
+iostream
+-
+
+/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/cube.h
 glm/glm.hpp
 -
 vector
 -
 
-/Users/ymac/Downloads/skinning 4/src/gui.h
+/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/gui.cc
+gui.h
+/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/gui.h
+config.h
+/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/config.h
+jpegio.h
+-
+algorithm
+-
+debuggl.h
+-
+glm/gtc/matrix_access.hpp
+-
+glm/gtc/matrix_transform.hpp
+-
+glm/gtx/quaternion.hpp
+-
+glm/gtx/transform.hpp
+-
+iostream
+-
+
+/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/gui.h
 GLFW/glfw3.h
 -
 glm/glm.hpp
@@ -1574,19 +1624,19 @@ glm/glm.hpp
 glm/gtc/matrix_transform.hpp
 -
 
-/Users/ymac/Downloads/skinning 4/src/main.cc
+/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/main.cc
 GL/glew.h
 -
 config.h
-/Users/ymac/Downloads/skinning 4/src/config.h
+/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/config.h
 cube.h
-/Users/ymac/Downloads/skinning 4/src/cube.h
+/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/cube.h
 gui.h
-/Users/ymac/Downloads/skinning 4/src/gui.h
+/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/gui.h
 procedure_geometry.h
-/Users/ymac/Downloads/skinning 4/src/procedure_geometry.h
+/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/procedure_geometry.h
 render_pass.h
-/Users/ymac/Downloads/skinning 4/src/render_pass.h
+/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/render_pass.h
 algorithm
 -
 fstream
@@ -1608,27 +1658,47 @@ glm/gtx/rotate_vector.hpp
 glm/gtx/string_cast.hpp
 -
 shaders/default.vert
-/Users/ymac/Downloads/skinning 4/src/shaders/default.vert
+/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/shaders/default.vert
 shaders/blending.vert
-/Users/ymac/Downloads/skinning 4/src/shaders/blending.vert
+/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/shaders/blending.vert
 shaders/default.geom
-/Users/ymac/Downloads/skinning 4/src/shaders/default.geom
+/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/shaders/default.geom
 shaders/default.frag
-/Users/ymac/Downloads/skinning 4/src/shaders/default.frag
+/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/shaders/default.frag
 shaders/floor.frag
-/Users/ymac/Downloads/skinning 4/src/shaders/floor.frag
+/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/shaders/floor.frag
 shaders/cube.vert
-/Users/ymac/Downloads/skinning 4/src/shaders/cube.vert
+/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/shaders/cube.vert
 shaders/cube.frag
-/Users/ymac/Downloads/skinning 4/src/shaders/cube.frag
+/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/shaders/cube.frag
 
-/Users/ymac/Downloads/skinning 4/src/procedure_geometry.h
+/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/procedure_geometry.cc
+procedure_geometry.h
+/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/procedure_geometry.h
+config.h
+/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/config.h
+glm/glm.hpp
+-
+
+/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/procedure_geometry.h
 glm/glm.hpp
 -
 vector
 -
 
-/Users/ymac/Downloads/skinning 4/src/render_pass.h
+/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/render_pass.cc
+GL/glew.h
+-
+render_pass.h
+/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/render_pass.h
+iostream
+-
+debuggl.h
+-
+map
+-
+
+/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/render_pass.h
 vector
 -
 map
@@ -1638,9 +1708,19 @@ functional
 material.h
 -
 shader_uniform.h
-/Users/ymac/Downloads/skinning 4/src/shader_uniform.h
+/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/shader_uniform.h
 
-/Users/ymac/Downloads/skinning 4/src/shader_uniform.h
+/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/shader_uniform.cc
+GL/glew.h
+-
+debuggl.h
+-
+glm/gtc/quaternion.hpp
+-
+shader_uniform.h
+/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/shader_uniform.h
+
+/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/shader_uniform.h
 GL/glew.h
 -
 debuggl.h
@@ -1662,19 +1742,19 @@ iostream
 glm/gtx/io.hpp
 -
 
-/Users/ymac/Downloads/skinning 4/src/shaders/blending.vert
+/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/shaders/blending.vert
 
-/Users/ymac/Downloads/skinning 4/src/shaders/cube.frag
+/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/shaders/cube.frag
 
-/Users/ymac/Downloads/skinning 4/src/shaders/cube.vert
+/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/shaders/cube.vert
 
-/Users/ymac/Downloads/skinning 4/src/shaders/default.frag
+/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/shaders/default.frag
 
-/Users/ymac/Downloads/skinning 4/src/shaders/default.geom
+/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/shaders/default.geom
 
-/Users/ymac/Downloads/skinning 4/src/shaders/default.vert
+/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/shaders/default.vert
 
-/Users/ymac/Downloads/skinning 4/src/shaders/floor.frag
+/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/src/shaders/floor.frag
 
 /usr/local/include/GL/glew.h
 stddef.h
