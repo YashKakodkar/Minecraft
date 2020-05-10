@@ -67,5 +67,6 @@
     "typeinfo": "cpp",
     "unordered_map": "cpp",
     "utility": "cpp"
-  }
+  },
+  "cmake.configureOnOpen": false
 }

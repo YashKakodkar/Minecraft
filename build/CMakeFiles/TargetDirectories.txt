@@ -1,6 +1,0 @@
-/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/build/CMakeFiles/rebuild_cache.dir
-/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/build/CMakeFiles/edit_cache.dir
-/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/build/CMakeFiles/utgraphicsutil.dir
-/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/build/src/CMakeFiles/rebuild_cache.dir
-/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/build/src/CMakeFiles/edit_cache.dir
-/Users/ymac/Documents/College/CS 378H/Final Project/Minecraft/build/src/CMakeFiles/minecraft.dir
