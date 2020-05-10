@@ -11,7 +11,7 @@ public:
     ~Block();
 
     void set_nesting_level(int);
-
+    bool test;
     bool is_dirty() const;
 
     void set_clean();
