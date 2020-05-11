@@ -84,6 +84,33 @@ void Block::generate_multiBlocks(std::vector<glm::vec4>& obj_vertices,
     
 }
 
+void Block::generate_multiBlocksLenth(std::vector<glm::vec4>& obj_vertices,
+
+    std::vector<glm::uvec3>& obj_faces, float startx, float starty, float startz, float length) const
+{
+
+    obj_faces.clear();
+    obj_vertices.clear();
+    float change = length / 2.0;
+    float minx = startx;
+    float miny = starty;
+    float minz = startz;
+    float maxx = startx + length;
+    float maxy = starty + length;
+    float maxz = startz + length;
+    int arrayStart = 0;
+    for (int x = 0; x < 32; x++) {
+        for (int y = 0; y < 32; y++) {
+            for (int z = 0; z < 32; z++) {
+                draw_block(obj_vertices, obj_faces, minx + x * change, miny + y * change, minz + z * change, maxx + x * change, maxy + y * change, maxz + z * change, arrayStart);
+                arrayStart += 36;
+            }
+        }
+    }
+
+
+}
+
 int Block::recursive_box(std::vector<glm::vec4>& obj_vertices, std::vector<glm::uvec3>& obj_faces, float length,
     float minx, float miny, float minz, int level, int arrayStart) const
 {

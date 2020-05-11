@@ -89,7 +89,8 @@ int main(int argc, char* argv[])
     Block test;
     std::vector<glm::vec4> cube_vertices;
     std::vector<glm::uvec3> cube_faces;
-    test.generate_multiBlocks(cube_vertices, cube_faces);
+    //test.generate_multiBlocks(cube_vertices, cube_faces);
+    test.generate_multiBlocksLenth(cube_vertices, cube_faces, -32.0 ,-32.0 ,-32.0, 2);
     std::cout << "NUM VERT " <<cube_vertices.size() << std::endl;
     //std::vector<glm::vec4> floor_vertices;
     //std::vector<glm::uvec3> floor_faces;

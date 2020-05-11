@@ -28,6 +28,8 @@ public:
 
     void generate_multiBlocks(std::vector<glm::vec4>& obj_vertices, std::vector<glm::uvec3>& obj_faces) const;
 
+	void generate_multiBlocksLenth(std::vector<glm::vec4>& obj_vertices, std::vector<glm::uvec3>& obj_faces, float startx, float starty, float startz, float length) const;
+
     int recursive_box(std::vector<glm::vec4>& obj_vertices, std::vector<glm::uvec3>& obj_faces, float length,
         float minx, float miny, float minz, int level, int arrayStart) const;
 
