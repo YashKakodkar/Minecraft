@@ -1,5 +1,6 @@
 #include <GL/glew.h>
-
+#include <direct.h>
+#include <string>
 #include "config.h"
 #include "gui.h"
 #include "procedure_geometry.h"
@@ -10,7 +11,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
-
+#include "jpegio.h"
 #include <debuggl.h>
 #include <glm/gtx/component_wise.hpp>
 #include <glm/gtx/io.hpp>
@@ -172,7 +173,31 @@ int main(int argc, char* argv[])
 
     float aspect = 0.0f;
     //std::cout << "center = " << mesh.getCenter() << "\n";
+    unsigned int textureID;
 
+
+    Image image;
+    char buff[FILENAME_MAX]; //create string buffer to hold path
+    _getcwd(buff, FILENAME_MAX);
+    std::string current_working_dir(buff);
+    std::cout << buff << std::endl;
+    bool got = LoadJPEG("../../src/textures/dirtside.jpg", &image);
+    std::cout << "Got " << got << std::endl;
+    std::cout << "Width :" << image.width << "\nHeight: " << image.height << std::endl;
+    glGenTextures(1, &textureID);
+    glBindTexture(GL_TEXTURE_CUBE_MAP, textureID);
+    glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X, 0, GL_RGB, image.width, image.height, 0, GL_BGR, GL_UNSIGNED_BYTE, image.bytes.data());
+    glTexImage2D(GL_TEXTURE_CUBE_MAP_NEGATIVE_X, 0, GL_RGB, image.width, image.height, 0, GL_BGR, GL_UNSIGNED_BYTE, image.bytes.data());
+    glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_Y, 0, GL_RGB, image.width, image.height, 0, GL_BGR, GL_UNSIGNED_BYTE, image.bytes.data());
+    glTexImage2D(GL_TEXTURE_CUBE_MAP_NEGATIVE_Y, 0, GL_RGB, image.width, image.height, 0, GL_BGR, GL_UNSIGNED_BYTE, image.bytes.data());
+    glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_Z, 0, GL_RGB, image.width, image.height, 0, GL_BGR, GL_UNSIGNED_BYTE, image.bytes.data());
+    glTexImage2D(GL_TEXTURE_CUBE_MAP_NEGATIVE_Z, 0, GL_RGB, image.width, image.height, 0, GL_BGR, GL_UNSIGNED_BYTE, image.bytes.data());
+
+    glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+    glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+    glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
     bool draw_floor = true;
     bool draw_cube = true;
 
