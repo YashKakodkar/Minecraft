@@ -8,6 +8,6 @@ out vec4 fragment_color;
 uniform sampler2D myTextureSampler;
 
 void main() {
-  fragment_color = texture(myTextureSampler, face_normal);
+  fragment_color = vec4(0.0, 1.0, 0.0, 1.0);
 }
 )zzz"
