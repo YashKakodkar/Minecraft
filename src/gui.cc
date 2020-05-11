@@ -54,10 +54,17 @@ void GUI::keyCallback(int key, int scancode, int action, int mods)
     }
     if (key == GLFW_KEY_J && action == GLFW_RELEASE) {
         //FIXME save out a screenshot using SaveJPEG
+        GLint polygonMode;
+        glGetIntegerv(GL_POLYGON_MODE, &polygonMode);
+        if (polygonMode == GL_FILL) {
+            glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+        }
+        else {
+            glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+        }
     }
     if (key == GLFW_KEY_S && (mods & GLFW_MOD_CONTROL)) {
         if (action == GLFW_RELEASE)
-            //mesh_->saveAnimationTo("animation.json");
             return;
     }
 
@@ -73,13 +80,7 @@ void GUI::keyCallback(int key, int scancode, int action, int mods)
     } else if (key == GLFW_KEY_C && action != GLFW_RELEASE) {
         fps_mode_ = !fps_mode_;
     } else if (key == GLFW_KEY_LEFT_BRACKET && action == GLFW_RELEASE) {
-        // current_bone_--;
-        // current_bone_ += mesh_->getNumberOfBones();
-        // current_bone_ %= mesh_->getNumberOfBones();
     } else if (key == GLFW_KEY_RIGHT_BRACKET && action == GLFW_RELEASE) {
-        // current_bone_++;
-        // current_bone_ += mesh_->getNumberOfBones();
-        // current_bone_ %= mesh_->getNumberOfBones();
     } else if (key == GLFW_KEY_T && action != GLFW_RELEASE) {
         transparent_ = !transparent_;
     }

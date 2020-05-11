@@ -4,7 +4,7 @@
 #include "gui.h"
 #include "procedure_geometry.h"
 #include "render_pass.h"
-
+#include "block.h"
 #include <algorithm>
 #include <fstream>
 #include <iostream>
@@ -86,14 +86,14 @@ int main(int argc, char* argv[])
     GLFWwindow* window = init_glefw();
     GUI gui(window);
     //Cube cube();
-
+    Block test;
     std::vector<glm::vec4> cube_vertices;
     std::vector<glm::uvec3> cube_faces;
-    create_cube(cube_vertices, cube_faces);
-
-    std::vector<glm::vec4> floor_vertices;
-    std::vector<glm::uvec3> floor_faces;
-    create_floor(floor_vertices, floor_faces);
+    test.generate_multiBlocks(cube_vertices, cube_faces);
+    std::cout << "NUM VERT " <<cube_vertices.size() << std::endl;
+    //std::vector<glm::vec4> floor_vertices;
+    //std::vector<glm::uvec3> floor_faces;
+    //create_floor(floor_vertices, floor_faces);
 
     glm::vec4 light_position = glm::vec4(0.0f, 100.0f, 0.0f, 1.0f);
     MatrixPointers mats; // Define MatrixPointers here for lambda to capture
@@ -150,14 +150,14 @@ int main(int argc, char* argv[])
     // Otherwise, do whatever you like here
 
     // Floor render pass
-    RenderDataInput floor_pass_input;
-    floor_pass_input.assign(0, "vertex_position", floor_vertices.data(), floor_vertices.size(), 4, GL_FLOAT);
-    floor_pass_input.assignIndex(floor_faces.data(), floor_faces.size(), 3);
-    RenderPass floor_pass(-1,
-        floor_pass_input,
-        { vertex_shader, geometry_shader, floor_fragment_shader },
-        { floor_model, std_view, std_proj, std_light },
-        { "fragment_color" });
+    //RenderDataInput floor_pass_input;
+    //floor_pass_input.assign(0, "vertex_position", floor_vertices.data(), floor_vertices.size(), 4, GL_FLOAT);
+    //floor_pass_input.assignIndex(floor_faces.data(), floor_faces.size(), 3);
+    //RenderPass floor_pass(-1,
+    //    floor_pass_input,
+    //    { vertex_shader, geometry_shader, floor_fragment_shader },
+    //    { floor_model, std_view, std_proj, std_light },
+    //    { "fragment_color" });
 
     //Cube render pass
     RenderDataInput cube_pass_input;
@@ -202,13 +202,13 @@ int main(int argc, char* argv[])
         }
 
         // Then draw floor.
-        if (draw_floor) {
-            floor_pass.setup();
-            // Draw our triangles.
-            CHECK_GL_ERROR(glDrawElements(GL_TRIANGLES,
-                floor_faces.size() * 3,
-                GL_UNSIGNED_INT, 0));
-        }
+        //if (draw_floor) {
+        //    floor_pass.setup();
+        //    // Draw our triangles.
+        //    CHECK_GL_ERROR(glDrawElements(GL_TRIANGLES,
+        //        floor_faces.size() * 3,
+        //        GL_UNSIGNED_INT, 0));
+        //}
 
         if (draw_cube) {
             cube_pass.setup();

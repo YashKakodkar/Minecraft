@@ -50,7 +50,7 @@ private:
     int preview_height_;
 
     bool drag_state_ = false;
-    bool fps_mode_ = false;
+    bool fps_mode_ = true;
     bool pose_changed_ = true;
     bool transparent_ = false;
     int current_bone_ = -1;

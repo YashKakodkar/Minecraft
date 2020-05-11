@@ -44,6 +44,7 @@ void Block::generate_geometry(std::vector<glm::vec4>& obj_vertices,
     obj_vertices.clear();
     float minx = -.5;
     float miny = -.5;
+    
     float minz = -0.5;
     float maxx = .5;
     float maxy = .5;
@@ -55,6 +56,32 @@ void Block::generate_geometry(std::vector<glm::vec4>& obj_vertices,
     } else {
         draw_block(obj_vertices, obj_faces, minx, miny, minz, maxx, maxy, maxz, 0);
     }
+}
+
+// FIXME generate Block sponge geometry
+void Block::generate_multiBlocks(std::vector<glm::vec4>& obj_vertices,
+    std::vector<glm::uvec3>& obj_faces) const
+{
+
+    obj_faces.clear();
+    obj_vertices.clear();
+    float minx = -32;
+    float miny = -32;
+    float minz = -32;
+    float maxx = -30.0;
+    float maxy = -30.0;
+    float maxz = -30.0;
+    int arrayStart = 0;
+    for (int x = 0; x < 32; x++) {
+        for (int y = 0; y < 32; y++) {
+            for (int z = 0; z < 32; z++) {
+                draw_block(obj_vertices, obj_faces, minx + x * 1, miny + y * 1, minz + z * 1, maxx + x * 1, maxy + y * 1, maxz + z * 1, arrayStart);
+                arrayStart += 36;
+            }
+        }
+   }
+   
+    
 }
 
 int Block::recursive_box(std::vector<glm::vec4>& obj_vertices, std::vector<glm::uvec3>& obj_faces, float length,
