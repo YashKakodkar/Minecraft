@@ -7,7 +7,9 @@
 #include <iostream>
 #include <vector>
 
-Chunk::Chunk()
+Chunk::Chunk(int x, int z)
+    : x_length(x)
+    , z_length(z)
 {
     // Create the blocks
     blocks = new Block**[CHUNK_SIZE];
@@ -18,6 +20,8 @@ Chunk::Chunk()
             blocks[i][j] = new Block[CHUNK_SIZE];
         }
     }
+    create_block(2.0f);
+    generate_plane(x_length, z_length);
 }
 
 Chunk::~Chunk()
@@ -33,24 +37,29 @@ Chunk::~Chunk()
     delete[] blocks;
 }
 
-void Chunk::create_mesh()
+void Chunk::create_mesh(int x_grid, int z_grid)
 {
-    std::vector<glm::vec4> block_vertices;
-    std::vector<glm::uvec3> block_faces;
     for (int x = 0; x < CHUNK_SIZE; x++) {
-        for (int y = 0; y < CHUNK_SIZE; y++) {
-            for (int z = 0; z < CHUNK_SIZE; z++) {
-                if (blocks[x][y][z].is_active() == false) {
-                    continue;
-                }
-
-                create_block(block_vertices, block_faces, 2);
+        for (int z = 0; z < CHUNK_SIZE; z++) {
+            if (blocks[x][0][z].is_active() == false) {
+                continue;
             }
+            block_positions.push_back(glm::vec3(x + (CHUNK_SIZE * x_grid), 0, z + (CHUNK_SIZE * z_grid)) * 2.0f);
         }
     }
 }
 
-void Chunk::create_block(std::vector<glm::vec4>& block_vertices, std::vector<glm::uvec3>& block_faces, int size)
+void Chunk::generate_plane(int x_len, int z_len)
+{
+    block_positions.clear();
+    for (int x = 0; x < x_length; x++) {
+        for (int z = 0; z < z_length; z++) {
+            create_mesh(x, z);
+        }
+    }
+}
+
+void Chunk::create_block(int size)
 {
     glm::vec3 min(-size, -size, -size);
     glm::vec3 max(size, size, size);

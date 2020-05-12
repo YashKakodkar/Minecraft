@@ -8,17 +8,23 @@
 
 class Chunk {
 public:
-    Chunk();
+    Chunk(int x, int z);
     ~Chunk();
 
     void update(float dt);
-    void create_mesh();
+    void create_mesh(int x_grid, int z_grid);
+    void generate_plane(int x, int z);
     void create_block();
-    void create_block(std::vector<glm::vec4>& block_vertices, std::vector<glm::uvec3>& block_faces, int size);
+    void create_block(int size);
     static const int CHUNK_SIZE = 16;
+    std::vector<glm::vec4> block_vertices;
+    std::vector<glm::uvec3> block_faces;
+    std::vector<glm::vec3> block_positions;
 
 private:
     Block*** blocks;
+    int x_length;
+    int z_length;
 };
 
 #endif

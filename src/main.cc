@@ -5,6 +5,7 @@
 // #include <sys/stat.h>
 // #endif
 #include "block.h"
+#include "chunk.h"
 #include "config.h"
 #include "gui.h"
 #include "jpegio.h"
@@ -90,16 +91,19 @@ int main(int argc, char* argv[])
     GLFWwindow* window = init_glefw();
     GUI gui(window);
     //Cube cube();
-    Block test;
-    std::vector<glm::vec4> cube_vertices;
-    std::vector<glm::uvec3> cube_faces;
-    std::vector<glm::vec2> textured;
-    test.generate_multiBlocks(cube_vertices, cube_faces);
-    //test.generate_multiBlocksTextured(cube_vertices, textured, cube_faces, -32.0,-32.0,-32.0, 2);
-    std::cout << "NUM VERT " << cube_vertices.size() << std::endl;
+    // Block test;
+    // std::vector<glm::vec4> cube_vertices;
+    // std::vector<glm::uvec3> cube_faces;
+    // std::vector<glm::vec2> textured;
+    // test.generate_multiBlocks(cube_vertices, cube_faces);
+    // //test.generate_multiBlocksTextured(cube_vertices, textured, cube_faces, -32.0,-32.0,-32.0, 2);
+    // std::cout << "NUM VERT " << cube_vertices.size() << std::endl;
     //std::vector<glm::vec4> floor_vertices;
     //std::vector<glm::uvec3> floor_faces;
     //create_floor(floor_vertices, floor_faces);
+
+    Chunk terrain(10, 20);
+    //terrain.create_mesh();
 
     glm::vec4 light_position = glm::vec4(0.0f, 100.0f, 0.0f, 1.0f);
     MatrixPointers mats; // Define MatrixPointers here for lambda to capture
@@ -135,6 +139,7 @@ int main(int argc, char* argv[])
     std::function<glm::mat4()> identity_mat = []() { return glm::mat4(1.0f); };
     std::function<glm::vec3()> cam_data = [&gui]() { return gui.getCamera(); };
     std::function<glm::vec4()> lp_data = [&light_position]() { return light_position; };
+    std::function<std::vector<glm::vec3>()> chunk_pos_data = [&terrain]() { return terrain.block_positions; };
 
     auto std_model = std::make_shared<ShaderUniform<const glm::mat4*>>("model", model_data);
     auto floor_model = make_uniform("model", identity_mat);
@@ -142,6 +147,7 @@ int main(int argc, char* argv[])
     auto std_camera = make_uniform("camera_position", cam_data);
     auto std_proj = make_uniform("projection", proj_data);
     auto std_light = make_uniform("light_position", lp_data);
+    auto chunk_pos = make_uniform("chunk_pos", chunk_pos_data);
 
     std::function<float()> alpha_data = [&gui]() {
         static const float transparet = 0.5; // Alpha constant goes here
@@ -167,15 +173,15 @@ int main(int argc, char* argv[])
 
     //Cube render pass
     RenderDataInput cube_pass_input;
-    cube_pass_input.assign(0, "vertex_position", cube_vertices.data(), cube_vertices.size(), 4, GL_FLOAT);
-    if (!textured.empty()) {
-        cube_pass_input.assign(0, "texture_uv", textured.data(), textured.size(), 2, GL_FLOAT);
-    }
-    cube_pass_input.assignIndex(cube_faces.data(), cube_faces.size(), 3);
+    cube_pass_input.assign(0, "vertex_position", terrain.block_vertices.data(), terrain.block_vertices.size(), 4, GL_FLOAT);
+    // if (!textured.empty()) {
+    //     cube_pass_input.assign(0, "texture_uv", textured.data(), textured.size(), 2, GL_FLOAT);
+    // }
+    cube_pass_input.assignIndex(terrain.block_faces.data(), terrain.block_faces.size(), 3);
     RenderPass cube_pass(-1,
         cube_pass_input,
         { cube_vertex_shader, nullptr, cube_fragment_shader },
-        { floor_model, std_view, std_proj, std_light },
+        { floor_model, std_view, std_proj, std_light, chunk_pos },
         { "fragment_color" });
 
     float aspect = 0.0f;
@@ -246,9 +252,10 @@ int main(int argc, char* argv[])
             //glActiveTexture(GL_TEXTURE1);
             //glBindTexture(GL_TEXTURE_CUBE_MAP, textureID);
             cube_pass.setup();
-            CHECK_GL_ERROR(glDrawElements(GL_TRIANGLES,
-                cube_faces.size() * 3,
-                GL_UNSIGNED_INT, 0));
+            CHECK_GL_ERROR(glDrawElementsInstanced(GL_TRIANGLES,
+                terrain.block_faces.size() * 3,
+                GL_UNSIGNED_INT, 0,
+                terrain.block_positions.size()));
         }
 
         // Poll and swap.
