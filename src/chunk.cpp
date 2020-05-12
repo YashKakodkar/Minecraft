@@ -37,7 +37,7 @@ Chunk::~Chunk()
     //    if (blocks[i] != NULL) {
     //        delete[] blocks[i];
     //    }
-    //    
+    //
     //}
     //if (blocks != NULL) {
     //    delete[] blocks;
@@ -47,30 +47,37 @@ Chunk::~Chunk()
 void Chunk::create_mesh(int x_grid, int y_grid, int z_grid)
 {
     int arrayStart = 0;
-    for (int x = 0; x < CHUNK_SIZE; x++) {
-        for (int y = 0; y < CHUNK_SIZE; y++) {
-            for (int z = 0; z < CHUNK_SIZE; z++) {
-                if (blocks[x][y][z].is_active() == false) {
-                    continue;
-                }
+    int i = 0;
+    for (int x = 0; x < CHUNK_SIZE; ++x) {
+        //std::cout << "\nNEW X\n"<< std::endl;
+        for (int y = 0; y < CHUNK_SIZE; ++y) {
+            //std::cout << "\nNEW Y\n"<< std::endl;
+            for (int z = 0; z < CHUNK_SIZE; ++z) {
+                // if (blocks[x][y][z].is_active() == false) {
+                //     continue;
+                // }
                 create_block(x_grid + x, y_grid + y, z_grid + z, 1, arrayStart);
+                //std::cout << "X: " << x << "  | Y: " << y << "  | Z: " << z << "  | CHUNK_SIZE: " << CHUNK_SIZE << std::endl;
+                //std::cout << "Grid Pos #: " << i << "  | " << x_grid + x << " " << y_grid + y << " " << z_grid + z << std::endl;
+                i++;
                 arrayStart += 36;
             }
         }
     }
+    //std::cout << block_vertices.size() << "terrain vert size" << std::endl;
+    //std::cout << block_faces.size() << "terrain face size" << std::endl;
 }
 
 void Chunk::create_mesh(int x_grid, int z_grid)
 {
     for (int x = 0; x < CHUNK_SIZE; x++) {
-    
+
         for (int z = 0; z < CHUNK_SIZE; z++) {
             if (blocks[x][0][z].is_active() == false) {
                 continue;
             }
             block_positions.push_back(glm::vec3(x + (CHUNK_SIZE * x_grid), 0, z + (CHUNK_SIZE * z_grid)) * 0.5f);
         }
-        
     }
 }
 void Chunk::generate_plane(int x_len, int z_len)
@@ -87,7 +94,7 @@ void Chunk::generate_plane(int x_len, int z_len)
 void Chunk::create_block(float x_start, float y_start, float z_start, float size, int arrayStart)
 {
     glm::vec3 min(x_start, y_start, z_start);
-    glm::vec3 max(x_start+ size, y_start + size, z_start+ size);
+    glm::vec3 max(x_start + size, y_start + size, z_start + size);
     //front
     //bot left
     block_vertices.push_back(glm::vec4(min.x, min.y, max.z, 1.0f));

@@ -6,6 +6,7 @@
 // #endif
 #include "block.h"
 #include "chunk.h"
+#include "chunkmanager.h"
 #include "config.h"
 #include "gui.h"
 #include "jpegio.h"
@@ -21,7 +22,6 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "chunkmanager.h"
 
 int window_width = 800, window_height = 600;
 const std::string window_title = "Minecraft";
