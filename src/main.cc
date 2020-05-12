@@ -21,6 +21,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include "chunkmanager.h"
 
 int window_width = 800, window_height = 600;
 const std::string window_title = "Minecraft";
@@ -90,6 +91,7 @@ int main(int argc, char* argv[])
 
     GLFWwindow* window = init_glefw();
     GUI gui(window);
+    Chunkmanager test;
     //Cube cube();
     // Block test;
     // std::vector<glm::vec4> cube_vertices;
@@ -102,7 +104,9 @@ int main(int argc, char* argv[])
     //std::vector<glm::uvec3> floor_faces;
     //create_floor(floor_vertices, floor_faces);
 
-    Chunk terrain(10, 20);
+    Chunk terrain(-16, -16);
+    std::cout << terrain.block_vertices.size() << "terrain size" << std::endl;
+    std::cout << terrain.block_faces.size() << "terrain size" << std::endl;
     //terrain.create_mesh();
 
     glm::vec4 light_position = glm::vec4(0.0f, 100.0f, 0.0f, 1.0f);
@@ -252,10 +256,9 @@ int main(int argc, char* argv[])
             //glActiveTexture(GL_TEXTURE1);
             //glBindTexture(GL_TEXTURE_CUBE_MAP, textureID);
             cube_pass.setup();
-            CHECK_GL_ERROR(glDrawElementsInstanced(GL_TRIANGLES,
+            CHECK_GL_ERROR(glDrawElements(GL_TRIANGLES,
                 terrain.block_faces.size() * 3,
-                GL_UNSIGNED_INT, 0,
-                terrain.block_positions.size()));
+                GL_UNSIGNED_INT, 0));
         }
 
         // Poll and swap.
