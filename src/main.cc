@@ -93,8 +93,9 @@ int main(int argc, char* argv[])
     Block test;
     std::vector<glm::vec4> cube_vertices;
     std::vector<glm::uvec3> cube_faces;
-    //test.generate_multiBlocks(cube_vertices, cube_faces);
-    test.generate_multiBlocksLenth(cube_vertices, cube_faces, -32.0, -32.0, -32.0, 2);
+    std::vector<glm::vec2> textured;
+    test.generate_multiBlocks(cube_vertices, cube_faces);
+    //test.generate_multiBlocksTextured(cube_vertices, textured, cube_faces, -32.0,-32.0,-32.0, 2);
     std::cout << "NUM VERT " << cube_vertices.size() << std::endl;
     //std::vector<glm::vec4> floor_vertices;
     //std::vector<glm::uvec3> floor_faces;
@@ -167,6 +168,9 @@ int main(int argc, char* argv[])
     //Cube render pass
     RenderDataInput cube_pass_input;
     cube_pass_input.assign(0, "vertex_position", cube_vertices.data(), cube_vertices.size(), 4, GL_FLOAT);
+    if (!textured.empty()) {
+        cube_pass_input.assign(0, "texture_uv", textured.data(), textured.size(), 2, GL_FLOAT);
+    }
     cube_pass_input.assignIndex(cube_faces.data(), cube_faces.size(), 3);
     RenderPass cube_pass(-1,
         cube_pass_input,
@@ -186,20 +190,20 @@ int main(int argc, char* argv[])
     bool got = LoadJPEG("../../src/textures/dirtside.jpg", &image);
     std::cout << "Got " << got << std::endl;
     std::cout << "Width :" << image.width << "\nHeight: " << image.height << std::endl;
-    glGenTextures(1, &textureID);
-    glBindTexture(GL_TEXTURE_CUBE_MAP, textureID);
-    glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X, 0, GL_RGB, image.width, image.height, 0, GL_BGR, GL_UNSIGNED_BYTE, image.bytes.data());
-    glTexImage2D(GL_TEXTURE_CUBE_MAP_NEGATIVE_X, 0, GL_RGB, image.width, image.height, 0, GL_BGR, GL_UNSIGNED_BYTE, image.bytes.data());
-    glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_Y, 0, GL_RGB, image.width, image.height, 0, GL_BGR, GL_UNSIGNED_BYTE, image.bytes.data());
-    glTexImage2D(GL_TEXTURE_CUBE_MAP_NEGATIVE_Y, 0, GL_RGB, image.width, image.height, 0, GL_BGR, GL_UNSIGNED_BYTE, image.bytes.data());
-    glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_Z, 0, GL_RGB, image.width, image.height, 0, GL_BGR, GL_UNSIGNED_BYTE, image.bytes.data());
-    glTexImage2D(GL_TEXTURE_CUBE_MAP_NEGATIVE_Z, 0, GL_RGB, image.width, image.height, 0, GL_BGR, GL_UNSIGNED_BYTE, image.bytes.data());
+    //glGenTextures(1, &textureID);
+    //glBindTexture(GL_TEXTURE_CUBE_MAP, textureID);
+    //glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X, 0, GL_RGB, image.width, image.height, 0, GL_BGR, GL_UNSIGNED_BYTE, image.bytes.data());
+    //glTexImage2D(GL_TEXTURE_CUBE_MAP_NEGATIVE_X, 0, GL_RGB, image.width, image.height, 0, GL_BGR, GL_UNSIGNED_BYTE, image.bytes.data());
+    //glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_Y, 0, GL_RGB, image.width, image.height, 0, GL_BGR, GL_UNSIGNED_BYTE, image.bytes.data());
+    //glTexImage2D(GL_TEXTURE_CUBE_MAP_NEGATIVE_Y, 0, GL_RGB, image.width, image.height, 0, GL_BGR, GL_UNSIGNED_BYTE, image.bytes.data());
+    //glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_Z, 0, GL_RGB, image.width, image.height, 0, GL_BGR, GL_UNSIGNED_BYTE, image.bytes.data());
+    //glTexImage2D(GL_TEXTURE_CUBE_MAP_NEGATIVE_Z, 0, GL_RGB, image.width, image.height, 0, GL_BGR, GL_UNSIGNED_BYTE, image.bytes.data());
 
-    glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-    glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-    glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
+    //glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    //glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    //glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+    //glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+    //glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
     bool draw_floor = true;
     bool draw_cube = true;
 
@@ -239,6 +243,8 @@ int main(int argc, char* argv[])
         //}
 
         if (draw_cube) {
+            //glActiveTexture(GL_TEXTURE1);
+            //glBindTexture(GL_TEXTURE_CUBE_MAP, textureID);
             cube_pass.setup();
             CHECK_GL_ERROR(glDrawElements(GL_TRIANGLES,
                 cube_faces.size() * 3,
