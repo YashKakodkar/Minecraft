@@ -1,22 +1,25 @@
 #include <GL/glew.h>
-#include <direct.h>
-#include <string>
+// #ifdef _WIN32
+// #include <direct.h>
+// #else
+// #include <sys/stat.h>
+// #endif
+#include "block.h"
 #include "config.h"
 #include "gui.h"
+#include "jpegio.h"
 #include "procedure_geometry.h"
 #include "render_pass.h"
-#include "block.h"
 #include <algorithm>
-#include <fstream>
-#include <iostream>
-#include <string>
-#include <vector>
-#include "jpegio.h"
 #include <debuggl.h>
+#include <fstream>
 #include <glm/gtx/component_wise.hpp>
 #include <glm/gtx/io.hpp>
 #include <glm/gtx/rotate_vector.hpp>
 #include <glm/gtx/string_cast.hpp>
+#include <iostream>
+#include <string>
+#include <vector>
 
 int window_width = 800, window_height = 600;
 const std::string window_title = "Minecraft";
@@ -91,8 +94,8 @@ int main(int argc, char* argv[])
     std::vector<glm::vec4> cube_vertices;
     std::vector<glm::uvec3> cube_faces;
     //test.generate_multiBlocks(cube_vertices, cube_faces);
-    test.generate_multiBlocksLenth(cube_vertices, cube_faces, -32.0 ,-32.0 ,-32.0, 2);
-    std::cout << "NUM VERT " <<cube_vertices.size() << std::endl;
+    test.generate_multiBlocksLenth(cube_vertices, cube_faces, -32.0, -32.0, -32.0, 2);
+    std::cout << "NUM VERT " << cube_vertices.size() << std::endl;
     //std::vector<glm::vec4> floor_vertices;
     //std::vector<glm::uvec3> floor_faces;
     //create_floor(floor_vertices, floor_faces);
@@ -175,10 +178,9 @@ int main(int argc, char* argv[])
     //std::cout << "center = " << mesh.getCenter() << "\n";
     unsigned int textureID;
 
-
     Image image;
     char buff[FILENAME_MAX]; //create string buffer to hold path
-    _getcwd(buff, FILENAME_MAX);
+    //_getcwd(buff, FILENAME_MAX);
     std::string current_working_dir(buff);
     std::cout << buff << std::endl;
     bool got = LoadJPEG("../../src/textures/dirtside.jpg", &image);

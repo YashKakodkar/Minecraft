@@ -58,8 +58,7 @@ void GUI::keyCallback(int key, int scancode, int action, int mods)
         glGetIntegerv(GL_POLYGON_MODE, &polygonMode);
         if (polygonMode == GL_FILL) {
             glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-        }
-        else {
+        } else {
             glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
         }
     }

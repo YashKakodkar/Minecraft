@@ -19,12 +19,6 @@ void Block::create_block(std::vector<glm::vec4>& block_vertices, std::vector<glm
 {
 }
 
-void Block::set_nesting_level(int level)
-{
-    nesting_level_ = level;
-    dirty_ = true;
-}
-
 bool Block::is_dirty() const
 {
     return dirty_;
@@ -33,29 +27,6 @@ bool Block::is_dirty() const
 void Block::set_clean()
 {
     dirty_ = false;
-}
-
-// FIXME generate Block sponge geometry
-void Block::generate_geometry(std::vector<glm::vec4>& obj_vertices,
-    std::vector<glm::uvec3>& obj_faces) const
-{
-
-    obj_faces.clear();
-    obj_vertices.clear();
-    float minx = -.5;
-    float miny = -.5;
-    
-    float minz = -0.5;
-    float maxx = .5;
-    float maxy = .5;
-    float maxz = 0.5;
-    if (nesting_level_ != 0) {
-        //draw_block(obj_vertices, obj_faces, 0, minx, miny, minz, maxx,maxy, maxz);
-        // std::cout << length/3.0 << std::endl;
-        recursive_box(obj_vertices, obj_faces, 1 / 3.0, minx, miny, minz, nesting_level_, 0);
-    } else {
-        draw_block(obj_vertices, obj_faces, minx, miny, minz, maxx, maxy, maxz, 0);
-    }
 }
 
 // FIXME generate Block sponge geometry
@@ -79,9 +50,7 @@ void Block::generate_multiBlocks(std::vector<glm::vec4>& obj_vertices,
                 arrayStart += 36;
             }
         }
-   }
-   
-    
+    }
 }
 
 void Block::generate_multiBlocksLenth(std::vector<glm::vec4>& obj_vertices,
@@ -107,88 +76,25 @@ void Block::generate_multiBlocksLenth(std::vector<glm::vec4>& obj_vertices,
             }
         }
     }
-
-
 }
-
-int Block::recursive_box(std::vector<glm::vec4>& obj_vertices, std::vector<glm::uvec3>& obj_faces, float length,
-    float minx, float miny, float minz, int level, int arrayStart) const
-{
-    for (int i = 0; i < 3; i++) {
-        for (int j = 0; j < 3; j++) {
-            for (int k = 0; k < 3; k++) {
-                bool isMiddle = (i == 1 && j == 1) || (i == 1 && k == 1)
-                    || (j == 1 && k == 1);
-                if (!isMiddle) {
-                    float x = minx + i * length;
-                    float y = miny + j * length;
-                    float z = minz + k * length;
-                    //std::cout << length << "\n";
-                    // std::cout << minx << " | " << miny << " | " << " | " << minz << std::endl;
-                    //std::cout << level << "\n";
-                    if (level > 1) {
-                        //                        std::cout << x << " | " << y << " | " << " | " << z << std::endl;
-                        //std::cout << level<< "\n";
-                        arrayStart = recursive_box(obj_vertices, obj_faces, length / 3.0, x, y, z, level - 1,
-                            arrayStart);
-                    } else {
-                        //std::cout << "hi";
-                        draw_block(obj_vertices, obj_faces, x, y, z, x + length, y + length, z + length, arrayStart);
-                        arrayStart += 36;
-                    }
-                }
-            }
-        }
-    }
-    return arrayStart;
-}
-
-// glm::dvec3 getNormal(glm::dvec3 x, glm::dvec3 y, glm::dvec3 z)
-// {
-//     glm::dvec3 ab = y - x;
-//     glm::dvec3 ac = z - x;
-//     glm::dvec3 normal = glm::normalize(glm::cross(ab, ac));
-//     return normal;
-// }
 
 void Block::draw_block(std::vector<glm::vec4>& obj_vertices, std::vector<glm::uvec3>& obj_faces,
     float minx, float miny, float minz, float maxx, float maxy, float maxz, int arrayStart) const
 {
 
-    /*
-    TODO:
-
-    There are 6 faces per block
-    Each face can be drawn by 2 triangles each on opposite corners
-
-    Draw both triangles per face.
-
-
-    */
-    //    obj_vertices.push_back(glm::vec4(-0.5f, -0.5f, -0.5f, 1.0f));
-    //    obj_vertices.push_back(glm::vec4(0.5f, -0.5f, -0.5f, 1.0f));
-    //    obj_vertices.push_back(glm::vec4(0.0f, 0.5f, -0.5f, 1.0f));
-    //    obj_faces.push_back(glm::uvec3(0, 1, 2));
-    //    std::cout << minx << " " << miny << " " << minz << std::endl;
-    //    std::cout << maxx << " " << maxy << " " << maxz << std::endl;
     //front
     //bot left
-    //std::cout << minx << " | " << miny << " | " << " | " << minz << std::endl;
     obj_vertices.push_back(glm::vec4(minx, miny, maxz, 1.0f));
     obj_vertices.push_back(glm::vec4(maxx, miny, maxz, 1.0f));
     obj_vertices.push_back(glm::vec4(minx, maxy, maxz, 1.0f));
     obj_faces.push_back(glm::uvec3(arrayStart, arrayStart + 1, arrayStart + 2));
-    // glm::dvec3 test = getNormal(glm::dvec3(minx, miny, maxz), glm::dvec3(maxx, miny, maxz),
-    //     glm::dvec3(minx, maxy, maxz));
-    //std::cout << test[0] << " | " << test[1] << " | " << test[2] << std::endl;
+
     //top right
     obj_vertices.push_back(glm::vec4(minx, maxy, maxz, 1.0f));
     obj_vertices.push_back(glm::vec4(maxx, miny, maxz, 1.0f));
     obj_vertices.push_back(glm::vec4(maxx, maxy, maxz, 1.0f));
     obj_faces.push_back(glm::uvec3(arrayStart + 3, arrayStart + 4, arrayStart + 5));
-    // glm::dvec3 test2 = getNormal(glm::dvec3(minx, maxy, maxz), glm::dvec3(maxx, miny, maxz),
-    //     glm::dvec3(maxx, maxy, maxz));
-    //std::cout << test2[0] << " | " << test2[1] << " | " << test2[2] << std::endl;
+
     //back-------------------------------------------------------
     //botleft
 
