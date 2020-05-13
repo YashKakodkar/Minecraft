@@ -93,8 +93,8 @@ GLFWwindow* init_glefw()
     glfwSwapInterval(1);
     const GLubyte* renderer = glGetString(GL_RENDERER); // get renderer string
     const GLubyte* version = glGetString(GL_VERSION); // version as a string
-    std::cout << "Renderer: " << renderer << "\n";
-    std::cout << "OpenGL version supported:" << version << "\n";
+   // std::cout << "Renderer: " << renderer << "\n";
+    //std::cout << "OpenGL version supported:" << version << "\n";
 
     return ret;
 }
@@ -133,7 +133,7 @@ int main(int argc, char* argv[])
     // FIXME: add more lambdas for data_source if you want to use RenderPass.
     //        Otherwise, do whatever you like here
     std::function<const glm::mat4*()> model_data = [&mats]() {
-        std::cout << "herejiasodhioashdoi";
+    //    std::cout << "herejiasodhioashdoi";
         return mats.model;
     };
     std::function<glm::mat4()> view_data = [&mats]() { return *mats.view; };
@@ -260,7 +260,7 @@ int main(int argc, char* argv[])
     int index = 0;
     //return 0;
     while (!glfwWindowShouldClose(window)) {
-        std::cout << glfwGetTime()  << " time\n";
+     //   std::cout << glfwGetTime()  << " time\n";
         if ((int)glfwGetTime() % 2 == 0) {
 
         }

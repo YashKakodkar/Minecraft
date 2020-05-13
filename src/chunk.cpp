@@ -62,20 +62,20 @@ void Chunk::create_mesh(int x_grid, int y_grid, int z_grid)
     int low = 6;
     int prevHeight = 8;
     perlin.generateHeightMap(x_grid + 8, z_grid + 8);
-    std::cout << "Test heights" << std::endl;
+    //std::cout << "Test heights" << std::endl;
     for (int i = 0; i < 16; i++) {
         for (int r = 0; r < 16; r++) {
-            std::cout << perlin.height_map_[i][r] << "    ";
+   //         std::cout << perlin.height_map_[i][r] << "    ";
             //x++;
         }
-        std::cout << std::endl;
+    //    std::cout << std::endl;
     }
     //std::cout << "HELLO 7" << std::endl;
     //std::vector<std::vector<int>> height_map = perlin.height_map_; //std::vector<std::vector<int>>(16, std::vector<int>(16, 0));
     //std::cout << "HELLO 8" << std::endl;
     //int height_map[16][16] = { 0 };
     //height_map = perlin.height_map_;
-    std::cout << "Begin Chunk " << x_grid << ", " << z_grid << std::endl;
+   // std::cout << "Begin Chunk " << x_grid << ", " << z_grid << std::endl;
 
     for (int x = 0; x < 16; ++x) {
         for (int z = 0; z < 16; ++z) {
