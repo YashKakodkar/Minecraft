@@ -18,6 +18,7 @@ public:
     void eraseFrontofRender();
         ~Chunkmanager();
         static const int CHUNKS = 1;
+        static const int CHUNK_SIZE = 16;
     private:
         std::vector<std::unique_ptr<Chunk>> allChunks;
         std::vector<const char*> shaders;

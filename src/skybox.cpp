@@ -4,7 +4,7 @@
 #include <iostream>
 #include <direct.h>
 Skybox::Skybox(int width, int height) {
-    loadSkybox(width, height);
+    textureID = loadSkybox(width, height);
 }
 
 unsigned int Skybox::loadSkybox(int width, int height) {

@@ -28,7 +28,7 @@ Chunk::Chunk(int x, int z)
   
     //create_block(0.0f,0.0f,0.0f,1.0f);
     //generate_plane(x_length, z_length);
-    create_mesh2(x_length, -16, z_length);
+    create_mesh(x_length, -CHUNK_SIZE, z_length);
     //std::cout << "HELLO DONE" << std::endl;
     //create_mesh2(x_length, -16, z_length);
 }
@@ -76,9 +76,9 @@ void Chunk::create_mesh(int x_grid, int y_grid, int z_grid)
     //int height_map[16][16] = { 0 };
     //height_map = perlin.height_map_;
     //std::cout << "HELLO 9" << std::endl;
-    for (int x = 0; x < 16; ++x) {
+    for (int x = 0; x < CHUNK_SIZE; ++x) {
         //std::cout << "\nNEW X\n"<< std::endl;
-        for (int z = 0; z < 16; ++z) {
+        for (int z = 0; z < CHUNK_SIZE; ++z) {
             //std::cout << "\nNEW Y\n"<< std::endl;
             //std::cout << "HELLO 10" << std::endl;
             int height = perlin.height_map_[x][z]; // std::rand() % (high - low) + low;
@@ -139,21 +139,18 @@ void Chunk::create_mesh2(int x_grid, int y_grid, int z_grid)
     int arrayStart = 0;
     std::srand(std::time(nullptr));
     for (int x = 0; x < CHUNK_SIZE; x++) {
-     /*   for (int y = 0; y < CHUNK_SIZE; y++) {*/
+       for (int y = 0; y < CHUNK_SIZE; y++) {
             for (int z = 0; z < CHUNK_SIZE; z++) {
                 // if (blocks[x][y][z].is_active() == false) {
                 //     continue;
                 // }
-                if (std::rand() % 2 == 0) {
-                    create_block(x_grid + x, -16, z_grid + z, 1, arrayStart);
 
-                }
-                else {
-  
-                }
+                create_blockC(x_grid + x, -16, z_grid + z, 1, arrayStart);
+
+   
                 arrayStart += 36;
             }
-        //}
+        }
     }
 }
 
@@ -244,6 +241,145 @@ void Chunk::create_block(float x_start, float y_start, float z_start, float size
     block_vertices.push_back(glm::vec4(min.x, max.y, min.z, 1.0f));
     block_vertices.push_back(glm::vec4(min.x, min.y, max.z, 1.0f));
     block_vertices.push_back(glm::vec4(min.x, max.y, max.z, 1.0f));
+    block_faces.push_back(glm::uvec3(arrayStart + 33, arrayStart + 34, arrayStart + 35));
+
+    //std::cout << "HELLO BLOCK 1" << std::endl;
+}
+
+void Chunk::create_blockC(float x_start, float y_start, float z_start, float size, int arrayStart)
+{
+    glm::vec3 rgb = glm::vec3(1.0, 1.0, 1.0);
+    if (y_start >= -16 && y_start < -12) {
+        rgb = glm::vec3(1.0, 0.0, 0.0);
+    }
+    if (y_start >= -11 && y_start < -2) {
+        rgb = glm::vec3(1.0, 1.0, 0.0);
+    }
+    if (y_start >= -2 && y_start < 5) {
+        rgb = glm::vec3(0.0, 0.0, 1.0);
+    }
+    if (y_start >= 5) {
+        rgb = glm::vec3(0.0,1.0, 0.0);
+    }
+    //std::cout << "HELLO BLOCK" << std::endl;
+    glm::vec3 min(x_start, y_start, z_start);
+    glm::vec3 max(x_start + size, y_start + size, z_start + size);
+    //front
+    //bot left
+    block_vertices.push_back(glm::vec4(min.x, min.y, max.z, 1.0f));
+    block_vertices.push_back(glm::vec4(max.x, min.y, max.z, 1.0f));
+    block_vertices.push_back(glm::vec4(min.x, max.y, max.z, 1.0f));
+    block_color.push_back(rgb);
+    block_color.push_back(rgb);
+    block_color.push_back(rgb);
+    block_faces.push_back(glm::uvec3(arrayStart, arrayStart + 1, arrayStart + 2));
+
+    //top right
+    block_vertices.push_back(glm::vec4(min.x, max.y, max.z, 1.0f));
+    block_vertices.push_back(glm::vec4(max.x, min.y, max.z, 1.0f));
+    block_vertices.push_back(glm::vec4(max.x, max.y, max.z, 1.0f));
+    block_color.push_back(rgb);
+    block_color.push_back(rgb);
+    block_color.push_back(rgb);
+    block_faces.push_back(glm::uvec3(arrayStart + 3, arrayStart + 4, arrayStart + 5));
+
+    //back-------------------------------------------------------
+    //botleft
+
+    block_vertices.push_back(glm::vec4(max.x, min.y, min.z, 1.0f));
+    block_vertices.push_back(glm::vec4(min.x, min.y, min.z, 1.0f));
+    block_vertices.push_back(glm::vec4(min.x, max.y, min.z, 1.0f));
+    block_color.push_back(rgb);
+    block_color.push_back(rgb);
+    block_color.push_back(rgb);
+    block_faces.push_back(glm::uvec3(arrayStart + 6, arrayStart + 7, arrayStart + 8));
+
+    //top right
+
+    block_vertices.push_back(glm::vec4(max.x, min.y, min.z, 1.0f));
+    block_vertices.push_back(glm::vec4(min.x, max.y, min.z, 1.0f));
+    block_vertices.push_back(glm::vec4(max.x, max.y, min.z, 1.0f));
+    block_color.push_back(rgb);
+    block_color.push_back(rgb);
+    block_color.push_back(rgb);
+    block_faces.push_back(glm::uvec3(arrayStart + 9, arrayStart + 10, arrayStart + 11));
+
+    //top---------------------------------------------------------
+    //botleft
+
+    block_vertices.push_back(glm::vec4(min.x, max.y, min.z, 1.0f));
+    block_vertices.push_back(glm::vec4(min.x, max.y, max.z, 1.0f));
+    block_vertices.push_back(glm::vec4(max.x, max.y, min.z, 1.0f));
+    block_color.push_back(rgb);
+    block_color.push_back(rgb);
+    block_color.push_back(rgb);
+    block_faces.push_back(glm::uvec3(arrayStart + 12, arrayStart + 13, arrayStart + 14));
+
+    //top right
+    block_vertices.push_back(glm::vec4(min.x, max.y, max.z, 1.0f));
+    block_vertices.push_back(glm::vec4(max.x, max.y, max.z, 1.0f));
+    block_vertices.push_back(glm::vec4(max.x, max.y, min.z, 1.0f));
+    block_color.push_back(rgb);
+    block_color.push_back(rgb);
+    block_color.push_back(rgb);
+    block_faces.push_back(glm::uvec3(arrayStart + 15, arrayStart + 16, arrayStart + 17));
+
+    //bottom--------------------------------------------------------
+    //botleft
+    block_vertices.push_back(glm::vec4(min.x, min.y, min.z, 1.0f));
+    block_vertices.push_back(glm::vec4(min.x, min.y, max.z, 1.0f));
+    block_vertices.push_back(glm::vec4(max.x, min.y, min.z, 1.0f));
+    block_color.push_back(rgb);
+    block_color.push_back(rgb);
+    block_color.push_back(rgb);
+    block_faces.push_back(glm::uvec3(arrayStart + 18, arrayStart + 19, arrayStart + 20));
+
+    //top right
+    block_vertices.push_back(glm::vec4(min.x, min.y, max.z, 1.0f));
+    block_vertices.push_back(glm::vec4(max.x, min.y, max.z, 1.0f));
+    block_vertices.push_back(glm::vec4(max.x, min.y, min.z, 1.0f));
+    block_color.push_back(rgb);
+    block_color.push_back(rgb);
+    block_color.push_back(rgb);
+    block_faces.push_back(glm::uvec3(arrayStart + 21, arrayStart + 22, arrayStart + 23));
+
+    //right--------------------------------------------------------
+    //botleft
+    block_vertices.push_back(glm::vec4(max.x, max.y, min.z, 1.0f));
+    block_vertices.push_back(glm::vec4(max.x, min.y, max.z, 1.0f));
+    block_vertices.push_back(glm::vec4(max.x, min.y, min.z, 1.0f));
+    block_color.push_back(rgb);
+    block_color.push_back(rgb);
+    block_color.push_back(rgb);
+    block_faces.push_back(glm::uvec3(arrayStart + 24, arrayStart + 25, arrayStart + 26));
+
+    //top right
+
+    block_vertices.push_back(glm::vec4(max.x, max.y, max.z, 1.0f));
+    block_vertices.push_back(glm::vec4(max.x, min.y, max.z, 1.0f));
+    block_vertices.push_back(glm::vec4(max.x, max.y, min.z, 1.0f));
+    block_color.push_back(rgb);
+    block_color.push_back(rgb);
+    block_color.push_back(rgb);
+    block_faces.push_back(glm::uvec3(arrayStart + 27, arrayStart + 28, arrayStart + 29));
+
+    //left--------------------------------------------------------
+    //botleft
+    block_vertices.push_back(glm::vec4(min.x, max.y, min.z, 1.0f));
+    block_vertices.push_back(glm::vec4(min.x, min.y, min.z, 1.0f));
+    block_vertices.push_back(glm::vec4(min.x, min.y, max.z, 1.0f));
+    block_color.push_back(rgb);
+    block_color.push_back(rgb);
+    block_color.push_back(rgb);
+    block_faces.push_back(glm::uvec3(arrayStart + 30, arrayStart + 31, arrayStart + 32));
+
+    //top right
+    block_vertices.push_back(glm::vec4(min.x, max.y, min.z, 1.0f));
+    block_vertices.push_back(glm::vec4(min.x, min.y, max.z, 1.0f));
+    block_vertices.push_back(glm::vec4(min.x, max.y, max.z, 1.0f));
+    block_color.push_back(rgb);
+    block_color.push_back(rgb);
+    block_color.push_back(rgb);
     block_faces.push_back(glm::uvec3(arrayStart + 33, arrayStart + 34, arrayStart + 35));
 
     //std::cout << "HELLO BLOCK 1" << std::endl;

@@ -93,6 +93,7 @@ public:
 	unsigned getVAO() const { return unsigned(vao_); }
 	void updateVBO(int position, const void* data, size_t nelement);
 	void setup();
+	unsigned sp_ = 0;
 	/*
  	 * Note: here we don't have an unified render() function, because the
 	 * reference solution renders with different primitives
@@ -119,7 +120,7 @@ private:
 	std::vector<unsigned> gltextures_, matexids_;
 	unsigned sampler2d_;
 	unsigned vs_ = 0, gs_ = 0, fs_ = 0;
-	unsigned sp_ = 0;
+	
 	
 	static unsigned compileShader(const char*, int type);
 	static std::map<const char*, unsigned> shader_cache_;

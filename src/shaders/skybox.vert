@@ -1,5 +1,6 @@
+R"zzz(
 #version 330 core
-layout (location = 0) in vec3 aPos;
+layout (location = 0) in vec3 vert;
 
 out vec3 TexCoords;
 
@@ -9,7 +10,8 @@ uniform mat4 view;
 
 void main()
 {
-    TexCoords = aPos;
-    mat4 mvp = projection * view * model;
-    gl_Position = mvp * vec4(aPos, 1.0);
+    TexCoords = vert;
+    mat4 vp = projection * view;
+    gl_Position = vp * vec4(vert, 1.0);
 }  
+)zzz"

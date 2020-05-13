@@ -58,4 +58,5 @@ public:
         "terrain_positive_z.jpg",
         "terrain_negative_z.jpg"
     };
+    unsigned int textureID;
 };

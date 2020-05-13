@@ -59,14 +59,14 @@ const char* cube_fragment_shader =
 #include "shaders/cube.frag"
     ;
 
-//const char* skybox_vertex_shader =
-//#include "shaders/skybox.vert"
-//;
-//
-//
-//const char* skybox_fragment_shader =
-//#include "shaders/skybox.frag"
-//;
+const char* skybox_vertex_shader =
+#include "shaders/skybox.vert"
+;
+
+
+const char* skybox_fragment_shader =
+#include "shaders/skybox.frag"
+;
 
 // FIXME: Add more shaders here.
 
@@ -108,7 +108,7 @@ int main(int argc, char* argv[])
 
     glm::vec4 light_position = glm::vec4(0.0f, 100.0f, 0.0f, 1.0f);
     MatrixPointers mats; // Define MatrixPointers here for lambda to capture
-    //Skybox s(window_width, window_height); 
+    //
     //std::cout << "che\n";
     /*
 	 * In the following we are going to define several lambda functions as
@@ -165,15 +165,14 @@ int main(int argc, char* argv[])
 
     // Otherwise, do whatever you like here
     //Cube render pass
-    std::cout << "che\n";
+  
     Chunkmanager testing(-1,
         { cube_vertex_shader, nullptr, cube_fragment_shader },
         { floor_model, std_view, std_proj, std_light },
         { "fragment_color" });
-    std::cout << "che\n";
+
     //std::vector<RenderPass*> ren;
     //for (int i = 0; i < testing.toRender.size(); i++) {
-    RenderDataInput skybox;
     const float skyboxVertices[108] = {
         // positions          
         -1.0f,  1.0f, -1.0f,
@@ -218,16 +217,20 @@ int main(int argc, char* argv[])
         -1.0f, -1.0f,  1.0f,
          1.0f, -1.0f,  1.0f
     };
-
+    float aspect = 0.0f;
     //RenderDataInput skybox_pass_input;
-    //float aspect = 0.0f;
-    //skybox_pass_input.assign(0, "vert", skyboxVertices, sizeof(float) * 108, 3, GL_INT);
-    //RenderPass skybox_pass_input(-1,
+    //std::cout << "1asddasdasss\n";
+    //
+    //std::cout << "2adsadssdsass\n";
+    //skybox_pass_input.assign(0, "vert", skyboxVertices, sizeof(skyboxVertices), 3, GL_INT);
+    //std::cout << "3asddasadss\n";
+    //RenderPass skybox_pass(-1,
     //    skybox_pass_input,
     //    { skybox_vertex_shader, nullptr, skybox_fragment_shader },
-    //    { std_view, std_proj, std_light },
+    //    { floor_model, std_view, std_proj, std_light },
     //    { "fragment_color" }
     //);
+    //Skybox s(window_width, window_height);
     //std::cout << "center = " << mesh.getCenter() << "\n";
     //unsigned int textureID;
 
@@ -257,6 +260,7 @@ int main(int argc, char* argv[])
     bool draw_floor = true;
     bool draw_cube = true;
     int index = 0;
+    //return 0;
     while (!glfwWindowShouldClose(window)) {
         // Setup some basic window stuff.
         glfwGetFramebufferSize(window, &window_width, &window_height);
@@ -269,10 +273,25 @@ int main(int argc, char* argv[])
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glDepthFunc(GL_LESS);
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-        glCullFace(GL_BACK);
+        //glCullFace(GL_BACK);
+        //glDepthMask(GL_FALSE);
+        //GLint OldCullFaceMode;
+        //glGetIntegerv(GL_CULL_FACE_MODE, &OldCullFaceMode);
+        //GLint OldDepthFuncMode;
+        //glGetIntegerv(GL_DEPTH_FUNC, &OldDepthFuncMode);
 
+        //glCullFace(GL_FRONT);
+        //glDepthFunc(GL_LEQUAL);
         gui.updateMatrices();
         mats = gui.getMatrixPointers();
+
+        //skybox_pass.setup();
+        // ... set view and projection matrix
+        //glBindTexture(GL_TEXTURE_CUBE_MAP, s.textureID);
+        //glDrawArrays(GL_TRIANGLES, 0, 36);
+        //glCullFace(OldCullFaceMode);
+        //glDepthFunc(OldDepthFuncMode);
+     
 #if 0
 		std::cerr << model_data() << '\n';
 		std::cerr << "call from outside: " << std_model->data_source() << "\n";
@@ -286,7 +305,7 @@ int main(int argc, char* argv[])
         if (draw_cube) {
             //glActiveTexture(GL_TEXTURE1);
             //glBindTexture(GL_TEXTURE_CUBE_MAP, textureID);
-            testing.render(gui.getCenter());
+            testing.render();
         }
         index = 1;
         // Poll and swap.

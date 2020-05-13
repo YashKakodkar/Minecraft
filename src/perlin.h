@@ -28,8 +28,8 @@ private:
     std::vector<double> p = { 1.0, 2.0, 3.0 };
     int grid_shift_x_, grid_shift_z_;
 
-    float perlin_freq_ = 0.01; // adjust frequency of perlin noise
-    float perlin_height_amp_ = 10; // adjust amplitude of perlin noise
+    float perlin_freq_ = 0.05; // adjust frequency of perlin noise
+    float perlin_height_amp_ = 64; // adjust amplitude of perlin noise
 };
 
 #endif
