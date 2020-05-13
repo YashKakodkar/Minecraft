@@ -118,4 +118,20 @@ void Perlin::create_height_map(int x, int z)
             height_map_[x][z] = y;
         }
     }
+    // std::cout << "VALUES DONE" << std::endl;
+    //int q = 1;
+    // for (int i = 0; i < 16; i++) {
+    //     for (int r = 0; r < 16; r++) {
+    //         std::cout << "#: " << q << " | height: " << height_map_[i][r] << std::endl;
+    //         q++;
+    //     }
+    // }
+    // for (int i = 0; i < 16; i++) {
+    //     for (int r = 0; r < 16; r++) {
+    //         std::cout << height_map_[i][r] << "    ";
+    //         q++;
+    //     }
+    //     std::cout << std::endl;
+    // }
+    // std::cout << "Done" << std::endl;
 }

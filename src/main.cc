@@ -93,8 +93,8 @@ GLFWwindow* init_glefw()
     glfwSwapInterval(1);
     const GLubyte* renderer = glGetString(GL_RENDERER); // get renderer string
     const GLubyte* version = glGetString(GL_VERSION); // version as a string
-    std::cout << "Renderer: " << renderer << "\n";
-    std::cout << "OpenGL version supported:" << version << "\n";
+   // std::cout << "Renderer: " << renderer << "\n";
+    //std::cout << "OpenGL version supported:" << version << "\n";
 
     return ret;
 }
@@ -133,7 +133,7 @@ int main(int argc, char* argv[])
     // FIXME: add more lambdas for data_source if you want to use RenderPass.
     //        Otherwise, do whatever you like here
     std::function<const glm::mat4*()> model_data = [&mats]() {
-        std::cout << "herejiasodhioashdoi";
+    //    std::cout << "herejiasodhioashdoi";
         return mats.model;
     };
     std::function<glm::mat4()> view_data = [&mats]() { return *mats.view; };
@@ -171,99 +171,33 @@ int main(int argc, char* argv[])
 
     //std::vector<RenderPass*> ren;
     //for (int i = 0; i < testing.toRender.size(); i++) {
-    const float skyboxVertices[108] = {
-        // positions
-        -1.0f, 1.0f, -1.0f,
-        -1.0f, -1.0f, -1.0f,
-        1.0f, -1.0f, -1.0f,
-        1.0f, -1.0f, -1.0f,
-        1.0f, 1.0f, -1.0f,
-        -1.0f, 1.0f, -1.0f,
-
-        -1.0f, -1.0f, 1.0f,
-        -1.0f, -1.0f, -1.0f,
-        -1.0f, 1.0f, -1.0f,
-        -1.0f, 1.0f, -1.0f,
-        -1.0f, 1.0f, 1.0f,
-        -1.0f, -1.0f, 1.0f,
-
-        1.0f, -1.0f, -1.0f,
-        1.0f, -1.0f, 1.0f,
-        1.0f, 1.0f, 1.0f,
-        1.0f, 1.0f, 1.0f,
-        1.0f, 1.0f, -1.0f,
-        1.0f, -1.0f, -1.0f,
-
-        -1.0f, -1.0f, 1.0f,
-        -1.0f, 1.0f, 1.0f,
-        1.0f, 1.0f, 1.0f,
-        1.0f, 1.0f, 1.0f,
-        1.0f, -1.0f, 1.0f,
-        -1.0f, -1.0f, 1.0f,
-
-        -1.0f, 1.0f, -1.0f,
-        1.0f, 1.0f, -1.0f,
-        1.0f, 1.0f, 1.0f,
-        1.0f, 1.0f, 1.0f,
-        -1.0f, 1.0f, 1.0f,
-        -1.0f, 1.0f, -1.0f,
-
-        -1.0f, -1.0f, -1.0f,
-        -1.0f, -1.0f, 1.0f,
-        1.0f, -1.0f, -1.0f,
-        1.0f, -1.0f, -1.0f,
-        -1.0f, -1.0f, 1.0f,
-        1.0f, -1.0f, 1.0f
-    };
     float aspect = 0.0f;
-    //RenderDataInput skybox_pass_input;
-    //std::cout << "1asddasdasss\n";
-    //
-    //std::cout << "2adsadssdsass\n";
-    //skybox_pass_input.assign(0, "vert", skyboxVertices, sizeof(skyboxVertices), 3, GL_INT);
-    //std::cout << "3asddasadss\n";
-    //RenderPass skybox_pass(-1,
-    //    skybox_pass_input,
-    //    { skybox_vertex_shader, nullptr, skybox_fragment_shader },
-    //    { floor_model, std_view, std_proj, std_light },
-    //    { "fragment_color" }
-    //);
-    //Skybox s(window_width, window_height);
-    //std::cout << "center = " << mesh.getCenter() << "\n";
-    //unsigned int textureID;
-
-    //Image image;
-    //char buff[FILENAME_MAX]; //create string buffer to hold path
-    ////_getcwd(buff, FILENAME_MAX);
-    //std::string current_working_dir(buff);
-    //std::cout << buff << std::endl;
-    //bool got = LoadJPEG("../../src/textures/dirtside.jpg", &image);
-    //std::cout << "Got " << got << std::endl;
-    //std::cout << "Width :" << image.width << "\nHeight: " << image.height << std::endl;
-    //glGenTextures(1, &textureID);
-    //glBindTexture(GL_TEXTURE_CUBE_MAP, textureID);
-    //glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X, 0, GL_RGB, image.width, image.height, 0, GL_BGR, GL_UNSIGNED_BYTE, image.bytes.data());
-    //glTexImage2D(GL_TEXTURE_CUBE_MAP_NEGATIVE_X, 0, GL_RGB, image.width, image.height, 0, GL_BGR, GL_UNSIGNED_BYTE, image.bytes.data());
-    //glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_Y, 0, GL_RGB, image.width, image.height, 0, GL_BGR, GL_UNSIGNED_BYTE, image.bytes.data());
-    //glTexImage2D(GL_TEXTURE_CUBE_MAP_NEGATIVE_Y, 0, GL_RGB, image.width, image.height, 0, GL_BGR, GL_UNSIGNED_BYTE, image.bytes.data());
-    //glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_Z, 0, GL_RGB, image.width, image.height, 0, GL_BGR, GL_UNSIGNED_BYTE, image.bytes.data());
-    //glTexImage2D(GL_TEXTURE_CUBE_MAP_NEGATIVE_Z, 0, GL_RGB, image.width, image.height, 0, GL_BGR, GL_UNSIGNED_BYTE, image.bytes.data());
-
-    //glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    //glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    //glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-    //glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-
-    //glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
     bool draw_floor = true;
     bool draw_cube = true;
     int index = 0;
     //return 0;
     while (!glfwWindowShouldClose(window)) {
+     //   std::cout << glfwGetTime()  << " time\n";
+        if ((int)glfwGetTime() % 2 == 0) {
+
+        }
         // Setup some basic window stuff.
         glfwGetFramebufferSize(window, &window_width, &window_height);
         glViewport(0, 0, window_width, window_height);
-        glClearColor(52.9/255, 80.8/255, 92.2/255, 0.0f);
+        glm::dvec3 b = glm::vec3(13.0 / 255, 20.0 / 255, 25.0 / 255);
+        glm::dvec3 w = glm::vec3(135.0 / 255, 206.0 / 255, 250.0 / 255);
+        glm::vec4 lerp;
+        int time = 20;
+        if (((int)glfwGetTime() / time) % 2 == 0) {
+            lerp = glm::vec4(glm::mix(b, w, ((int)glfwGetTime() % time) / (double)time), 1.0f);
+        }
+        else {
+            lerp = glm::vec4(glm::mix(w, b, ((int)glfwGetTime() % time) / (double)time), 1.0f);
+        }
+
+        glClearColor(lerp[0],lerp[1], lerp[2], 0.0f);
+        
+        
         glEnable(GL_DEPTH_TEST);
         glEnable(GL_MULTISAMPLE);
         glEnable(GL_BLEND);
@@ -271,24 +205,8 @@ int main(int argc, char* argv[])
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glDepthFunc(GL_LESS);
         glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-        //glCullFace(GL_BACK);
-        //glDepthMask(GL_FALSE);
-        //GLint OldCullFaceMode;
-        //glGetIntegerv(GL_CULL_FACE_MODE, &OldCullFaceMode);
-        //GLint OldDepthFuncMode;
-        //glGetIntegerv(GL_DEPTH_FUNC, &OldDepthFuncMode);
-
-        //glCullFace(GL_FRONT);
-        //glDepthFunc(GL_LEQUAL);
         gui.updateMatrices();
         mats = gui.getMatrixPointers();
-
-        //skybox_pass.setup();
-        // ... set view and projection matrix
-        //glBindTexture(GL_TEXTURE_CUBE_MAP, s.textureID);
-        //glDrawArrays(GL_TRIANGLES, 0, 36);
-        //glCullFace(OldCullFaceMode);
-        //glDepthFunc(OldDepthFuncMode);
 
 #if 0
 		std::cerr << model_data() << '\n';
