@@ -78,27 +78,13 @@ void Chunk::create_mesh(int x_grid, int y_grid, int z_grid)
     std::cout << "Begin Chunk " << x_grid << ", " << z_grid << std::endl;
 
     for (int x = 0; x < 16; ++x) {
-        //std::cout << "\nNEW X\n"<< std::endl;
         for (int z = 0; z < 16; ++z) {
-            //std::cout << "\nNEW Y\n"<< std::endl;
-            //std::cout << "HELLO 10" << std::endl;
+            create_blockC(x_grid + x, -17, z_grid + z, 1, arrayStart);
             int height = perlin.height_map_[x][z]; // std::rand() % (high - low) + low;
-            //std::cout << "HELcLO 11" << std::endl;
-            //std::cout << "x: " << x << " |  z: " << z << "  | HEIGHT: " << height << std::endl;
-            //create_blockC(x_grid + x, y_grid, z_grid + z, 1, arrayStart);
             arrayStart += 36;
-            //create_block(x_grid + x, y_grid, z_grid + z, 1, arrayStart, height, -1);
+ 
             for (int y = 1; y < height; ++y) {
-                // if (blocks[x][y][z].is_active() == false) {
-                //     continue;
-                // }
-                //std::cout << "X: " << x << "  | Y: " << y << "  | Z: " << z << "  | CHUNK_SIZE: " << CHUNK_SIZE << std::endl;
-                // std::cout << "HELLO 10  | HEIGHT: " << 0 << std::endl;
-                //create_block(x_grid + x, y_grid + y, z_grid + z, 1, arrayStart, height, y);
-                // if (y == height - 1 && height > 4) {
-                //     //std::cout << y << "  ";
-                //     create_block(x_grid + x, y_grid + 36, z_grid + z, 1, arrayStart, height, -1);
-                // }
+ 
                 create_blockC(x_grid + x, y_grid + y, z_grid + z, 1, arrayStart);
                 arrayStart += 36;
                 // if (y == height - 1 && height > 4) {
@@ -106,8 +92,6 @@ void Chunk::create_mesh(int x_grid, int y_grid, int z_grid)
                 //     create_blockC(x_grid + x, y_grid + 36, z_grid + z, 1, arrayStart);
                 //     arrayStart += 36;
                 // }
-
-                //std::cout << "Grid Pos #: " << i << "  | " << x_grid + x << " " << y_grid + y << " " << z_grid + z << std::endl;
                 i++;
             }
 
@@ -269,6 +253,9 @@ void Chunk::create_blockC(float x_start, float y_start, float z_start, float siz
 {
     int height = y_start + 16;
     glm::vec3 rgb = glm::vec3(1.0, 1.0, 1.0);
+    if (height < 0) {
+        rgb = glm::vec3(64 / 255.0, 164 / 255.0, 223 / 255.0);
+    }
     if (height >= 0 && height < 1) {
         rgb = glm::vec3(177.0 / 255.0, 105.0 / 255.0, 50.0 / 255.0);
     } else if (height >= 1 && height < 2) {
@@ -288,11 +275,11 @@ void Chunk::create_blockC(float x_start, float y_start, float z_start, float siz
     } else if (height >= 11 && height < 12) {
         rgb = glm::vec3(147.0 / 255.0, 85.0 / 255.0, 46.0 / 255.0);
     } else if (height >= 12 && height < 15) {
-        rgb = glm::vec3(79.0 / 255.0, 39.0 / 255.0, 28.0 / 255 / 0);
+        rgb = glm::vec3(79.0 / 255.0, 39.0 / 255.0, 28.0 / 255.0);
     } else if (height >= 15 && height < 17) {
         rgb = glm::vec3(142.0 / 255.0, 95.0 / 255.0, 70.0 / 255.0);
     } else {
-        rgb = glm::vec3(1.0, 1.0, 1.0);
+        rgb = glm::vec3(64 / 255.0, 164 / 255.0, 223 / 255.0);
     }
     //std::cout << "HELLO BLOCK" << std::endl;
     glm::vec3 min(x_start, y_start, z_start);

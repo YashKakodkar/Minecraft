@@ -26,6 +26,6 @@ public:
         std::vector<const char*> output;
         std::vector<Chunk> chuncksToRender;
         std::vector<std::unique_ptr<RenderPass>> toRender;
-        int chunk_size = 0;
+        std::vector<int> chunk_size;
         
 };
