@@ -24,7 +24,6 @@
 #include "chunkmanager.h"
 #include <vector>
 
-class Chunkmanager;
 int window_width = 800, window_height = 600;
 const std::string window_title = "Minecraft";
 
@@ -237,7 +236,7 @@ int main(int argc, char* argv[])
             //glActiveTexture(GL_TEXTURE1);
             //glBindTexture(GL_TEXTURE_CUBE_MAP, textureID);
             //for (RenderPass* temp : testing.toRender) {
-                testing.toRender[0]->setup();
+              //  testing.toRender[0]->setup();
         /*        CHECK_GL_ERROR(glDrawElements(GL_TRIANGLES,
                     terrain.block_faces.size() * 3,
                     GL_UNSIGNED_INT, 0));*/
