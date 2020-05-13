@@ -37,7 +37,7 @@ void Chunk::create_mesh(int x_grid, int y_grid, int z_grid)
     int high = 10;
     int low = 6;
     int prevHeight = 8;
-    perlin.create_height_map(x_grid + 8, z_grid + 8);
+    perlin.create_height_map(x_grid, z_grid);
 
     for (int x = 0; x < 16; ++x) {
         for (int z = 0; z < 16; ++z) {

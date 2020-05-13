@@ -12,7 +12,6 @@
 #include "jpegio.h"
 #include "procedure_geometry.h"
 #include "render_pass.h"
-#include "skybox.h"
 #include <algorithm>
 #include <debuggl.h>
 #include <fstream>
@@ -27,45 +26,16 @@
 int window_width = 800, window_height = 600;
 const std::string window_title = "Minecraft";
 
-const char* vertex_shader =
-#include "shaders/default.vert"
-    ;
 
-const char* blending_shader =
-#include "shaders/blending.vert"
-    ;
-
-const char* geometry_shader =
-#include "shaders/default.geom"
-    ;
-
-const char* fragment_shader =
-#include "shaders/default.frag"
-    ;
-
-const char* floor_fragment_shader =
-#include "shaders/floor.frag"
-    ;
 
 const char* cube_vertex_shader =
 #include "shaders/cube.vert"
-    ;
-
-const char* cube_geometry_shader =
-#include "shaders/cube.geom"
     ;
 
 const char* cube_fragment_shader =
 #include "shaders/cube.frag"
     ;
 
-const char* skybox_vertex_shader =
-#include "shaders/skybox.vert"
-    ;
-
-const char* skybox_fragment_shader =
-#include "shaders/skybox.frag"
-    ;
 
 // FIXME: Add more shaders here.
 
@@ -186,10 +156,10 @@ int main(int argc, char* argv[])
         glm::vec4 lerp;
         int time = 20;
         if (((int)glfwGetTime() / time) % 2 == 0) {
-            lerp = glm::vec4(glm::mix(b, w, ((int)glfwGetTime() % time) / (double)time), 1.0f);
+            lerp = glm::vec4(glm::mix(w, b, ((int)glfwGetTime() % time) / (double)time), 1.0f);
         }
         else {
-            lerp = glm::vec4(glm::mix(w, b, ((int)glfwGetTime() % time) / (double)time), 1.0f);
+            lerp = glm::vec4(glm::mix(b, w, ((int)glfwGetTime() % time) / (double)time), 1.0f);
         }
 
         glClearColor(lerp[0],lerp[1], lerp[2], 0.0f);
