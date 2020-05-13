@@ -6,7 +6,8 @@
 #include <glm/gtx/transform.hpp>
 #include <iostream>
 #include <vector>
-
+#include <math.h>
+#include <algorithm>
 Chunk::Chunk(int x, int z)
     : x_length(x)
     , z_length(z)

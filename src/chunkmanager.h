@@ -2,7 +2,6 @@
 #include <vector>
 #include "render_pass.h"
 
-class RenderPass;
 class Chunkmanager {
 public:
     Chunkmanager();
@@ -10,7 +9,7 @@ public:
         const std::vector<const char*> shaders, // Order: VS, GS, FS 
         const std::vector<ShaderUniformPtr> uniforms,
         const std::vector<const char*> output // Order: 0, 1, 2...);
-);
+    );
         ~Chunkmanager();
         std::vector<Chunk> getChunks() const { return allChunks; }
     //private:
