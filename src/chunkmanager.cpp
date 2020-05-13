@@ -1,6 +1,5 @@
 #include "chunkmanager.h"
 #include "iostream"
-
 #include <glm/gtx/string_cast.hpp>
 
 Chunkmanager::Chunkmanager() {

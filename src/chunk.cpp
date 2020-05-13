@@ -23,8 +23,8 @@ Chunk::Chunk(int x, int z)
     }
     //create_block(0.0f,0.0f,0.0f,1.0f);
     //generate_plane(x_length, z_length);
-    create_mesh(x_length, -16, z_length);
-    std::cout << "HELLO DONE" << std::endl;
+    //create_mesh(x_length, -16, z_length);
+    //std::cout << "HELLO DONE" << std::endl;
     create_mesh2(x_length, -16, z_length);
 }
 
