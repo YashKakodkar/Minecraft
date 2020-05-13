@@ -15,6 +15,7 @@ public:
     void update(float dt);
     void create_mesh(int x_grid, int z_grid);
     void generate_plane(int x, int z);
+    void create_mesh2(int x_grid, int y_grid, int z_grid);
     void create_block();
     void create_block(float x_start, float y_start, float z_start, float size, int array_start);
     void create_block(int size);
@@ -23,7 +24,6 @@ public:
     std::vector<glm::uvec3> block_faces;
     std::vector<glm::vec3> block_positions;
 
-private:
     Block*** blocks;
     int x_length;
     int z_length;

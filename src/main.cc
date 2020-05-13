@@ -205,7 +205,7 @@ int main(int argc, char* argv[])
     //glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
     bool draw_floor = true;
     bool draw_cube = true;
-   
+    int index = 0;
     while (!glfwWindowShouldClose(window)) {
         // Setup some basic window stuff.
         glfwGetFramebufferSize(window, &window_width, &window_height);
@@ -235,12 +235,11 @@ int main(int argc, char* argv[])
         if (draw_cube) {
             //glActiveTexture(GL_TEXTURE1);
             //glBindTexture(GL_TEXTURE_CUBE_MAP, textureID);
-            testing.render();
-            //cube_pass.setup();
-   
+                testing.render(gui.getCenter());
+ 
        
         }
-
+        index = 1;
         // Poll and swap.
         glfwPollEvents();
         glfwSwapBuffers(window);

@@ -1,9 +1,10 @@
 #include "chunkmanager.h"
 #include "iostream"
+#include <glm/gtx/string_cast.hpp>
+
 Chunkmanager::Chunkmanager() {
 	for (int i = -4; i < 5; i++) {
 		for (int j = -4; j < 5; j++) {
-			std::cout << "i: " << i << "j : " << j << std::endl;
 			Chunk curr(i * 16, j * 16);
 			RenderDataInput temp;
 			temp.assign(0, "vertex_position", curr.block_vertices.data(), curr.block_vertices.size(), 4, GL_FLOAT);
@@ -14,13 +15,16 @@ Chunkmanager::Chunkmanager() {
 	}
 }
 
-Chunkmanager::Chunkmanager(int vao, const std::vector<const char*> shaders, const std::vector<ShaderUniformPtr> uniforms, const std::vector<const char*> output )
+Chunkmanager::Chunkmanager(int vao, const std::vector<const char*> shaders, const std::vector<ShaderUniformPtr> uniforms, const std::vector<const char*> output)
 {
 	allChunks.clear();
 	toRender.clear();
 	chuncksToRender.clear();
-	for (int i = -4; i < 5; i++) {
-		for (int j = -4; j < 5; j++) {
+	this->shaders = shaders;
+	this->uniforms = uniforms;
+	this->output = output;
+	for (int i = -3; i < 3; i++) {
+		for (int j = -3; j < 3; j++) {
 			//std::cout << "i: " << i << "j : " << j << std::endl;
 			Chunk curr(i * 16, j * 16);
 			chunk_size = curr.block_faces.size() * 3;
@@ -43,18 +47,71 @@ void Chunkmanager::render() {
 			chunk_size,
 			GL_UNSIGNED_INT, 0);
 	}
-	std::cout << "render " <<  toRender[toRender.size() - 1]->getVAO() << std::endl;
-	std::cout << "render " <<  toRender.size() << std::endl;
+
 }
-//RenderDataInput floor_pass_input;
-//floor_pass_input.assign(0, "vertex_position", floor_vertices.data(), floor_vertices.size(), 4, GL_FLOAT);
-//floor_pass_input.assignIndex(floor_faces.data(), floor_faces.size(), 3);
-//RenderPass floor_pass(-1,
-//	floor_pass_input,
-//	{ vertex_shader, geometry_shader, floor_fragment_shader },
-//	{ floor_model, std_view, std_proj, std_light },
-//	{ "fragment_color" }
-//);
+
+void Chunkmanager::render(glm::vec3 center) {
+	createChunksInCircle(center);
+	for (int i = 0; i < toRender.size(); i++) {
+		toRender[i]->setup();
+		glDrawElements(GL_TRIANGLES,
+			chunk_size,
+			GL_UNSIGNED_INT, 0);
+	}
+
+}
+
+void Chunkmanager::createChunksInCircle(glm::vec3 center) {
+	int name[6][6] = { {0,0,0,0,0,0},
+						{0,0,0,0,0,0}, 
+						{0,0,0,0,0,0}, 
+						{0,0,0,0,0,0}, 
+						{0,0,0,0,0,0}};
+
+	if (toRender.size() > 50) {
+		eraseFrontofRender();
+	}
+	if (allChunks.size() > 100) {
+		eraseFrontofChunk();
+	}
+	for (int i = -3; i < 3; i++) {
+		for (int j = -3; j < 3; j++) {
+			for (int index = 0; index < allChunks.size(); index++) {
+				int xNeed = (((int)(center.x + i * 16) / 16) * 16);
+				int zNeed = (((int)(center.z + j * 16) / 16) * 16);
+				if (allChunks[index].x_length == xNeed && allChunks[index].z_length == zNeed) {
+					name[i + 3][j + 3] = 1;
+					break;
+				}
+			}
+		}
+	}
+
+	for (int i = -3; i < 3; i++) {
+		for (int j = -3; j < 3; j++) {
+			if (name[i+3][j+3] == 0) {
+				int xNeed = (((int)(center.x + i * 16) / 16) * 16);
+				int zNeed = (((int)(center.z + j * 16) / 16) * 16);
+				Chunk curr(xNeed, zNeed);
+				RenderDataInput temp;
+				temp.assign(0, "vertex_position", curr.block_vertices.data(), curr.block_vertices.size(), 4, GL_FLOAT);
+				temp.assignIndex(curr.block_faces.data(), curr.block_faces.size(), 3);
+				toRender.push_back(std::make_unique<RenderPass>(-1, temp, shaders, uniforms, output));
+				allChunks.push_back(curr);
+			}
+		}
+	}
+
+}
+
+void Chunkmanager::eraseFrontofChunk() {
+	allChunks.erase(allChunks.begin(), allChunks.begin() + allChunks.size()/10);
+}
+
+void Chunkmanager::eraseFrontofRender() {
+	toRender.erase(toRender.begin(), toRender.begin() + toRender.size() / 10);
+}
+
 Chunkmanager::~Chunkmanager() {
 	allChunks.clear();
 	toRender.clear();
