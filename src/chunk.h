@@ -10,9 +10,9 @@
 class Chunk {
 public:
     Chunk(int x, int z);
-     
+
     Chunk(const Chunk&) = delete;
-    Chunk& operator = (const Chunk&) = delete;
+    Chunk& operator=(const Chunk&) = delete;
 
     Chunk() = default;
     ~Chunk() = default; /// Protected non-virtual destructor
@@ -21,7 +21,7 @@ public:
     void create_mesh(int x_grid, int z_grid);
     void generate_plane(int x, int z);
     void create_mesh2(int x_grid, int y_grid, int z_grid);
-    void create_block(float x_start, float y_start, float z_start, float size, int array_start);
+    void create_block(float x_start, float y_start, float z_start, float size, int array_start, int height, int y);
     void create_blockC(float x_start, float y_start, float z_start, float size, int arrayStart);
     void create_block(int size);
     static const int CHUNK_SIZE = 16;

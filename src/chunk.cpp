@@ -85,16 +85,17 @@ void Chunk::create_mesh(int x_grid, int y_grid, int z_grid)
             int height = perlin.height_map_[x][z]; // std::rand() % (high - low) + low;
             //std::cout << "HELcLO 11" << std::endl;
             //std::cout << "x: " << x << " |  z: " << z << "  | HEIGHT: " << height << std::endl;
-
-            for (int y = 0; y < height; ++y) {
+            create_block(x_grid + x, y_grid, z_grid + z, 1, arrayStart, height, -1);
+            for (int y = 1; y < height; ++y) {
                 // if (blocks[x][y][z].is_active() == false) {
                 //     continue;
                 // }
                 //std::cout << "X: " << x << "  | Y: " << y << "  | Z: " << z << "  | CHUNK_SIZE: " << CHUNK_SIZE << std::endl;
                 // std::cout << "HELLO 10  | HEIGHT: " << 0 << std::endl;
-                create_block(x_grid + x, y_grid + y, z_grid + z, 1, arrayStart);
-                if (y == height - 1) {
-                    std::cout << y << "  ";
+                create_block(x_grid + x, y_grid + y, z_grid + z, 1, arrayStart, height, y);
+                if (y == height - 1 && height > 4) {
+                    //std::cout << y << "  ";
+                    create_block(x_grid + x, y_grid + 36, z_grid + z, 1, arrayStart, height, -1);
                 }
 
                 //std::cout << "Grid Pos #: " << i << "  | " << x_grid + x << " " << y_grid + y << " " << z_grid + z << std::endl;
@@ -160,8 +161,11 @@ void Chunk::create_mesh2(int x_grid, int y_grid, int z_grid)
 }
 
 //void Chunk::generate_cube()
-void Chunk::create_block(float x_start, float y_start, float z_start, float size, int arrayStart)
+void Chunk::create_block(float x_start, float y_start, float z_start, float size, int arrayStart, int height, int y)
 {
+    if (y == height - 1) {
+        std::cout << y << "  ";
+    }
 
     //std::cout << "HELLO BLOCK" << std::endl;
     glm::vec3 min(x_start, y_start, z_start);

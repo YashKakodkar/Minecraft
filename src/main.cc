@@ -12,6 +12,7 @@
 #include "jpegio.h"
 #include "procedure_geometry.h"
 #include "render_pass.h"
+#include "skybox.h"
 #include <algorithm>
 #include <debuggl.h>
 #include <fstream>
@@ -22,7 +23,6 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include "skybox.h"
 
 int window_width = 800, window_height = 600;
 const std::string window_title = "Minecraft";
@@ -61,12 +61,11 @@ const char* cube_fragment_shader =
 
 const char* skybox_vertex_shader =
 #include "shaders/skybox.vert"
-;
-
+    ;
 
 const char* skybox_fragment_shader =
 #include "shaders/skybox.frag"
-;
+    ;
 
 // FIXME: Add more shaders here.
 
@@ -130,7 +129,6 @@ int main(int argc, char* argv[])
 	 * More details about copy elision:
 	 *      https://en.cppreference.com/w/cpp/language/copy_elision
 	 */
-  
 
     // FIXME: add more lambdas for data_source if you want to use RenderPass.
     //        Otherwise, do whatever you like here
@@ -165,7 +163,7 @@ int main(int argc, char* argv[])
 
     // Otherwise, do whatever you like here
     //Cube render pass
-  
+
     Chunkmanager testing(-1,
         { cube_vertex_shader, nullptr, cube_fragment_shader },
         { floor_model, std_view, std_proj, std_light },
@@ -174,48 +172,48 @@ int main(int argc, char* argv[])
     //std::vector<RenderPass*> ren;
     //for (int i = 0; i < testing.toRender.size(); i++) {
     const float skyboxVertices[108] = {
-        // positions          
-        -1.0f,  1.0f, -1.0f,
+        // positions
+        -1.0f, 1.0f, -1.0f,
         -1.0f, -1.0f, -1.0f,
-         1.0f, -1.0f, -1.0f,
-         1.0f, -1.0f, -1.0f,
-         1.0f,  1.0f, -1.0f,
-        -1.0f,  1.0f, -1.0f,
+        1.0f, -1.0f, -1.0f,
+        1.0f, -1.0f, -1.0f,
+        1.0f, 1.0f, -1.0f,
+        -1.0f, 1.0f, -1.0f,
 
-        -1.0f, -1.0f,  1.0f,
+        -1.0f, -1.0f, 1.0f,
         -1.0f, -1.0f, -1.0f,
-        -1.0f,  1.0f, -1.0f,
-        -1.0f,  1.0f, -1.0f,
-        -1.0f,  1.0f,  1.0f,
-        -1.0f, -1.0f,  1.0f,
+        -1.0f, 1.0f, -1.0f,
+        -1.0f, 1.0f, -1.0f,
+        -1.0f, 1.0f, 1.0f,
+        -1.0f, -1.0f, 1.0f,
 
-         1.0f, -1.0f, -1.0f,
-         1.0f, -1.0f,  1.0f,
-         1.0f,  1.0f,  1.0f,
-         1.0f,  1.0f,  1.0f,
-         1.0f,  1.0f, -1.0f,
-         1.0f, -1.0f, -1.0f,
+        1.0f, -1.0f, -1.0f,
+        1.0f, -1.0f, 1.0f,
+        1.0f, 1.0f, 1.0f,
+        1.0f, 1.0f, 1.0f,
+        1.0f, 1.0f, -1.0f,
+        1.0f, -1.0f, -1.0f,
 
-        -1.0f, -1.0f,  1.0f,
-        -1.0f,  1.0f,  1.0f,
-         1.0f,  1.0f,  1.0f,
-         1.0f,  1.0f,  1.0f,
-         1.0f, -1.0f,  1.0f,
-        -1.0f, -1.0f,  1.0f,
+        -1.0f, -1.0f, 1.0f,
+        -1.0f, 1.0f, 1.0f,
+        1.0f, 1.0f, 1.0f,
+        1.0f, 1.0f, 1.0f,
+        1.0f, -1.0f, 1.0f,
+        -1.0f, -1.0f, 1.0f,
 
-        -1.0f,  1.0f, -1.0f,
-         1.0f,  1.0f, -1.0f,
-         1.0f,  1.0f,  1.0f,
-         1.0f,  1.0f,  1.0f,
-        -1.0f,  1.0f,  1.0f,
-        -1.0f,  1.0f, -1.0f,
+        -1.0f, 1.0f, -1.0f,
+        1.0f, 1.0f, -1.0f,
+        1.0f, 1.0f, 1.0f,
+        1.0f, 1.0f, 1.0f,
+        -1.0f, 1.0f, 1.0f,
+        -1.0f, 1.0f, -1.0f,
 
         -1.0f, -1.0f, -1.0f,
-        -1.0f, -1.0f,  1.0f,
-         1.0f, -1.0f, -1.0f,
-         1.0f, -1.0f, -1.0f,
-        -1.0f, -1.0f,  1.0f,
-         1.0f, -1.0f,  1.0f
+        -1.0f, -1.0f, 1.0f,
+        1.0f, -1.0f, -1.0f,
+        1.0f, -1.0f, -1.0f,
+        -1.0f, -1.0f, 1.0f,
+        1.0f, -1.0f, 1.0f
     };
     float aspect = 0.0f;
     //RenderDataInput skybox_pass_input;
@@ -265,7 +263,7 @@ int main(int argc, char* argv[])
         // Setup some basic window stuff.
         glfwGetFramebufferSize(window, &window_width, &window_height);
         glViewport(0, 0, window_width, window_height);
-        glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+        glClearColor(0.52f, 0.80f, 0.92f, 0.0f);
         glEnable(GL_DEPTH_TEST);
         glEnable(GL_MULTISAMPLE);
         glEnable(GL_BLEND);
@@ -291,7 +289,7 @@ int main(int argc, char* argv[])
         //glDrawArrays(GL_TRIANGLES, 0, 36);
         //glCullFace(OldCullFaceMode);
         //glDepthFunc(OldDepthFuncMode);
-     
+
 #if 0
 		std::cerr << model_data() << '\n';
 		std::cerr << "call from outside: " << std_model->data_source() << "\n";
