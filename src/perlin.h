@@ -29,7 +29,7 @@ private:
     int grid_shift_x_, grid_shift_z_;
 
     float perlin_freq_ = 0.05; // adjust frequency of perlin noise
-    float perlin_height_amp_ = 16; // adjust amplitude of perlin noise
+    float perlin_height_amp_ = 24; // adjust amplitude of perlin noise
 };
 
 #endif

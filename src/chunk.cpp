@@ -85,7 +85,7 @@ void Chunk::create_mesh(int x_grid, int y_grid, int z_grid)
             int height = perlin.height_map_[x][z]; // std::rand() % (high - low) + low;
             //std::cout << "HELcLO 11" << std::endl;
             //std::cout << "x: " << x << " |  z: " << z << "  | HEIGHT: " << height << std::endl;
-            create_blockC(x_grid + x, y_grid, z_grid + z, 1, arrayStart);
+            //create_blockC(x_grid + x, y_grid, z_grid + z, 1, arrayStart);
             arrayStart += 36;
             //create_block(x_grid + x, y_grid, z_grid + z, 1, arrayStart, height, -1);
             for (int y = 1; y < height; ++y) {
@@ -101,15 +101,14 @@ void Chunk::create_mesh(int x_grid, int y_grid, int z_grid)
                 // }
                 create_blockC(x_grid + x, y_grid + y, z_grid + z, 1, arrayStart);
                 arrayStart += 36;
-                if (y == height - 1 && height > 4) {
-                    std::cout << y << "  ";
-                    create_blockC(x_grid + x, y_grid + 36, z_grid + z, 1, arrayStart);
-                    arrayStart += 36;
-                }
+                // if (y == height - 1 && height > 4) {
+                //     //std::cout << y << "  ";
+                //     create_blockC(x_grid + x, y_grid + 36, z_grid + z, 1, arrayStart);
+                //     arrayStart += 36;
+                // }
 
                 //std::cout << "Grid Pos #: " << i << "  | " << x_grid + x << " " << y_grid + y << " " << z_grid + z << std::endl;
                 i++;
- 
             }
 
             // if (height > prevHeight) {
@@ -268,15 +267,30 @@ void Chunk::create_block(float x_start, float y_start, float z_start, float size
 
 void Chunk::create_blockC(float x_start, float y_start, float z_start, float size, int arrayStart)
 {
+    int height = y_start + 16;
     glm::vec3 rgb = glm::vec3(1.0, 1.0, 1.0);
-    if (y_start >= -16 && y_start < -15) {
-        rgb = glm::vec3(74.0 / 255.0, 74.0 / 255.0, 74.0 / 255.0);
-    } else if (y_start >= -15 && y_start < -14) {
-        rgb = glm::vec3(111.0 / 255.0, 111.0 / 255.0, 111.0 / 255.0);
-    } else if (y_start >= -14 && y_start < -10) {
-        rgb = glm::vec3(70.0 / 255.0, 31.0 / 255.0, 6.0 / 255.0);
-    } else if (y_start >= -10 && y_start < 10) {
-        rgb = glm::vec3(14.0 / 255.0, 87.0 / 255.0, 0.0);
+    if (height >= 0 && height < 1) {
+        rgb = glm::vec3(177.0 / 255.0, 105.0 / 255.0, 50.0 / 255.0);
+    } else if (height >= 1 && height < 2) {
+        rgb = glm::vec3(177.0 / 255.0, 105.0 / 255.0, 50.0 / 255.0);
+    } else if (height >= 2 && height < 3) {
+        rgb = glm::vec3(147.0 / 255.0, 85.0 / 255.0, 46.0 / 255.0);
+    } else if (height >= 3 && height < 4) {
+        rgb = glm::vec3(121.0 / 255.0, 58.0 / 255.0, 46.0 / 255.0);
+    } else if (height >= 4 && height < 6) {
+        rgb = glm::vec3(142.0 / 255.0, 95.0 / 255.0, 70.0 / 255.0);
+    } else if (height >= 6 && height < 7) {
+        rgb = glm::vec3(118.0 / 255.0, 102.0 / 255.0, 93.0 / 255.0);
+    } else if (height >= 7 && height < 9) {
+        rgb = glm::vec3(186.0 / 255.0, 126.0 / 255.0, 31.0 / 255.0);
+    } else if (height >= 9 && height < 11) {
+        rgb = glm::vec3(121.0 / 255.0, 58.0 / 255.0, 46.0 / 255.0);
+    } else if (height >= 11 && height < 12) {
+        rgb = glm::vec3(147.0 / 255.0, 85.0 / 255.0, 46.0 / 255.0);
+    } else if (height >= 12 && height < 15) {
+        rgb = glm::vec3(79.0 / 255.0, 39.0 / 255.0, 28.0 / 255 / 0);
+    } else if (height >= 15 && height < 17) {
+        rgb = glm::vec3(142.0 / 255.0, 95.0 / 255.0, 70.0 / 255.0);
     } else {
         rgb = glm::vec3(1.0, 1.0, 1.0);
     }
@@ -345,7 +359,7 @@ void Chunk::create_blockC(float x_start, float y_start, float z_start, float siz
 
     //bottom--------------------------------------------------------
     //botleft
-    
+
     block_vertices.push_back(glm::vec4(min.x, min.y, max.z, 1.0f));
     block_vertices.push_back(glm::vec4(min.x, min.y, min.z, 1.0f));
     block_vertices.push_back(glm::vec4(max.x, min.y, min.z, 1.0f));
@@ -355,7 +369,7 @@ void Chunk::create_blockC(float x_start, float y_start, float z_start, float siz
     block_faces.push_back(glm::uvec3(arrayStart + 18, arrayStart + 19, arrayStart + 20));
 
     //top right
-    
+
     block_vertices.push_back(glm::vec4(max.x, min.y, max.z, 1.0f));
     block_vertices.push_back(glm::vec4(min.x, min.y, max.z, 1.0f));
     block_vertices.push_back(glm::vec4(max.x, min.y, min.z, 1.0f));
