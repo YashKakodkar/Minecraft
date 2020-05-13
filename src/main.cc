@@ -156,7 +156,11 @@ int main(int argc, char* argv[])
     //Cube render pass
     Chunkmanager testing(-1,
         { cube_vertex_shader, nullptr, cube_fragment_shader },
+<<<<<<< HEAD
         { floor_model, std_view, std_proj, std_light },
+=======
+        { floor_model, std_view, std_proj, std_light, chunk_pos, std_camera },
+>>>>>>> 357c798832723f4c411094c84e54b2fc2d7f44ce
         { "fragment_color" });
 
     //std::vector<RenderPass*> ren;
