@@ -1,14 +1,30 @@
 #include "chunk.h"
 #include <vector>
 #include "render_pass.h"
-class Chunkmanager{
-    public:
-        Chunkmanager();
+#include "gui.h"
+#pragma once
+class Chunkmanager {
+public:
+    Chunkmanager();
+    Chunkmanager(int vao, // -1: create new VAO, otherwise use given VAO
+        const std::vector<const char*> shaders, // Order: VS, GS, FS 
+        const std::vector<ShaderUniformPtr> uniforms,
+        const std::vector<const char*> output // Order: 0, 1, 2...);
+    );
+    void render();
+    void render(glm::vec3 center);
+    void createChunksInCircle(glm::vec3 center);
+    void eraseFrontofChunk();
+    void eraseFrontofRender();
         ~Chunkmanager();
         std::vector<Chunk> getChunks() const { return allChunks; }
     private:
         std::vector<Chunk> allChunks; 
+        std::vector<const char*> shaders;
+        std::vector<ShaderUniformPtr> uniforms;
+        std::vector<const char*> output;
         std::vector<Chunk> chuncksToRender;
-        std::vector<RenderDataInput> toRender;
+        std::vector<std::unique_ptr<RenderPass>> toRender;
+        int chunk_size = 0;
         
 };

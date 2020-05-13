@@ -1,12 +1,13 @@
 #include "chunk.h"
 #include "block.h"
+#include <algorithm>
 #include <glm/gtc/matrix_access.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtx/quaternion.hpp>
 #include <glm/gtx/transform.hpp>
 #include <iostream>
+#include <math.h>
 #include <vector>
-
 Chunk::Chunk(int x, int z)
     : x_length(x)
     , z_length(z)
@@ -24,6 +25,7 @@ Chunk::Chunk(int x, int z)
     //generate_plane(x_length, z_length);
     create_mesh(x_length, -16, z_length);
     std::cout << "HELLO DONE" << std::endl;
+    create_mesh2(x_length, -16, z_length);
 }
 
 Chunk::~Chunk()
@@ -112,6 +114,22 @@ void Chunk::generate_plane(int x_len, int z_len)
     for (int x = 0; x < x_length; x++) {
         for (int z = 0; z < z_length; z++) {
             create_mesh(x, z);
+        }
+    }
+}
+
+void Chunk::create_mesh2(int x_grid, int y_grid, int z_grid)
+{
+    int arrayStart = 0;
+    for (int x = 0; x < CHUNK_SIZE; x++) {
+        for (int y = 0; y < CHUNK_SIZE; y++) {
+            for (int z = 0; z < CHUNK_SIZE; z++) {
+                if (blocks[x][y][z].is_active() == false) {
+                    continue;
+                }
+                create_block(x_grid + x, y_grid + y, z_grid + z, 1, arrayStart);
+                arrayStart += 36;
+            }
         }
     }
 }

@@ -95,23 +95,6 @@ int main(int argc, char* argv[])
 
     GLFWwindow* window = init_glefw();
     GUI gui(window);
-    //Chunkmanager test;
-    //Cube cube();
-    // Block test;
-    // std::vector<glm::vec4> cube_vertices;
-    // std::vector<glm::uvec3> cube_faces;
-    // std::vector<glm::vec2> textured;
-    // test.generate_multiBlocks(cube_vertices, cube_faces);
-    // //test.generate_multiBlocksTextured(cube_vertices, textured, cube_faces, -32.0,-32.0,-32.0, 2);
-    // std::cout << "NUM VERT " << cube_vertices.size() << std::endl;
-    //std::vector<glm::vec4> floor_vertices;
-    //std::vector<glm::uvec3> floor_faces;
-    //create_floor(floor_vertices, floor_faces);
-
-    Chunk terrain(-16, -16);
-    std::cout << terrain.block_vertices.size() << "terrain size" << std::endl;
-    std::cout << terrain.block_faces.size() << "terrain size" << std::endl;
-    //terrain.create_mesh();
 
     glm::vec4 light_position = glm::vec4(0.0f, 100.0f, 0.0f, 1.0f);
     MatrixPointers mats; // Define MatrixPointers here for lambda to capture
@@ -140,6 +123,7 @@ int main(int argc, char* argv[])
     // FIXME: add more lambdas for data_source if you want to use RenderPass.
     //        Otherwise, do whatever you like here
     std::function<const glm::mat4*()> model_data = [&mats]() {
+        std::cout << "herejiasodhioashdoi";
         return mats.model;
     };
     std::function<glm::mat4()> view_data = [&mats]() { return *mats.view; };
@@ -147,7 +131,7 @@ int main(int argc, char* argv[])
     std::function<glm::mat4()> identity_mat = []() { return glm::mat4(1.0f); };
     std::function<glm::vec3()> cam_data = [&gui]() { return gui.getCamera(); };
     std::function<glm::vec4()> lp_data = [&light_position]() { return light_position; };
-    std::function<std::vector<glm::vec3>()> chunk_pos_data = [&terrain]() { return terrain.block_positions; };
+    //std::function<std::vector<glm::vec3>()> chunk_pos_data = [&terrain]() { return terrain.block_positions; };
 
     auto std_model = std::make_shared<ShaderUniform<const glm::mat4*>>("model", model_data);
     auto floor_model = make_uniform("model", identity_mat);
@@ -155,7 +139,7 @@ int main(int argc, char* argv[])
     auto std_camera = make_uniform("camera_position", cam_data);
     auto std_proj = make_uniform("projection", proj_data);
     auto std_light = make_uniform("light_position", lp_data);
-    auto chunk_pos = make_uniform("chunk_pos", chunk_pos_data);
+    //auto chunk_pos = make_uniform("chunk_pos", chunk_pos_data);
 
     std::function<float()> alpha_data = [&gui]() {
         static const float transparet = 0.5; // Alpha constant goes here
@@ -168,42 +152,41 @@ int main(int argc, char* argv[])
     auto object_alpha = make_uniform("alpha", alpha_data);
 
     // Otherwise, do whatever you like here
-
-    // Floor render pass
-    //RenderDataInput floor_pass_input;
-    //floor_pass_input.assign(0, "vertex_position", floor_vertices.data(), floor_vertices.size(), 4, GL_FLOAT);
-    //floor_pass_input.assignIndex(floor_faces.data(), floor_faces.size(), 3);
+    //Cube render pass
+    Chunkmanager testing(-1,
+        { cube_vertex_shader, nullptr, cube_fragment_shader },
+        { floor_model, std_view, std_proj, std_light },
+        { "fragment_color" });
+    //std::vector<RenderPass*> ren;
+    //for (int i = 0; i < testing.toRender.size(); i++) {
     //RenderPass floor_pass(-1,
-    //    floor_pass_input,
+    //    *(testing.toRender[0]),
     //    { vertex_shader, geometry_shader, floor_fragment_shader },
     //    { floor_model, std_view, std_proj, std_light },
     //    { "fragment_color" });
-
-    //Cube render pass
-    RenderDataInput cube_pass_input;
-    cube_pass_input.assign(0, "vertex_position", terrain.block_vertices.data(), terrain.block_vertices.size(), 4, GL_FLOAT);
-    // if (!textured.empty()) {
-    //     cube_pass_input.assign(0, "texture_uv", textured.data(), textured.size(), 2, GL_FLOAT);
-    // }
-    cube_pass_input.assignIndex(terrain.block_faces.data(), terrain.block_faces.size(), 3);
-    RenderPass cube_pass(-1,
-        cube_pass_input,
-        { cube_vertex_shader, nullptr, cube_fragment_shader },
-        { floor_model, std_view, std_proj, std_light, chunk_pos, std_camera },
-        { "fragment_color" });
+    //ren.push_back(&floor_pass);
+    //}
+    //RenderDataInput cube_pass_input;
+    //cube_pass_input.assign(0, "vertex_position", terrain.block_vertices.data(), terrain.block_vertices.size(), 4, GL_FLOAT);
+    //cube_pass_input.assignIndex(terrain.block_faces.data(), terrain.block_faces.size(), 3);
+    //RenderPass cube_pass(-1,
+    //    cube_pass_input,
+    //    { cube_vertex_shader, nullptr, cube_fragment_shader },
+    //    { floor_model, std_view, std_proj, std_light },
+    //    { "fragment_color" });
 
     float aspect = 0.0f;
     //std::cout << "center = " << mesh.getCenter() << "\n";
-    unsigned int textureID;
+    //unsigned int textureID;
 
-    Image image;
-    char buff[FILENAME_MAX]; //create string buffer to hold path
-    //_getcwd(buff, FILENAME_MAX);
-    std::string current_working_dir(buff);
-    std::cout << buff << std::endl;
-    bool got = LoadJPEG("../../src/textures/dirtside.jpg", &image);
-    std::cout << "Got " << got << std::endl;
-    std::cout << "Width :" << image.width << "\nHeight: " << image.height << std::endl;
+    //Image image;
+    //char buff[FILENAME_MAX]; //create string buffer to hold path
+    ////_getcwd(buff, FILENAME_MAX);
+    //std::string current_working_dir(buff);
+    //std::cout << buff << std::endl;
+    //bool got = LoadJPEG("../../src/textures/dirtside.jpg", &image);
+    //std::cout << "Got " << got << std::endl;
+    //std::cout << "Width :" << image.width << "\nHeight: " << image.height << std::endl;
     //glGenTextures(1, &textureID);
     //glBindTexture(GL_TEXTURE_CUBE_MAP, textureID);
     //glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X, 0, GL_RGB, image.width, image.height, 0, GL_BGR, GL_UNSIGNED_BYTE, image.bytes.data());
@@ -217,10 +200,11 @@ int main(int argc, char* argv[])
     //glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     //glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
     //glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+
     //glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
     bool draw_floor = true;
     bool draw_cube = true;
-
+    int index = 0;
     while (!glfwWindowShouldClose(window)) {
         // Setup some basic window stuff.
         glfwGetFramebufferSize(window, &window_width, &window_height);
@@ -247,25 +231,12 @@ int main(int argc, char* argv[])
             gui.clearPose();
         }
 
-        // Then draw floor.
-        //if (draw_floor) {
-        //    floor_pass.setup();
-        //    // Draw our triangles.
-        //    CHECK_GL_ERROR(glDrawElements(GL_TRIANGLES,
-        //        floor_faces.size() * 3,
-        //        GL_UNSIGNED_INT, 0));
-        //}
-
         if (draw_cube) {
             //glActiveTexture(GL_TEXTURE1);
             //glBindTexture(GL_TEXTURE_CUBE_MAP, textureID);
-            std::cout << "Rendering!" << std::endl;
-            cube_pass.setup();
-            CHECK_GL_ERROR(glDrawElements(GL_TRIANGLES,
-                terrain.block_faces.size() * 3,
-                GL_UNSIGNED_INT, 0));
+            testing.render(gui.getCenter());
         }
-
+        index = 1;
         // Poll and swap.
         glfwPollEvents();
         glfwSwapBuffers(window);

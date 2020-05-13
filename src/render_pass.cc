@@ -75,9 +75,9 @@ RenderPass::RenderPass(int vao, // -1: create new VAO, otherwise use given VAO
 {
 	if (vao_ < 0) {
 		CHECK_GL_ERROR(glGenVertexArrays(1, (GLuint*)&vao_));
+		std::cout << vao_ << " vao\n";
 	}
 	CHECK_GL_ERROR(glBindVertexArray(vao_));
-
 	// Program first
 	vs_ = compileShader(shaders[0], GL_VERTEX_SHADER);
 	gs_ = compileShader(shaders[1], GL_GEOMETRY_SHADER);
@@ -102,6 +102,7 @@ RenderPass::RenderPass(int vao, // -1: create new VAO, otherwise use given VAO
 				meta.data,
 				GL_STATIC_DRAW));
 		if (meta.isInteger()) {
+			
 			CHECK_GL_ERROR(glVertexAttribIPointer(meta.position,
 						meta.element_length,
 						meta.element_type,
@@ -282,7 +283,7 @@ void RenderPass::updateVBO(int position, const void* data, size_t size)
 
 void RenderPass::setup()
 {
-	// Switch to our object VAO.
+	// Switch to our object VAO
 	CHECK_GL_ERROR(glBindVertexArray(vao_));
 	// Use our program.
 	CHECK_GL_ERROR(glUseProgram(sp_));
