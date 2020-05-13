@@ -22,14 +22,14 @@ void main() {
 //vec4 spec = specular * pow(max(0.0, dot(reflect(-light_direction, vertex_normal), camera_direction)), shininess);
 	//color = clamp(dot_nl * color + vec3(ambient), 0.0, 1.0);
 	vec3 rgb;
-	if (Pos.y >= -16 && Pos.y < -12) {
-        rgb = vec3(74/255.0, 74/255.0, 74/255.0);
+	if (Pos.y >= -16 && Pos.y < -14) {
+        rgb = vec3(74.0/255.0, 74.0/255.0, 74.0/255.0);
     }
-    else if (Pos.y >= -12 && Pos.y < -2) {
-        rgb = vec3(111/255.0, 111/255.0, 111/255.0);
+    else if (Pos.y >= -13 && Pos.y < -12) {
+        rgb = vec3(111.0/255.0, 111.0/255.0, 111.0/255.0);
     }
-    else if (Pos.y >= -2 && Pos.y < 5) {
-        rgb = vec3(70/255.0, 31/255.0, 6/255.0);
+    else if (Pos.y >= -12 && Pos.y < -10) {
+        rgb = vec3(70.0/255.0, 31.0/255.0, 6.0/255.0);
     }
     else if (Pos.y >= 5) {
         rgb = vec3(14.0/255.0,87.0/255.0, 0.0);
