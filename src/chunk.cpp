@@ -143,15 +143,15 @@ void Chunk::generate_plane(int x_len, int z_len)
 void Chunk::create_mesh2(int x_grid, int y_grid, int z_grid)
 {
     int arrayStart = 0;
-    std::srand(std::time(nullptr));
     for (int x = 0; x < CHUNK_SIZE; x++) {
-        for (int y = 0; y < CHUNK_SIZE; y++) {
+        
             for (int z = 0; z < CHUNK_SIZE; z++) {
+                for (int y = 0; y < z; y++) {
                 // if (blocks[x][y][z].is_active() == false) {
                 //     continue;
                 // }
 
-                create_blockC(x_grid + x, -16, z_grid + z, 1, arrayStart);
+                create_block(x_grid + x, y + y_grid, z_grid + z, 1, arrayStart);
 
                 arrayStart += 36;
             }
@@ -211,13 +211,15 @@ void Chunk::create_block(float x_start, float y_start, float z_start, float size
     //bottom--------------------------------------------------------
     //botleft
     block_vertices.push_back(glm::vec4(min.x, min.y, min.z, 1.0f));
-    block_vertices.push_back(glm::vec4(min.x, min.y, max.z, 1.0f));
+    
     block_vertices.push_back(glm::vec4(max.x, min.y, min.z, 1.0f));
+    block_vertices.push_back(glm::vec4(min.x, min.y, max.z, 1.0f));
     block_faces.push_back(glm::uvec3(arrayStart + 18, arrayStart + 19, arrayStart + 20));
 
     //top right
-    block_vertices.push_back(glm::vec4(min.x, min.y, max.z, 1.0f));
+    
     block_vertices.push_back(glm::vec4(max.x, min.y, max.z, 1.0f));
+    block_vertices.push_back(glm::vec4(min.x, min.y, max.z, 1.0f));
     block_vertices.push_back(glm::vec4(max.x, min.y, min.z, 1.0f));
     block_faces.push_back(glm::uvec3(arrayStart + 21, arrayStart + 22, arrayStart + 23));
 
