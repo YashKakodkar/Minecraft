@@ -1,22 +1,6 @@
 #include "chunkmanager.h"
 #include "iostream"
-<<<<<<< HEAD
-Chunkmanager::Chunkmanager()
-{
-    for (int i = -4; i < 5; i++) {
-        for (int j = -4; j < 5; j++) {
-            //std::cout << "i: " << i << "j : " << j << std::endl;
-            Chunk curr(i * 16, j * 16);
-            allChunks.push_back(curr);
-        }
-    }
-}
 
-Chunkmanager::~Chunkmanager()
-{
-    allChunks.clear();
-    chuncksToRender.clear();
-=======
 #include <glm/gtx/string_cast.hpp>
 
 Chunkmanager::Chunkmanager() {
@@ -133,5 +117,5 @@ Chunkmanager::~Chunkmanager() {
 	allChunks.clear();
 	toRender.clear();
 	chuncksToRender.clear();
->>>>>>> 43291c497e04cd534ffaccc95423f1356fc9de8c
+
 }

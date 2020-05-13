@@ -25,7 +25,6 @@ public:
     std::vector<glm::uvec3> block_faces;
     std::vector<glm::vec3> block_positions;
 
-private:
     Perlin perlin;
     Block*** blocks;
     int x_length;
