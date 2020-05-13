@@ -7,6 +7,9 @@
 #include <glm/gtx/transform.hpp>
 #include <iostream>
 #include <math.h>
+#include <ctime>
+#include <chrono>
+#include <thread>
 #include <vector>
 Chunk::Chunk(int x, int z)
     : x_length(x)
@@ -21,33 +24,35 @@ Chunk::Chunk(int x, int z)
             blocks[i][j] = new Block[CHUNK_SIZE];
         }
     }
+    std::srand(std::time(nullptr));
+  
     //create_block(0.0f,0.0f,0.0f,1.0f);
     //generate_plane(x_length, z_length);
-    create_mesh(x_length, -16, z_length);
+    create_mesh2(x_length, -16, z_length);
     //std::cout << "HELLO DONE" << std::endl;
     //create_mesh2(x_length, -16, z_length);
 }
 
-Chunk::~Chunk()
-{
-    // Delete the blocks
-    //for (int i = 0; i < CHUNK_SIZE; ++i) {
-    //    for (int j = 0; j < CHUNK_SIZE; ++j) {
-    //        if (blocks[i][j] != NULL) {
-    //            delete[] blocks[i][j];
-    //        }
-    //    }
-    //    if (blocks[i] != NULL) {
-    //        delete[] blocks[i];
-    //    }
-    //
-    //}
-    //if (blocks != NULL) {
-    //    delete[] blocks;
-    //}
-    block_faces.clear();
-    block_vertices.clear();
-}
+//Chunk::~Chunk()
+//{
+//    // Delete the blocks
+//    //for (int i = 0; i < CHUNK_SIZE; ++i) {
+//    //    for (int j = 0; j < CHUNK_SIZE; ++j) {
+//    //        if (blocks[i][j] != NULL) {
+//    //            delete[] blocks[i][j];
+//    //        }
+//    //    }
+//    //    if (blocks[i] != NULL) {
+//    //        delete[] blocks[i];
+//    //    }
+//    //
+//    //}
+//    //if (blocks != NULL) {
+//    //    delete[] blocks;
+//    //}
+//    block_faces.clear();
+//    block_vertices.clear();
+//}
 
 void Chunk::create_mesh(int x_grid, int y_grid, int z_grid)
 {
@@ -57,14 +62,14 @@ void Chunk::create_mesh(int x_grid, int y_grid, int z_grid)
     int low = 6;
     int prevHeight = 8;
     perlin.generateHeightMap();
-    std::cout << "Test heights" << std::endl;
-    for (int i = 0; i < 16; i++) {
-        for (int r = 0; r < 16; r++) {
-            std::cout << perlin.height_map_[i][r] << "    ";
-            //x++;
-        }
-        std::cout << std::endl;
-    }
+    //std::cout << "Test heights" << std::endl;
+    //for (int i = 0; i < 16; i++) {
+    //    for (int r = 0; r < 16; r++) {
+    //        std::cout << perlin.height_map_[i][r] << "    ";
+    //        //x++;
+    //    }
+    //    std::cout << std::endl;
+    //}
     //std::cout << "HELLO 7" << std::endl;
     //std::vector<std::vector<int>> height_map = perlin.height_map_; //std::vector<std::vector<int>>(16, std::vector<int>(16, 0));
     //std::cout << "HELLO 8" << std::endl;
@@ -78,7 +83,7 @@ void Chunk::create_mesh(int x_grid, int y_grid, int z_grid)
             //std::cout << "HELLO 10" << std::endl;
             int height = perlin.height_map_[x][z]; // std::rand() % (high - low) + low;
             //std::cout << "HELcLO 11" << std::endl;
-            std::cout << "HEIGHT: " << height << std::endl;
+            //std::cout << "HEIGHT: " << height << std::endl;
 
             for (int y = 0; y < height; ++y) {
                 // if (blocks[x][y][z].is_active() == false) {
@@ -132,16 +137,23 @@ void Chunk::generate_plane(int x_len, int z_len)
 void Chunk::create_mesh2(int x_grid, int y_grid, int z_grid)
 {
     int arrayStart = 0;
+    std::srand(std::time(nullptr));
     for (int x = 0; x < CHUNK_SIZE; x++) {
-        for (int y = 0; y < CHUNK_SIZE; y++) {
+     /*   for (int y = 0; y < CHUNK_SIZE; y++) {*/
             for (int z = 0; z < CHUNK_SIZE; z++) {
                 // if (blocks[x][y][z].is_active() == false) {
                 //     continue;
                 // }
-                create_block(x_grid + x, y_grid + y, z_grid + z, 1, arrayStart);
+                if (std::rand() % 2 == 0) {
+                    create_block(x_grid + x, -16, z_grid + z, 1, arrayStart);
+
+                }
+                else {
+  
+                }
                 arrayStart += 36;
             }
-        }
+        //}
     }
 }
 

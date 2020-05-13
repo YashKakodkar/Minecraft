@@ -33,7 +33,7 @@ double Perlin::noise3D(double x, double y, double z)
     int X = (int)floor(x) & 255;
     int Y = (int)floor(y) & 255;
     int Z = (int)floor(z) & 255;
-    std::cout << "HELLO 2" << std::endl;
+    //std::cout << "HELLO 2" << std::endl;
     x -= floor(x);
     y -= floor(y);
     z -= floor(z);
@@ -41,10 +41,10 @@ double Perlin::noise3D(double x, double y, double z)
     double u = fade(x);
     double v = fade(y);
     double w = fade(z);
-    std::cout << "HELLO 3" << std::endl;
+    //std::cout << "HELLO 3" << std::endl;
     int A = p[X] + Y, AA = p[A] + Z, AB = p[A + 1] + Z, // HASH COORDINATES OF
         B = p[X + 1] + Y, BA = p[B] + Z, BB = p[B + 1] + Z; // THE 8 CUBE CORNERS,
-    std::cout << "HELLO 4" << std::endl;
+    //std::cout << "HELLO 4" << std::endl;
     return lerp(w, lerp(v, lerp(u, grad(p[AA], x, y, z), // AND ADD
                                grad(p[BA], x - 1, y, z)), // BLENDED
                        lerp(u, grad(p[AB], x, y - 1, z), // RESULTS
@@ -91,16 +91,16 @@ void Perlin::generateHeightMap()
     grid_shift_z_ = -1 * (grid_center_z - origin_grid_center_z);
 
     for (int grid_x = 0; grid_x < 16; grid_x++) {
-        std::cout << "HELLO 1" << std::endl;
+        //std::cout << "HELLO 1" << std::endl;
         for (int grid_z = 0; grid_z < 16; grid_z++) {
             int pos_x = grid_x + grid_shift_x_;
             int pos_z = grid_z + grid_shift_z_;
 
-            std::cout << pos_x << ", " << pos_z << std::endl;
+            //std::cout << pos_x << ", " << pos_z << std::endl;
             int grid_y = std::floor(perlin_height_amp_ * abs((float)noise3D(pos_x * perlin_freq_, 0.0, pos_z * perlin_freq_)));
-            std::cout << "HELLO 5" << std::endl;
-            std::cout << "grid_x = " << grid_x << " | grid_z = " << grid_z << std::endl;
-            std::cout << "grid_y = " << grid_y << std::endl;
+            //std::cout << "HELLO 5" << std::endl;
+            //std::cout << "grid_x = " << grid_x << " | grid_z = " << grid_z << std::endl;
+            //std::cout << "grid_y = " << grid_y << std::endl;
             height_map_[grid_x][grid_z] = grid_y;
 
             // if (grid_x == 0 && grid_z == 63) {
@@ -108,7 +108,7 @@ void Perlin::generateHeightMap()
             // }
         }
     }
-    std::cout << "VALUES DONE" << std::endl;
+    //std::cout << "VALUES DONE" << std::endl;
     int x = 1;
     // for (int i = 0; i < 16; i++) {
     //     for (int r = 0; r < 16; r++) {
@@ -116,12 +116,12 @@ void Perlin::generateHeightMap()
     //         x++;
     //     }
     // }
-    for (int i = 0; i < 16; i++) {
-        for (int r = 0; r < 16; r++) {
-            std::cout << height_map_[i][r] << "    ";
-            x++;
-        }
-        std::cout << std::endl;
-    }
-    std::cout << "HELLO 6" << std::endl;
+    //for (int i = 0; i < 16; i++) {
+    //    for (int r = 0; r < 16; r++) {
+    //        std::cout << height_map_[i][r] << "    ";
+    //        x++;
+    //    }
+    //    std::cout << std::endl;
+    //}
+    //std::cout << "HELLO 6" << std::endl;
 }

@@ -59,6 +59,15 @@ const char* cube_fragment_shader =
 #include "shaders/cube.frag"
     ;
 
+//const char* skybox_vertex_shader =
+//#include "shaders/skybox.vert"
+//;
+//
+//
+//const char* skybox_fragment_shader =
+//#include "shaders/skybox.frag"
+//;
+
 // FIXME: Add more shaders here.
 
 void ErrorCallback(int error, const char* description)
@@ -99,8 +108,8 @@ int main(int argc, char* argv[])
 
     glm::vec4 light_position = glm::vec4(0.0f, 100.0f, 0.0f, 1.0f);
     MatrixPointers mats; // Define MatrixPointers here for lambda to capture
-    Skybox s(window_width, window_height); 
-    std::cout << "che\n";
+    //Skybox s(window_width, window_height); 
+    //std::cout << "che\n";
     /*
 	 * In the following we are going to define several lambda functions as
 	 * the data source of GLSL uniforms
@@ -210,8 +219,15 @@ int main(int argc, char* argv[])
          1.0f, -1.0f,  1.0f
     };
 
-
-    float aspect = 0.0f;
+    //RenderDataInput skybox_pass_input;
+    //float aspect = 0.0f;
+    //skybox_pass_input.assign(0, "vert", skyboxVertices, sizeof(float) * 108, 3, GL_INT);
+    //RenderPass skybox_pass_input(-1,
+    //    skybox_pass_input,
+    //    { skybox_vertex_shader, nullptr, skybox_fragment_shader },
+    //    { std_view, std_proj, std_light },
+    //    { "fragment_color" }
+    //);
     //std::cout << "center = " << mesh.getCenter() << "\n";
     //unsigned int textureID;
 
