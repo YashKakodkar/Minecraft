@@ -57,7 +57,7 @@ Chunkmanager::Chunkmanager(int vao, const std::vector<const char*> shaders, cons
 			allChunks.push_back(std::make_unique<Chunk>(i * 32, j * 32));
 			chunk_size = allChunks[allChunks.size() - 1]->block_faces.size() * 3;
 			temp.assign(0, "vertex_position", allChunks[allChunks.size() - 1]->block_vertices.data(), allChunks[allChunks.size() - 1]->block_vertices.size(), 4, GL_FLOAT);
-			temp.assign(1, "color", allChunks[allChunks.size() - 1]->block_color.data(), allChunks[allChunks.size() - 1]->block_color.size(), 3, GL_FLOAT);
+		//	temp.assign(1, "color", allChunks[allChunks.size() - 1]->block_color.data(), allChunks[allChunks.size() - 1]->block_color.size(), 3, GL_FLOAT);
 			temp.assignIndex(allChunks[allChunks.size() - 1]->block_faces.data(), allChunks[allChunks.size() - 1]->block_faces.size(), 3);
 			toRender.push_back(std::make_unique<RenderPass>(-1, temp, shaders, uniforms, output));
 
