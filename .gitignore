@@ -1,2 +1,5 @@
 CMakeLists.txt
 build/
+CMakeLists.txt
+.vscode/settings.json
+src/CMakeLists.txt
