@@ -168,9 +168,6 @@ int main(int argc, char* argv[])
         { cube_vertex_shader, nullptr, cube_fragment_shader },
         { floor_model, std_view, std_proj, std_light },
         { "fragment_color" });
-
-    //std::vector<RenderPass*> ren;
-    //for (int i = 0; i < testing.toRender.size(); i++) {
     float aspect = 0.0f;
     bool draw_floor = true;
     bool draw_cube = true;
