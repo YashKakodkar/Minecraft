@@ -260,10 +260,27 @@ int main(int argc, char* argv[])
     int index = 0;
     //return 0;
     while (!glfwWindowShouldClose(window)) {
+        std::cout << glfwGetTime()  << " time\n";
+        if ((int)glfwGetTime() % 2 == 0) {
+
+        }
         // Setup some basic window stuff.
         glfwGetFramebufferSize(window, &window_width, &window_height);
         glViewport(0, 0, window_width, window_height);
-        glClearColor(52.9/255, 80.8/255, 92.2/255, 0.0f);
+        glm::dvec3 b = glm::vec3(7.0 / 255, 11.0 / 255, 52.0 / 255);
+        glm::dvec3 w = glm::vec3(135.0 / 255, 206.0 / 255, 250.0 / 255);
+        glm::vec4 lerp;
+        int time = 30;
+        if (((int)glfwGetTime() / time) % 2 == 0) {
+            lerp = glm::vec4(glm::mix(b, w, ((int)glfwGetTime() % time) / (double)time), 1.0f);
+        }
+        else {
+            lerp = glm::vec4(glm::mix(w, b, ((int)glfwGetTime() % time) / (double)time), 1.0f);
+        }
+
+        glClearColor(lerp[0],lerp[1], lerp[2], 0.0f);
+        
+        
         glEnable(GL_DEPTH_TEST);
         glEnable(GL_MULTISAMPLE);
         glEnable(GL_BLEND);

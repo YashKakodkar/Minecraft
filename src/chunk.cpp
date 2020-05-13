@@ -79,7 +79,7 @@ void Chunk::create_mesh(int x_grid, int y_grid, int z_grid)
 
     for (int x = 0; x < 16; ++x) {
         for (int z = 0; z < 16; ++z) {
-            create_blockC(x_grid + x, -17, z_grid + z, 1, arrayStart);
+            create_blockC(x_grid + x, -16, z_grid + z, 1, arrayStart);
             int height = perlin.height_map_[x][z]; // std::rand() % (high - low) + low;
             arrayStart += 36;
  
@@ -253,9 +253,9 @@ void Chunk::create_blockC(float x_start, float y_start, float z_start, float siz
 {
     int height = y_start + 16;
     glm::vec3 rgb = glm::vec3(1.0, 1.0, 1.0);
-    if (height < 0) {
-        rgb = glm::vec3(64 / 255.0, 164 / 255.0, 223 / 255.0);
-    }
+    //if (height < 0) {
+    //    rgb = glm::vec3(64 / 255.0, 164 / 255.0, 223 / 255.0);
+    //}
     if (height >= 0 && height < 1) {
         rgb = glm::vec3(177.0 / 255.0, 105.0 / 255.0, 50.0 / 255.0);
     } else if (height >= 1 && height < 2) {
