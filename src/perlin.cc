@@ -132,5 +132,5 @@ void Perlin::generateHeightMap(int x, int z)
     //     }
     //     std::cout << std::endl;
     // }
-    std::cout << "Done" << std::endl;
+   // std::cout << "Done" << std::endl;
 }
