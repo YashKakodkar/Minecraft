@@ -10,11 +10,13 @@ public:
         const std::vector<ShaderUniformPtr> uniforms,
         const std::vector<const char*> output // Order: 0, 1, 2...);
     );
+    void render();
         ~Chunkmanager();
         std::vector<Chunk> getChunks() const { return allChunks; }
-    //private:
+    private:
         std::vector<Chunk> allChunks; 
         std::vector<Chunk> chuncksToRender;
-        std::vector<RenderPass*> toRender;
+        std::vector<std::unique_ptr<RenderPass>> toRender;
+        int chunk_size = 0;
         
 };

@@ -75,6 +75,7 @@ RenderPass::RenderPass(int vao, // -1: create new VAO, otherwise use given VAO
 {
 	if (vao_ < 0) {
 		CHECK_GL_ERROR(glGenVertexArrays(1, (GLuint*)&vao_));
+		std::cout << vao_ << " vao\n";
 	}
 	CHECK_GL_ERROR(glBindVertexArray(vao_));
 	// Program first
@@ -282,9 +283,11 @@ void RenderPass::updateVBO(int position, const void* data, size_t size)
 
 void RenderPass::setup()
 {
-	// Switch to our object VAO.
+	// Switch to our object VAO
+	std::cout << vao_ << " vao\n";
 	CHECK_GL_ERROR(glBindVertexArray(vao_));
 	// Use our program.
+	std::cout << sp_ << " sp\n";
 	CHECK_GL_ERROR(glUseProgram(sp_));
 
 	bindUniformsTo(uniforms_, unilocs_);

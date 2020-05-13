@@ -124,6 +124,7 @@ int main(int argc, char* argv[])
     // FIXME: add more lambdas for data_source if you want to use RenderPass.
     //        Otherwise, do whatever you like here
     std::function<const glm::mat4*()> model_data = [&mats]() {
+        std::cout << "herejiasodhioashdoi";
         return mats.model;
     };
     std::function<glm::mat4()> view_data = [&mats]() { return *mats.view; };
@@ -157,7 +158,6 @@ int main(int argc, char* argv[])
         { cube_vertex_shader, nullptr, cube_fragment_shader },
         { floor_model, std_view, std_proj, std_light },
         { "fragment_color" });
-
     //std::vector<RenderPass*> ren;
     //for (int i = 0; i < testing.toRender.size(); i++) {
         //RenderPass floor_pass(-1,
@@ -167,7 +167,6 @@ int main(int argc, char* argv[])
         //    { "fragment_color" });
         //ren.push_back(&floor_pass);
      //}
-    Chunk terrain(-16*4, -16*4);
     //RenderDataInput cube_pass_input;
     //cube_pass_input.assign(0, "vertex_position", terrain.block_vertices.data(), terrain.block_vertices.size(), 4, GL_FLOAT);
     //cube_pass_input.assignIndex(terrain.block_faces.data(), terrain.block_faces.size(), 3);
@@ -179,16 +178,16 @@ int main(int argc, char* argv[])
 
     float aspect = 0.0f;
     //std::cout << "center = " << mesh.getCenter() << "\n";
-    unsigned int textureID;
+    //unsigned int textureID;
 
-    Image image;
-    char buff[FILENAME_MAX]; //create string buffer to hold path
-    //_getcwd(buff, FILENAME_MAX);
-    std::string current_working_dir(buff);
-    std::cout << buff << std::endl;
-    bool got = LoadJPEG("../../src/textures/dirtside.jpg", &image);
-    std::cout << "Got " << got << std::endl;
-    std::cout << "Width :" << image.width << "\nHeight: " << image.height << std::endl;
+    //Image image;
+    //char buff[FILENAME_MAX]; //create string buffer to hold path
+    ////_getcwd(buff, FILENAME_MAX);
+    //std::string current_working_dir(buff);
+    //std::cout << buff << std::endl;
+    //bool got = LoadJPEG("../../src/textures/dirtside.jpg", &image);
+    //std::cout << "Got " << got << std::endl;
+    //std::cout << "Width :" << image.width << "\nHeight: " << image.height << std::endl;
     //glGenTextures(1, &textureID);
     //glBindTexture(GL_TEXTURE_CUBE_MAP, textureID);
     //glTexImage2D(GL_TEXTURE_CUBE_MAP_POSITIVE_X, 0, GL_RGB, image.width, image.height, 0, GL_BGR, GL_UNSIGNED_BYTE, image.bytes.data());
@@ -202,10 +201,11 @@ int main(int argc, char* argv[])
     //glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     //glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
     //glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+
     //glTexParameteri(GL_TEXTURE_CUBE_MAP, GL_TEXTURE_WRAP_R, GL_CLAMP_TO_EDGE);
     bool draw_floor = true;
     bool draw_cube = true;
-
+   
     while (!glfwWindowShouldClose(window)) {
         // Setup some basic window stuff.
         glfwGetFramebufferSize(window, &window_width, &window_height);
@@ -235,15 +235,9 @@ int main(int argc, char* argv[])
         if (draw_cube) {
             //glActiveTexture(GL_TEXTURE1);
             //glBindTexture(GL_TEXTURE_CUBE_MAP, textureID);
-            //for (RenderPass* temp : testing.toRender) {
-              //  testing.toRender[0]->setup();
-        /*        CHECK_GL_ERROR(glDrawElements(GL_TRIANGLES,
-                    terrain.block_faces.size() * 3,
-                    GL_UNSIGNED_INT, 0));*/
-            //}
+            testing.render();
             //cube_pass.setup();
-      
-            
+   
        
         }
 
