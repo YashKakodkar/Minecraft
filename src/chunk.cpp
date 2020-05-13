@@ -92,7 +92,7 @@ void Chunk::create_mesh(int x_grid, int y_grid, int z_grid)
                 // }
                 //std::cout << "X: " << x << "  | Y: " << y << "  | Z: " << z << "  | CHUNK_SIZE: " << CHUNK_SIZE << std::endl;
                 // std::cout << "HELLO 10  | HEIGHT: " << 0 << std::endl;
-                create_block(x_grid + x, y_grid + y, z_grid + z, 1, arrayStart);
+                create_blockC(x_grid + x, y_grid + y, z_grid + z, 1, arrayStart);
                 if (y == height - 1) {
                     std::cout << y << "  ";
                 }
@@ -256,17 +256,20 @@ void Chunk::create_block(float x_start, float y_start, float z_start, float size
 void Chunk::create_blockC(float x_start, float y_start, float z_start, float size, int arrayStart)
 {
     glm::vec3 rgb = glm::vec3(1.0, 1.0, 1.0);
-    if (y_start >= -16 && y_start < -12) {
-        rgb = glm::vec3(1.0, 0.0, 0.0);
+    if (y_start >= -16 && y_start < -14) {
+        rgb = glm::vec3(74.0 / 255.0, 74.0 / 255.0, 74.0 / 255.0);
     }
-    if (y_start >= -11 && y_start < -2) {
-        rgb = glm::vec3(1.0, 1.0, 0.0);
+    else if (y_start >= -13 && y_start < -12) {
+        rgb = glm::vec3(111.0 / 255.0, 111.0 / 255.0, 111.0 / 255.0);
     }
-    if (y_start >= -2 && y_start < 5) {
-        rgb = glm::vec3(0.0, 0.0, 1.0);
+    else if (y_start >= -12 && y_start < -10) {
+        rgb = glm::vec3(70.0 / 255.0, 31.0 / 255.0, 6.0 / 255.0);
     }
-    if (y_start >= 5) {
-        rgb = glm::vec3(0.0, 1.0, 0.0);
+    else if (y_start >= 5) {
+        rgb = glm::vec3(14.0 / 255.0, 87.0 / 255.0, 0.0);
+    }
+    else {
+        rgb = glm::vec3(1.0, 1.0, 1.0);
     }
     //std::cout << "HELLO BLOCK" << std::endl;
     glm::vec3 min(x_start, y_start, z_start);

@@ -40,7 +40,7 @@ void main() {
 	fragment_color = vec4(rgb,1.0);
 
 //This does not work currently
-	// fragment_color = vec4(coloring, 1.0); 
+	fragment_color = vec4(coloring, 1.0); 
 
 
   //fragment_color = texture(myTextureSampler, texture_uv_pass);
