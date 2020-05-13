@@ -48,11 +48,17 @@ void Chunk::create_mesh(int x_grid, int y_grid, int z_grid)
 {
     int arrayStart = 0;
     int i = 0;
-    for (int x = 0; x < CHUNK_SIZE; ++x) {
+    int high = 10;
+    int low = 6;
+    int prevHeight = 8;
+    for (int x = 0; x < 16; ++x) {
         //std::cout << "\nNEW X\n"<< std::endl;
-        for (int y = 0; y < CHUNK_SIZE; ++y) {
+        for (int z = 0; z < 16; ++z) {
             //std::cout << "\nNEW Y\n"<< std::endl;
-            for (int z = 0; z < CHUNK_SIZE; ++z) {
+
+            int height = std::rand() % (high - low) + low;
+            //std::cout << height << std::endl;
+            for (int y = 0; y < height; ++y) {
                 // if (blocks[x][y][z].is_active() == false) {
                 //     continue;
                 // }
@@ -62,6 +68,15 @@ void Chunk::create_mesh(int x_grid, int y_grid, int z_grid)
                 i++;
                 arrayStart += 36;
             }
+            if (height > prevHeight) {
+
+                high = std::min(high + 2, 16);
+                low = std::min(low + 2, 12);
+            } else if (height < prevHeight) {
+                high = std::max(high - 2, 4);
+                low = std::max(low - 2, 0);
+            }
+            prevHeight = height;
         }
     }
     //std::cout << block_vertices.size() << "terrain vert size" << std::endl;

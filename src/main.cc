@@ -50,6 +50,10 @@ const char* cube_vertex_shader =
 #include "shaders/cube.vert"
     ;
 
+const char* cube_geometry_shader =
+#include "shaders/cube.geom"
+    ;
+
 const char* cube_fragment_shader =
 #include "shaders/cube.frag"
     ;
@@ -185,7 +189,7 @@ int main(int argc, char* argv[])
     RenderPass cube_pass(-1,
         cube_pass_input,
         { cube_vertex_shader, nullptr, cube_fragment_shader },
-        { floor_model, std_view, std_proj, std_light, chunk_pos },
+        { floor_model, std_view, std_proj, std_light, chunk_pos, std_camera },
         { "fragment_color" });
 
     float aspect = 0.0f;
