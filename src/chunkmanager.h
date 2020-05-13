@@ -1,7 +1,7 @@
 #include "chunk.h"
 #include <vector>
 #include "render_pass.h"
-
+#pragma once
 class Chunkmanager {
 public:
     Chunkmanager();
