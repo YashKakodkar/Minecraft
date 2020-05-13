@@ -18,18 +18,19 @@ public:
     Perlin();
     ~Perlin();
 
-    double noise3D(double x, double y, double z);
+    double noise(double x, double y, double z);
     double fade(double t);
     double lerp(double t, double a, double b);
     double grad(int hash, double x, double y, double z);
-    void generateHeightMap(int x, int z);
+    int inc(int num);
+    void create_height_map(int x, int z);
 
 private:
-    std::vector<double> p = { 1.0, 2.0, 3.0 };
-    int grid_shift_x_, grid_shift_z_;
-
-    float perlin_freq_ = 0.05; // adjust frequency of perlin noise
-    float perlin_height_amp_ = 24; // adjust amplitude of perlin noise
+    std::vector<double> p = std::vector<double>(512, 0);
+    int x_shift, z_shift;
+    int repeat = 0;
+    float freq = 0.05;
+    float amp = 24;
 };
 
 #endif

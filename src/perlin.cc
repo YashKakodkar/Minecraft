@@ -1,6 +1,7 @@
 #include "perlin.h"
 #include <algorithm>
 #include <chrono> // std::chrono::system_clock
+#include <cmath>
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_access.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -28,14 +29,14 @@ Perlin::Perlin()
     unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
     std::shuffle(permutation.begin(), permutation.end(), std::default_random_engine(seed));
 
-    p.resize(512);
     for (int i = 0; i < 256; i++) {
         p[i] = p[i + 256] = permutation[i];
     }
 }
 
-double Perlin::noise3D(double x, double y, double z)
+double Perlin::noise(double x, double y, double z)
 {
+
     int X = (int)floor(x) & 255;
     int Y = (int)floor(y) & 255;
     int Z = (int)floor(z) & 255;
@@ -48,17 +49,26 @@ double Perlin::noise3D(double x, double y, double z)
     double v = fade(y);
     double w = fade(z);
     //std::cout << "HELLO 3" << std::endl;
-    int A = p[X] + Y, AA = p[A] + Z, AB = p[A + 1] + Z, // HASH COORDINATES OF
-        B = p[X + 1] + Y, BA = p[B] + Z, BB = p[B + 1] + Z; // THE 8 CUBE CORNERS,
+    int AAA = p[X] + Y;
+    int AAB = p[AAA] + Z;
+    int ABA = p[AAA + 1] + Z;
+    int BBB = p[X + 1] + Y;
+    int BAB = p[BBB] + Z;
+    int BBA = p[BBB + 1] + Z;
     //std::cout << "HELLO 4" << std::endl;
-    return lerp(w, lerp(v, lerp(u, grad(p[AA], x, y, z), // AND ADD
-                               grad(p[BA], x - 1, y, z)), // BLENDED
-                       lerp(u, grad(p[AB], x, y - 1, z), // RESULTS
-                           grad(p[BB], x - 1, y - 1, z))), // FROM  8
-        lerp(v, lerp(u, grad(p[AA + 1], x, y, z - 1), // CORNERS
-                    grad(p[BA + 1], x - 1, y, z - 1)), // OF CUBE
-            lerp(u, grad(p[AB + 1], x, y - 1, z - 1),
-                grad(p[BB + 1], x - 1, y - 1, z - 1))));
+    return lerp(w, lerp(v, lerp(u, grad(p[AAB], x, y, z), grad(p[BAB], x - 1, y, z)), lerp(u, grad(p[ABA], x, y - 1, z), grad(p[BBA], x - 1, y - 1, z))),
+        lerp(v, lerp(u, grad(p[AAB + 1], x, y, z - 1), grad(p[BAB + 1], x - 1, y, z - 1)),
+            lerp(u, grad(p[ABA + 1], x, y - 1, z - 1),
+                grad(p[BBA + 1], x - 1, y - 1, z - 1))));
+}
+
+int Perlin::inc(int num)
+{
+    num++;
+    if (repeat > 0)
+        num %= (int)repeat;
+
+    return num;
 }
 
 double Perlin::fade(double t)
@@ -73,9 +83,9 @@ double Perlin::lerp(double t, double a, double b)
 
 double Perlin::grad(int hash, double x, double y, double z)
 {
-    int h = hash & 15; // CONVERT LO 4 BITS OF HASH CODE
-    double u = h < 8 ? x : y, // INTO 12 GRADIENT DIRECTIONS.
-        v = h < 4 ? y : h == 12 || h == 14 ? x : z;
+    int h = hash & 15;
+    double u = h < 8 ? x : y,
+           v = h < 4 ? y : h == 12 || h == 14 ? x : z;
     return ((h & 1) == 0 ? u : -u) + ((h & 2) == 0 ? v : -v);
 }
 
@@ -83,54 +93,29 @@ Perlin::~Perlin()
 {
 }
 
-// Tools
-
-void Perlin::generateHeightMap(int x, int z)
+void Perlin::create_height_map(int x, int z)
 {
-    //height_map_.clear();
 
-    float center_x = x, center_z = z;
-    int grid_center_x = std::floor(center_x / 1), grid_center_z = std::floor(center_z / 1);
-    int origin_grid_center_x = 16 / 2, origin_grid_center_z = 16 / 2;
+    float chunk_x = x, chunk_z = z;
+    int center_x = std::floor(chunk_x / 1);
+    int center_z = std::floor(chunk_z / 1);
+    int origin_center_x = 16 / 2;
+    int origin_center_z = 16 / 2;
 
-    grid_shift_x_ = -1 * (grid_center_x - origin_grid_center_x);
-    grid_shift_z_ = -1 * (grid_center_z - origin_grid_center_z);
+    x_shift = -1 * (center_x - origin_center_x);
+    z_shift = -1 * (center_z - origin_center_z);
 
-    for (int grid_x = 0; grid_x < 16; grid_x++) {
+    for (int x = 0; x < 16; x++) {
         //std::cout << "HELLO 1" << std::endl;
-        for (int grid_z = 0; grid_z < 16; grid_z++) {
-            int pos_x = grid_x + grid_shift_x_;
-            int pos_z = grid_z + grid_shift_z_;
+        for (int z = 0; z < 16; z++) {
+            int pos_x = x + x_shift;
+            int pos_z = z + z_shift;
 
-            //std::cout << pos_x << ", " << pos_z << std::endl;
-            int grid_y = std::floor(perlin_height_amp_ * abs((float)noise3D(pos_x * perlin_freq_, 0.0, pos_z * perlin_freq_)));
-            // std::cout << "HELLO 5" << std::endl;
-            // std::cout << "grid_x = " << grid_x << " | grid_z = " << grid_z << std::endl;
-            //std::cout << "grid_y = " << grid_y << std::endl;
-            if (grid_y == 0) {
-                grid_y = 2;
+            int y = std::floor(amp * abs((float)noise(pos_x * freq, 0.0, pos_z * freq)));
+            if (y == 0) {
+                y = 2;
             }
-            height_map_[grid_x][grid_z] = grid_y;
-
-            // if (grid_x == 0 && grid_z == 63) {
-            //     std::cout << "[0, 63]! grid_y = " << height_map_[grid_x][grid_z] << std::endl;
-            // }
+            height_map_[x][z] = y;
         }
     }
-    std::cout << "VALUES DONE" << std::endl;
-    int q = 1;
-    // for (int i = 0; i < 16; i++) {
-    //     for (int r = 0; r < 16; r++) {
-    //         std::cout << "#: " << q << " | height: " << height_map_[i][r] << std::endl;
-    //         q++;
-    //     }
-    // }
-    // for (int i = 0; i < 16; i++) {
-    //     for (int r = 0; r < 16; r++) {
-    //         std::cout << height_map_[i][r] << "    ";
-    //         q++;
-    //     }
-    //     std::cout << std::endl;
-    // }
-    std::cout << "Done" << std::endl;
 }

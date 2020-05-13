@@ -61,7 +61,7 @@ void Chunk::create_mesh(int x_grid, int y_grid, int z_grid)
     int high = 10;
     int low = 6;
     int prevHeight = 8;
-    perlin.generateHeightMap(x_grid + 8, z_grid + 8);
+    perlin.create_height_map(x_grid + 8, z_grid + 8);
     std::cout << "Test heights" << std::endl;
     for (int i = 0; i < 16; i++) {
         for (int r = 0; r < 16; r++) {
@@ -82,16 +82,16 @@ void Chunk::create_mesh(int x_grid, int y_grid, int z_grid)
             create_blockC(x_grid + x, -17, z_grid + z, 1, arrayStart);
             int height = perlin.height_map_[x][z]; // std::rand() % (high - low) + low;
             arrayStart += 36;
- 
+
             for (int y = 1; y < height; ++y) {
- 
+
                 create_blockC(x_grid + x, y_grid + y, z_grid + z, 1, arrayStart);
                 arrayStart += 36;
-                // if (y == height - 1 && height > 4) {
-                //     //std::cout << y << "  ";
-                //     create_blockC(x_grid + x, y_grid + 36, z_grid + z, 1, arrayStart);
-                //     arrayStart += 36;
-                // }
+                if (y == height - 1 && height > 6) {
+                    //std::cout << y << "  ";
+                    create_blockC(x_grid + x, y_grid + 36, z_grid + z, 1, arrayStart);
+                    arrayStart += 36;
+                }
                 i++;
             }
 
@@ -155,9 +155,9 @@ void Chunk::generate_plane(int x_len, int z_len)
 //void Chunk::generate_cube()
 void Chunk::create_block(float x_start, float y_start, float z_start, float size, int arrayStart, int height, int y)
 {
-    if (y == height - 1) {
-        std::cout << y << "  ";
-    }
+    // if (y == height - 1) {
+    //     std::cout << y << "  ";
+    // }
 
     //std::cout << "HELLO BLOCK" << std::endl;
     glm::vec3 min(x_start, y_start, z_start);
@@ -253,9 +253,6 @@ void Chunk::create_blockC(float x_start, float y_start, float z_start, float siz
 {
     int height = y_start + 16;
     glm::vec3 rgb = glm::vec3(1.0, 1.0, 1.0);
-    if (height < 0) {
-        rgb = glm::vec3(64 / 255.0, 164 / 255.0, 223 / 255.0);
-    }
     if (height >= 0 && height < 1) {
         rgb = glm::vec3(177.0 / 255.0, 105.0 / 255.0, 50.0 / 255.0);
     } else if (height >= 1 && height < 2) {
@@ -267,19 +264,25 @@ void Chunk::create_blockC(float x_start, float y_start, float z_start, float siz
     } else if (height >= 4 && height < 6) {
         rgb = glm::vec3(142.0 / 255.0, 95.0 / 255.0, 70.0 / 255.0);
     } else if (height >= 6 && height < 7) {
-        rgb = glm::vec3(118.0 / 255.0, 102.0 / 255.0, 93.0 / 255.0);
+        rgb = glm::vec3(228.0 / 255.0, 198.0 / 255.0, 171.0 / 255.0);
     } else if (height >= 7 && height < 9) {
-        rgb = glm::vec3(186.0 / 255.0, 126.0 / 255.0, 31.0 / 255.0);
+        rgb = glm::vec3(168.0 / 255.0, 108.0 / 255.0, 21.0 / 255.0);
     } else if (height >= 9 && height < 11) {
         rgb = glm::vec3(121.0 / 255.0, 58.0 / 255.0, 46.0 / 255.0);
     } else if (height >= 11 && height < 12) {
         rgb = glm::vec3(147.0 / 255.0, 85.0 / 255.0, 46.0 / 255.0);
-    } else if (height >= 12 && height < 15) {
+    } else if (height >= 12 && height < 13) {
+        rgb = glm::vec3(79.0 / 255.0, 39.0 / 255.0, 28.0 / 255.0);
+    } else if (height >= 13 && height < 14) {
+        rgb = glm::vec3(.5, .35, .22);
+    } else if (height >= 14 && height < 15) {
         rgb = glm::vec3(79.0 / 255.0, 39.0 / 255.0, 28.0 / 255.0);
     } else if (height >= 15 && height < 17) {
         rgb = glm::vec3(142.0 / 255.0, 95.0 / 255.0, 70.0 / 255.0);
+    } else if (height >= 22) {
+        rgb = glm::vec3(1.0, 1.0, 1.0);
     } else {
-        rgb = glm::vec3(64 / 255.0, 164 / 255.0, 223 / 255.0);
+        rgb = glm::vec3(177.0 / 255.0, 105.0 / 255.0, 50.0 / 255.0);
     }
     //std::cout << "HELLO BLOCK" << std::endl;
     glm::vec3 min(x_start, y_start, z_start);
