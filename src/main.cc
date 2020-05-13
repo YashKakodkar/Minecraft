@@ -6,6 +6,7 @@
 // #endif
 #include "block.h"
 #include "chunk.h"
+#include "chunkmanager.h"
 #include "config.h"
 #include "gui.h"
 #include "jpegio.h"
@@ -49,6 +50,10 @@ const char* floor_fragment_shader =
 
 const char* cube_vertex_shader =
 #include "shaders/cube.vert"
+    ;
+
+const char* cube_geometry_shader =
+#include "shaders/cube.geom"
     ;
 
 const char* cube_fragment_shader =
