@@ -20,7 +20,7 @@ void main() {
 	//dot_nl = clamp(dot_nl, 0.0, 1.0);
 //vec4 spec = specular * pow(max(0.0, dot(reflect(-light_direction, vertex_normal), camera_direction)), shininess);
 	//color = clamp(dot_nl * color + vec3(ambient), 0.0, 1.0);
-	fragment_color = vec4(color, 1.0);\
+	fragment_color = vec4(color, 1.0);
 
 //This does not work currently
 	// fragment_color = vec4(coloring, 1.0); 
