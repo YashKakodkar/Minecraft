@@ -47,17 +47,17 @@ Chunkmanager::Chunkmanager(int vao, const std::vector<const char*> shaders, cons
 	toRender.clear();
 	chuncksToRender.clear();
 	this->shaders = shaders;
-	this->uniforms = uniforms;
+	this->uniforms = uniforms;	
 	this->output = output;
 
 	for (int i = -CHUNKS; i < CHUNKS; i++) {
 		for (int j = -CHUNKS; j < CHUNKS; j++) {
 
 			RenderDataInput temp;
-			allChunks.push_back(std::make_unique<Chunk>(i * 32, j * 32));
+			allChunks.push_back(std::make_unique<Chunk>(i * CHUNK_SIZE, j * CHUNK_SIZE));
 			chunk_size = allChunks[allChunks.size() - 1]->block_faces.size() * 3;
 			temp.assign(0, "vertex_position", allChunks[allChunks.size() - 1]->block_vertices.data(), allChunks[allChunks.size() - 1]->block_vertices.size(), 4, GL_FLOAT);
-		//	temp.assign(1, "color", allChunks[allChunks.size() - 1]->block_color.data(), allChunks[allChunks.size() - 1]->block_color.size(), 3, GL_FLOAT);
+			temp.assign(1, "color", allChunks[allChunks.size() - 1]->block_color.data(), allChunks[allChunks.size() - 1]->block_color.size(), 3, GL_FLOAT);
 			temp.assignIndex(allChunks[allChunks.size() - 1]->block_faces.data(), allChunks[allChunks.size() - 1]->block_faces.size(), 3);
 			toRender.push_back(std::make_unique<RenderPass>(-1, temp, shaders, uniforms, output));
 
@@ -84,19 +84,21 @@ void Chunkmanager::render(glm::vec3 center) {
 			GL_UNSIGNED_INT, 0);
 	}
 
+
 }
 
 void Chunkmanager::createChunksInCircle(glm::vec3 center) {
 	int name[CHUNKS * 2][CHUNKS * 2] = { 0 };
 
-	if (toRender.size() > 50) {
-		eraseFrontofRender();
-	}
-	if (allChunks.size() > 100) {
-		eraseFrontofChunk();
-	}
+	//if (toRender.size() > 50) {
+	//	eraseFrontofRender();
+	//}
+	//if (allChunks.size() > 100) {
+	//	eraseFrontofChunk();
+	//}
 	for (int i = -CHUNKS; i < CHUNKS; i++) {
 		for (int j = -CHUNKS; j < CHUNKS; j++) {
+			
 			for (int index = 0; index < allChunks.size(); index++) {
 				int xNeed = (((int)(center.x + i * CHUNK_SIZE) / CHUNK_SIZE) * CHUNK_SIZE);
 				int zNeed = (((int)(center.z + j * CHUNK_SIZE) / CHUNK_SIZE) * CHUNK_SIZE);
@@ -116,6 +118,7 @@ void Chunkmanager::createChunksInCircle(glm::vec3 center) {
 				allChunks.push_back(std::make_unique<Chunk>(xNeed, zNeed));
 				RenderDataInput temp;
 				temp.assign(0, "vertex_position", allChunks[allChunks.size() - 1]->block_vertices.data(), allChunks[allChunks.size() - 1]->block_vertices.size(), 4, GL_FLOAT);
+				temp.assign(1, "color", allChunks[allChunks.size() - 1]->block_color.data(), allChunks[allChunks.size() - 1]->block_color.size(), 3, GL_FLOAT);
 				temp.assignIndex(allChunks[allChunks.size() - 1]->block_faces.data(), allChunks[allChunks.size() - 1]->block_faces.size(), 3);
 				toRender.push_back(std::make_unique<RenderPass>(-1, temp, shaders, uniforms, output));
 
