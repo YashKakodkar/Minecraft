@@ -267,10 +267,10 @@ int main(int argc, char* argv[])
         // Setup some basic window stuff.
         glfwGetFramebufferSize(window, &window_width, &window_height);
         glViewport(0, 0, window_width, window_height);
-        glm::dvec3 b = glm::vec3(7.0 / 255, 11.0 / 255, 52.0 / 255);
+        glm::dvec3 b = glm::vec3(13.0 / 255, 20.0 / 255, 25.0 / 255);
         glm::dvec3 w = glm::vec3(135.0 / 255, 206.0 / 255, 250.0 / 255);
         glm::vec4 lerp;
-        int time = 30;
+        int time = 20;
         if (((int)glfwGetTime() / time) % 2 == 0) {
             lerp = glm::vec4(glm::mix(b, w, ((int)glfwGetTime() % time) / (double)time), 1.0f);
         }
