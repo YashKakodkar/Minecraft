@@ -1,15 +1,18 @@
 #include "perlin.h"
+#include <algorithm>
+#include <chrono> // std::chrono::system_clock
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_access.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtx/quaternion.hpp>
 #include <glm/gtx/transform.hpp>
 #include <iostream>
+#include <random> // std::default_random_engine
 #include <vector>
 
 Perlin::Perlin()
 {
-    int permutation[256] = { 151, 160, 137, 91, 90, 15,
+    std::vector<int> permutation = { 151, 160, 137, 91, 90, 15,
         131, 13, 201, 95, 96, 53, 194, 233, 7, 225, 140, 36, 103, 30, 69, 142, 8, 99, 37, 240, 21, 10, 23,
         190, 6, 148, 247, 120, 234, 75, 0, 26, 197, 62, 94, 252, 219, 203, 117, 35, 11, 32, 57, 177, 33,
         88, 237, 149, 56, 87, 174, 20, 125, 136, 171, 168, 68, 175, 74, 165, 71, 134, 139, 48, 27, 166,
@@ -22,6 +25,9 @@ Perlin::Perlin()
         251, 34, 242, 193, 238, 210, 144, 12, 191, 179, 162, 241, 81, 51, 145, 235, 249, 14, 239, 107,
         49, 192, 214, 31, 181, 199, 106, 157, 184, 84, 204, 176, 115, 121, 50, 45, 127, 4, 150, 254,
         138, 236, 205, 93, 222, 114, 67, 29, 24, 72, 243, 141, 128, 195, 78, 66, 215, 61, 156, 180 };
+    unsigned seed = std::chrono::system_clock::now().time_since_epoch().count();
+    std::shuffle(permutation.begin(), permutation.end(), std::default_random_engine(seed));
+
     p.resize(512);
     for (int i = 0; i < 256; i++) {
         p[i] = p[i + 256] = permutation[i];
@@ -33,7 +39,7 @@ double Perlin::noise3D(double x, double y, double z)
     int X = (int)floor(x) & 255;
     int Y = (int)floor(y) & 255;
     int Z = (int)floor(z) & 255;
-    std::cout << "HELLO 2" << std::endl;
+    //std::cout << "HELLO 2" << std::endl;
     x -= floor(x);
     y -= floor(y);
     z -= floor(z);
@@ -41,10 +47,10 @@ double Perlin::noise3D(double x, double y, double z)
     double u = fade(x);
     double v = fade(y);
     double w = fade(z);
-    std::cout << "HELLO 3" << std::endl;
+    //std::cout << "HELLO 3" << std::endl;
     int A = p[X] + Y, AA = p[A] + Z, AB = p[A + 1] + Z, // HASH COORDINATES OF
         B = p[X + 1] + Y, BA = p[B] + Z, BB = p[B + 1] + Z; // THE 8 CUBE CORNERS,
-    std::cout << "HELLO 4" << std::endl;
+    //std::cout << "HELLO 4" << std::endl;
     return lerp(w, lerp(v, lerp(u, grad(p[AA], x, y, z), // AND ADD
                                grad(p[BA], x - 1, y, z)), // BLENDED
                        lerp(u, grad(p[AB], x, y - 1, z), // RESULTS
@@ -91,16 +97,19 @@ void Perlin::generateHeightMap()
     grid_shift_z_ = -1 * (grid_center_z - origin_grid_center_z);
 
     for (int grid_x = 0; grid_x < 16; grid_x++) {
-        std::cout << "HELLO 1" << std::endl;
+        //std::cout << "HELLO 1" << std::endl;
         for (int grid_z = 0; grid_z < 16; grid_z++) {
             int pos_x = grid_x + grid_shift_x_;
             int pos_z = grid_z + grid_shift_z_;
 
-            std::cout << pos_x << ", " << pos_z << std::endl;
+            //std::cout << pos_x << ", " << pos_z << std::endl;
             int grid_y = std::floor(perlin_height_amp_ * abs((float)noise3D(pos_x * perlin_freq_, 0.0, pos_z * perlin_freq_)));
-            std::cout << "HELLO 5" << std::endl;
-            std::cout << "grid_x = " << grid_x << " | grid_z = " << grid_z << std::endl;
-            std::cout << "grid_y = " << grid_y << std::endl;
+            // std::cout << "HELLO 5" << std::endl;
+            // std::cout << "grid_x = " << grid_x << " | grid_z = " << grid_z << std::endl;
+            //std::cout << "grid_y = " << grid_y << std::endl;
+            if (grid_y == 0) {
+                grid_y = 1;
+            }
             height_map_[grid_x][grid_z] = grid_y;
 
             // if (grid_x == 0 && grid_z == 63) {
@@ -116,12 +125,12 @@ void Perlin::generateHeightMap()
     //         x++;
     //     }
     // }
-    for (int i = 0; i < 16; i++) {
-        for (int r = 0; r < 16; r++) {
-            std::cout << height_map_[i][r] << "    ";
-            x++;
-        }
-        std::cout << std::endl;
-    }
-    std::cout << "HELLO 6" << std::endl;
+    // for (int i = 0; i < 16; i++) {
+    //     for (int r = 0; r < 16; r++) {
+    //         std::cout << height_map_[i][r] << "    ";
+    //         x++;
+    //     }
+    //     std::cout << std::endl;
+    // }
+    std::cout << "Done" << std::endl;
 }

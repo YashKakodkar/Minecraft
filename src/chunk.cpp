@@ -78,7 +78,7 @@ void Chunk::create_mesh(int x_grid, int y_grid, int z_grid)
             //std::cout << "HELLO 10" << std::endl;
             int height = perlin.height_map_[x][z]; // std::rand() % (high - low) + low;
             //std::cout << "HELcLO 11" << std::endl;
-            std::cout << "HEIGHT: " << height << std::endl;
+            std::cout << "x: " << x << " |  z: " << z << "  | HEIGHT: " << height << std::endl;
 
             for (int y = 0; y < height; ++y) {
                 // if (blocks[x][y][z].is_active() == false) {
