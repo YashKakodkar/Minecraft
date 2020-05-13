@@ -3,43 +3,8 @@
 #include <glm/gtx/string_cast.hpp>
 
 Chunkmanager::Chunkmanager() {
-	//for (int i = -4; i < 5; i++) {
-	//	for (int j = -4; j < 5; j++) {
-	//		Chunk curr(i * 16, j * 16);
-	//		RenderDataInput temp;
-	//		temp.assign(0, "vertex_position", curr.block_vertices.data(), curr.block_vertices.size(), 4, GL_FLOAT);
-	//		temp.assignIndex(curr.block_faces.data(), curr.block_faces.size(), 3);
-	//		
-	//		allChunks.push_back(curr);
-	//	}
-	//}
 }
 
-//Chunkmanager::Chunkmanager(int vao, const std::vector<const char*> shaders, const std::vector<ShaderUniformPtr> uniforms, const std::vector<const char*> output)
-//{
-//	allChunks.clear();
-//	toRender.clear();
-//	chuncksToRender.clear();
-//	this->shaders = shaders;
-//	this->uniforms = uniforms;
-//	this->output = output;
-//
-//	for (int i = -CHUNKS; i < CHUNKS; i++) {
-//		for (int j = -CHUNKS; j < CHUNKS; j++) {
-//			//std::cout << "i: " << i << "
-//
-//			//std::cout << curr.block_vertices.size() << "block vert : \n";
-//			//std::cout << curr.block_faces.size() << "block face: \n";
-//			RenderDataInput temp;
-//			allChunks.push_back(std::make_unique<Chunk>(i *32, j * 32));
-//			chunk_size = allChunks[allChunks.size() - 1]->block_faces.size() * 3;
-//			temp.assign(0, "vertex_position", allChunks[allChunks.size() - 1]->block_vertices.data(), allChunks[allChunks.size() - 1]->block_vertices.size(), 4, GL_FLOAT);
-//			temp.assignIndex(allChunks[allChunks.size() - 1]->block_faces.data(), allChunks[allChunks.size() - 1]->block_faces.size(), 3);
-//			toRender.push_back(std::make_unique<RenderPass>(-1, temp, shaders, uniforms, output));
-//
-//		}
-//	}
-//}
 
 Chunkmanager::Chunkmanager(int vao, const std::vector<const char*> shaders, const std::vector<ShaderUniformPtr> uniforms, const std::vector<const char*> output)
 {
@@ -90,12 +55,6 @@ void Chunkmanager::render(glm::vec3 center) {
 void Chunkmanager::createChunksInCircle(glm::vec3 center) {
 	int name[CHUNKS * 2][CHUNKS * 2] = { 0 };
 
-	//if (toRender.size() > 50) {
-	//	eraseFrontofRender();
-	//}
-	//if (allChunks.size() > 100) {
-	//	eraseFrontofChunk();
-	//}
 	for (int i = -CHUNKS; i < CHUNKS; i++) {
 		for (int j = -CHUNKS; j < CHUNKS; j++) {
 			
