@@ -76,7 +76,7 @@ RenderPass::RenderPass(int vao, // -1: create new VAO, otherwise use given VAO
 	if (vao_ < 0) {
 		// std::cout << vao_ << " vao\n";
 		CHECK_GL_ERROR(glGenVertexArrays(1, (GLuint*)&vao_));
-		 std::cout << vao_ << " vao\n";
+		// std::cout << vao_ << " vao\n";
 	}
 	CHECK_GL_ERROR(glBindVertexArray(vao_));
 	// Program first
