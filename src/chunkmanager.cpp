@@ -23,8 +23,8 @@ Chunkmanager::Chunkmanager(int vao, const std::vector<const char*> shaders, cons
 	this->shaders = shaders;
 	this->uniforms = uniforms;
 	this->output = output;
-	for (int i = -3; i < 3; i++) {
-		for (int j = -3; j < 3; j++) {
+	for (int i = -CHUNKS; i < CHUNKS; i++) {
+		for (int j = -CHUNKS; j < CHUNKS; j++) {
 			//std::cout << "i: " << i << "j : " << j << std::endl;
 			Chunk curr(i * 16, j * 16);
 			chunk_size = curr.block_faces.size() * 3;
@@ -62,11 +62,7 @@ void Chunkmanager::render(glm::vec3 center) {
 }
 
 void Chunkmanager::createChunksInCircle(glm::vec3 center) {
-	int name[6][6] = { {0,0,0,0,0,0},
-						{0,0,0,0,0,0}, 
-						{0,0,0,0,0,0}, 
-						{0,0,0,0,0,0}, 
-						{0,0,0,0,0,0}};
+	int name[CHUNKS*2][CHUNKS*2] = {0};
 
 	if (toRender.size() > 50) {
 		eraseFrontofRender();
@@ -74,22 +70,22 @@ void Chunkmanager::createChunksInCircle(glm::vec3 center) {
 	if (allChunks.size() > 100) {
 		eraseFrontofChunk();
 	}
-	for (int i = -3; i < 3; i++) {
-		for (int j = -3; j < 3; j++) {
+	for (int i = -CHUNKS; i < CHUNKS; i++) {
+		for (int j = -CHUNKS; j < CHUNKS; j++) {
 			for (int index = 0; index < allChunks.size(); index++) {
 				int xNeed = (((int)(center.x + i * 16) / 16) * 16);
 				int zNeed = (((int)(center.z + j * 16) / 16) * 16);
 				if (allChunks[index].x_length == xNeed && allChunks[index].z_length == zNeed) {
-					name[i + 3][j + 3] = 1;
+					name[i + CHUNKS][j + CHUNKS] = 1;
 					break;
 				}
 			}
 		}
 	}
 
-	for (int i = -3; i < 3; i++) {
-		for (int j = -3; j < 3; j++) {
-			if (name[i+3][j+3] == 0) {
+	for (int i = -CHUNKS; i < CHUNKS; i++) {
+		for (int j = -CHUNKS; j < CHUNKS; j++) {
+			if (name[i+ CHUNKS][j+ CHUNKS] == 0) {
 				int xNeed = (((int)(center.x + i * 16) / 16) * 16);
 				int zNeed = (((int)(center.z + j * 16) / 16) * 16);
 				Chunk curr(xNeed, zNeed);
