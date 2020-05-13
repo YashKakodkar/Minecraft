@@ -22,6 +22,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include "skybox.h"
 
 int window_width = 800, window_height = 600;
 const std::string window_title = "Minecraft";
@@ -98,7 +99,8 @@ int main(int argc, char* argv[])
 
     glm::vec4 light_position = glm::vec4(0.0f, 100.0f, 0.0f, 1.0f);
     MatrixPointers mats; // Define MatrixPointers here for lambda to capture
-
+    Skybox s(window_width, window_height); 
+    std::cout << "che\n";
     /*
 	 * In the following we are going to define several lambda functions as
 	 * the data source of GLSL uniforms
@@ -154,27 +156,60 @@ int main(int argc, char* argv[])
 
     // Otherwise, do whatever you like here
     //Cube render pass
+    std::cout << "che\n";
     Chunkmanager testing(-1,
         { cube_vertex_shader, nullptr, cube_fragment_shader },
         { floor_model, std_view, std_proj, std_light },
         { "fragment_color" });
+    std::cout << "che\n";
     //std::vector<RenderPass*> ren;
     //for (int i = 0; i < testing.toRender.size(); i++) {
-    //RenderPass floor_pass(-1,
-    //    *(testing.toRender[0]),
-    //    { vertex_shader, geometry_shader, floor_fragment_shader },
-    //    { floor_model, std_view, std_proj, std_light },
-    //    { "fragment_color" });
-    //ren.push_back(&floor_pass);
-    //}
-    //RenderDataInput cube_pass_input;
-    //cube_pass_input.assign(0, "vertex_position", terrain.block_vertices.data(), terrain.block_vertices.size(), 4, GL_FLOAT);
-    //cube_pass_input.assignIndex(terrain.block_faces.data(), terrain.block_faces.size(), 3);
-    //RenderPass cube_pass(-1,
-    //    cube_pass_input,
-    //    { cube_vertex_shader, nullptr, cube_fragment_shader },
-    //    { floor_model, std_view, std_proj, std_light },
-    //    { "fragment_color" });
+    RenderDataInput skybox;
+    const float skyboxVertices[108] = {
+        // positions          
+        -1.0f,  1.0f, -1.0f,
+        -1.0f, -1.0f, -1.0f,
+         1.0f, -1.0f, -1.0f,
+         1.0f, -1.0f, -1.0f,
+         1.0f,  1.0f, -1.0f,
+        -1.0f,  1.0f, -1.0f,
+
+        -1.0f, -1.0f,  1.0f,
+        -1.0f, -1.0f, -1.0f,
+        -1.0f,  1.0f, -1.0f,
+        -1.0f,  1.0f, -1.0f,
+        -1.0f,  1.0f,  1.0f,
+        -1.0f, -1.0f,  1.0f,
+
+         1.0f, -1.0f, -1.0f,
+         1.0f, -1.0f,  1.0f,
+         1.0f,  1.0f,  1.0f,
+         1.0f,  1.0f,  1.0f,
+         1.0f,  1.0f, -1.0f,
+         1.0f, -1.0f, -1.0f,
+
+        -1.0f, -1.0f,  1.0f,
+        -1.0f,  1.0f,  1.0f,
+         1.0f,  1.0f,  1.0f,
+         1.0f,  1.0f,  1.0f,
+         1.0f, -1.0f,  1.0f,
+        -1.0f, -1.0f,  1.0f,
+
+        -1.0f,  1.0f, -1.0f,
+         1.0f,  1.0f, -1.0f,
+         1.0f,  1.0f,  1.0f,
+         1.0f,  1.0f,  1.0f,
+        -1.0f,  1.0f,  1.0f,
+        -1.0f,  1.0f, -1.0f,
+
+        -1.0f, -1.0f, -1.0f,
+        -1.0f, -1.0f,  1.0f,
+         1.0f, -1.0f, -1.0f,
+         1.0f, -1.0f, -1.0f,
+        -1.0f, -1.0f,  1.0f,
+         1.0f, -1.0f,  1.0f
+    };
+
 
     float aspect = 0.0f;
     //std::cout << "center = " << mesh.getCenter() << "\n";
