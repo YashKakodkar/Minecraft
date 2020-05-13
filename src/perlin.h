@@ -22,14 +22,14 @@ public:
     double fade(double t);
     double lerp(double t, double a, double b);
     double grad(int hash, double x, double y, double z);
-    void generateHeightMap();
+    void generateHeightMap(int x, int z);
 
 private:
     std::vector<double> p = { 1.0, 2.0, 3.0 };
     int grid_shift_x_, grid_shift_z_;
 
     float perlin_freq_ = 0.05; // adjust frequency of perlin noise
-    float perlin_height_amp_ = 64; // adjust amplitude of perlin noise
+    float perlin_height_amp_ = 16; // adjust amplitude of perlin noise
 };
 
 #endif
