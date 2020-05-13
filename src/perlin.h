@@ -13,8 +13,8 @@
 
 class Perlin {
 public:
-    std::vector<std::vector<int>> height_map_ = std::vector<std::vector<int>>(16, std::vector<int>(16, 0));
-    ;
+    //std::vector<std::vector<int>> height_map_ = std::vector<std::vector<int>>(16, std::vector<int>(16, 0));
+    int height_map_[16][16] = { 0 };
     Perlin();
     ~Perlin();
 
@@ -28,7 +28,7 @@ private:
     std::vector<double> p = { 1.0, 2.0, 3.0 };
     int grid_shift_x_, grid_shift_z_;
 
-    float perlin_freq_ = 0.01; // adjust frequency of perlin noise
+    float perlin_freq_ = 0.03; // adjust frequency of perlin noise
     float perlin_height_amp_ = 32; // adjust amplitude of perlin noise
 };
 

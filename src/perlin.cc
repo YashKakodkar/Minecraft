@@ -81,7 +81,7 @@ Perlin::~Perlin()
 
 void Perlin::generateHeightMap()
 {
-    height_map_.clear();
+    //height_map_.clear();
 
     float center_x = 0, center_z = 0;
     int grid_center_x = std::floor(center_x / 1), grid_center_z = std::floor(center_z / 1);
@@ -110,11 +110,18 @@ void Perlin::generateHeightMap()
     }
     std::cout << "VALUES DONE" << std::endl;
     int x = 1;
+    // for (int i = 0; i < 16; i++) {
+    //     for (int r = 0; r < 16; r++) {
+    //         std::cout << "#: " << x << " | height: " << height_map_[i][r] << std::endl;
+    //         x++;
+    //     }
+    // }
     for (int i = 0; i < 16; i++) {
         for (int r = 0; r < 16; r++) {
-            std::cout << "#: " << x << " | height: " << height_map_[i][r] << std::endl;
+            std::cout << height_map_[i][r] << "    ";
             x++;
         }
+        std::cout << std::endl;
     }
     std::cout << "HELLO 6" << std::endl;
 }
