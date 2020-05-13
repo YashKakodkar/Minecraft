@@ -263,11 +263,7 @@ int main(int argc, char* argv[])
         // Setup some basic window stuff.
         glfwGetFramebufferSize(window, &window_width, &window_height);
         glViewport(0, 0, window_width, window_height);
-<<<<<<< HEAD
-        glClearColor(0.52f, 0.80f, 0.92f, 0.0f);
-=======
         glClearColor(52.9/255, 80.8/255, 92.2/255, 0.0f);
->>>>>>> baa1c1b516fe36e7cf1e1c4637199c8059c96a3c
         glEnable(GL_DEPTH_TEST);
         glEnable(GL_MULTISAMPLE);
         glEnable(GL_BLEND);

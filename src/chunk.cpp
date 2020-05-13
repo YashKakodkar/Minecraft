@@ -86,6 +86,7 @@ void Chunk::create_mesh(int x_grid, int y_grid, int z_grid)
             //std::cout << "HELcLO 11" << std::endl;
             //std::cout << "x: " << x << " |  z: " << z << "  | HEIGHT: " << height << std::endl;
             create_blockC(x_grid + x, y_grid, z_grid + z, 1, arrayStart);
+            arrayStart += 36;
             //create_block(x_grid + x, y_grid, z_grid + z, 1, arrayStart, height, -1);
             for (int y = 1; y < height; ++y) {
                 // if (blocks[x][y][z].is_active() == false) {
@@ -99,14 +100,16 @@ void Chunk::create_mesh(int x_grid, int y_grid, int z_grid)
                 //     create_block(x_grid + x, y_grid + 36, z_grid + z, 1, arrayStart, height, -1);
                 // }
                 create_blockC(x_grid + x, y_grid + y, z_grid + z, 1, arrayStart);
+                arrayStart += 36;
                 if (y == height - 1 && height > 4) {
                     std::cout << y << "  ";
                     create_blockC(x_grid + x, y_grid + 36, z_grid + z, 1, arrayStart);
+                    arrayStart += 36;
                 }
 
                 //std::cout << "Grid Pos #: " << i << "  | " << x_grid + x << " " << y_grid + y << " " << z_grid + z << std::endl;
                 i++;
-                arrayStart += 36;
+ 
             }
 
             // if (height > prevHeight) {
@@ -147,24 +150,24 @@ void Chunk::generate_plane(int x_len, int z_len)
     }
 }
 
-void Chunk::create_mesh2(int x_grid, int y_grid, int z_grid)
-{
-    int arrayStart = 0;
-    for (int x = 0; x < CHUNK_SIZE; x++) {
-
-        for (int z = 0; z < CHUNK_SIZE; z++) {
-            for (int y = 0; y < z; y++) {
-                // if (blocks[x][y][z].is_active() == false) {
-                //     continue;
-                // }
-
-                create_block(x_grid + x, y + y_grid, z_grid + z, 1, arrayStart);
-
-                arrayStart += 36;
-            }
-        }
-    }
-}
+//void Chunk::create_mesh2(int x_grid, int y_grid, int z_grid)
+//{
+//    int arrayStart = 0;
+//    for (int x = 0; x < CHUNK_SIZE; x++) {
+//
+//        for (int z = 0; z < CHUNK_SIZE; z++) {
+//            for (int y = 0; y < z; y++) {
+//                // if (blocks[x][y][z].is_active() == false) {
+//                //     continue;
+//                // }
+//
+//                create_block(x_grid + x, y + y_grid, z_grid + z, 1, arrayStart);
+//
+//                arrayStart += 36;
+//            }
+//        }
+//    }
+//}
 
 //void Chunk::generate_cube()
 void Chunk::create_block(float x_start, float y_start, float z_start, float size, int arrayStart, int height, int y)
@@ -266,13 +269,13 @@ void Chunk::create_block(float x_start, float y_start, float z_start, float size
 void Chunk::create_blockC(float x_start, float y_start, float z_start, float size, int arrayStart)
 {
     glm::vec3 rgb = glm::vec3(1.0, 1.0, 1.0);
-    if (y_start >= -16 && y_start < -14) {
+    if (y_start >= -16 && y_start < -15) {
         rgb = glm::vec3(74.0 / 255.0, 74.0 / 255.0, 74.0 / 255.0);
-    } else if (y_start >= -13 && y_start < -12) {
+    } else if (y_start >= -15 && y_start < -14) {
         rgb = glm::vec3(111.0 / 255.0, 111.0 / 255.0, 111.0 / 255.0);
-    } else if (y_start >= -12 && y_start < -10) {
+    } else if (y_start >= -14 && y_start < -10) {
         rgb = glm::vec3(70.0 / 255.0, 31.0 / 255.0, 6.0 / 255.0);
-    } else if (y_start >= 5) {
+    } else if (y_start >= -10 && y_start < 10) {
         rgb = glm::vec3(14.0 / 255.0, 87.0 / 255.0, 0.0);
     } else {
         rgb = glm::vec3(1.0, 1.0, 1.0);
@@ -342,8 +345,9 @@ void Chunk::create_blockC(float x_start, float y_start, float z_start, float siz
 
     //bottom--------------------------------------------------------
     //botleft
-    block_vertices.push_back(glm::vec4(min.x, min.y, min.z, 1.0f));
+    
     block_vertices.push_back(glm::vec4(min.x, min.y, max.z, 1.0f));
+    block_vertices.push_back(glm::vec4(min.x, min.y, min.z, 1.0f));
     block_vertices.push_back(glm::vec4(max.x, min.y, min.z, 1.0f));
     block_color.push_back(rgb);
     block_color.push_back(rgb);
@@ -351,8 +355,9 @@ void Chunk::create_blockC(float x_start, float y_start, float z_start, float siz
     block_faces.push_back(glm::uvec3(arrayStart + 18, arrayStart + 19, arrayStart + 20));
 
     //top right
-    block_vertices.push_back(glm::vec4(min.x, min.y, max.z, 1.0f));
+    
     block_vertices.push_back(glm::vec4(max.x, min.y, max.z, 1.0f));
+    block_vertices.push_back(glm::vec4(min.x, min.y, max.z, 1.0f));
     block_vertices.push_back(glm::vec4(max.x, min.y, min.z, 1.0f));
     block_color.push_back(rgb);
     block_color.push_back(rgb);
