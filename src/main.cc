@@ -305,7 +305,7 @@ int main(int argc, char* argv[])
         if (draw_cube) {
             //glActiveTexture(GL_TEXTURE1);
             //glBindTexture(GL_TEXTURE_CUBE_MAP, textureID);
-            testing.render();
+            testing.render(gui.getCenter());
         }
         index = 1;
         // Poll and swap.
