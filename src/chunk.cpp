@@ -23,6 +23,7 @@ Chunk::Chunk(int x, int z)
     //create_block(0.0f,0.0f,0.0f,1.0f);
     //generate_plane(x_length, z_length);
     create_mesh(x_length, -16, z_length);
+    std::cout << "HELLO DONE" << std::endl;
 }
 
 Chunk::~Chunk()
@@ -51,32 +52,42 @@ void Chunk::create_mesh(int x_grid, int y_grid, int z_grid)
     int high = 10;
     int low = 6;
     int prevHeight = 8;
+    perlin.generateHeightMap();
+    //std::cout << "HELLO 7" << std::endl;
+    //std::vector<std::vector<int>> height_map = perlin.height_map_; //std::vector<std::vector<int>>(16, std::vector<int>(16, 0));
+    //std::cout << "HELLO 8" << std::endl;
+    //height_map = perlin.height_map_;
+    //std::cout << "HELLO 9" << std::endl;
     for (int x = 0; x < 16; ++x) {
         //std::cout << "\nNEW X\n"<< std::endl;
         for (int z = 0; z < 16; ++z) {
             //std::cout << "\nNEW Y\n"<< std::endl;
-
-            int height = std::rand() % (high - low) + low;
+            //std::cout << "HELLO 10" << std::endl;
+            //int height = perlin.height_map_[x][z]; // std::rand() % (high - low) + low;
+            //std::cout << "HELcLO 11" << std::endl;
             //std::cout << height << std::endl;
-            for (int y = 0; y < height; ++y) {
+
+            for (int y = 0; y < 16; ++y) {
                 // if (blocks[x][y][z].is_active() == false) {
                 //     continue;
                 // }
-                create_block(x_grid + x, y_grid + y, z_grid + z, 1, arrayStart);
                 //std::cout << "X: " << x << "  | Y: " << y << "  | Z: " << z << "  | CHUNK_SIZE: " << CHUNK_SIZE << std::endl;
+                //std::cout << "HELLO 10  | HEIGHT: " << 0 << std::endl;
+                create_block(x_grid + x, y_grid + y, z_grid + z, 1, arrayStart);
+
                 //std::cout << "Grid Pos #: " << i << "  | " << x_grid + x << " " << y_grid + y << " " << z_grid + z << std::endl;
                 i++;
                 arrayStart += 36;
             }
-            if (height > prevHeight) {
+            // if (height > prevHeight) {
 
-                high = std::min(high + 2, 16);
-                low = std::min(low + 2, 12);
-            } else if (height < prevHeight) {
-                high = std::max(high - 2, 4);
-                low = std::max(low - 2, 0);
-            }
-            prevHeight = height;
+            //     high = std::min(high + 2, 16);
+            //     low = std::min(low + 2, 12);
+            // } else if (height < prevHeight) {
+            //     high = std::max(high - 2, 4);
+            //     low = std::max(low - 2, 0);
+            // }
+            // prevHeight = height;
         }
     }
     //std::cout << block_vertices.size() << "terrain vert size" << std::endl;
@@ -108,6 +119,8 @@ void Chunk::generate_plane(int x_len, int z_len)
 //void Chunk::generate_cube()
 void Chunk::create_block(float x_start, float y_start, float z_start, float size, int arrayStart)
 {
+
+    //std::cout << "HELLO BLOCK" << std::endl;
     glm::vec3 min(x_start, y_start, z_start);
     glm::vec3 max(x_start + size, y_start + size, z_start + size);
     //front
@@ -191,7 +204,10 @@ void Chunk::create_block(float x_start, float y_start, float z_start, float size
     block_vertices.push_back(glm::vec4(min.x, min.y, max.z, 1.0f));
     block_vertices.push_back(glm::vec4(min.x, max.y, max.z, 1.0f));
     block_faces.push_back(glm::uvec3(arrayStart + 33, arrayStart + 34, arrayStart + 35));
+
+    //std::cout << "HELLO BLOCK 1" << std::endl;
 }
+
 void Chunk::create_block(int size)
 {
     glm::vec3 min(-size, -size, -size);

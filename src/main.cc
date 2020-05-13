@@ -95,7 +95,7 @@ int main(int argc, char* argv[])
 
     GLFWwindow* window = init_glefw();
     GUI gui(window);
-    Chunkmanager test;
+    //Chunkmanager test;
     //Cube cube();
     // Block test;
     // std::vector<glm::vec4> cube_vertices;
@@ -259,6 +259,7 @@ int main(int argc, char* argv[])
         if (draw_cube) {
             //glActiveTexture(GL_TEXTURE1);
             //glBindTexture(GL_TEXTURE_CUBE_MAP, textureID);
+            std::cout << "Rendering!" << std::endl;
             cube_pass.setup();
             CHECK_GL_ERROR(glDrawElements(GL_TRIANGLES,
                 terrain.block_faces.size() * 3,

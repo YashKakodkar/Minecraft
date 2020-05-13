@@ -3,6 +3,7 @@
 
 #include "block.h"
 #include "config.h"
+#include "perlin.h"
 #include <glm/glm.hpp>
 #include <vector>
 
@@ -24,6 +25,7 @@ public:
     std::vector<glm::vec3> block_positions;
 
 private:
+    Perlin perlin;
     Block*** blocks;
     int x_length;
     int z_length;
